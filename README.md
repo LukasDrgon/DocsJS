@@ -2,7 +2,7 @@
 See a live example [here](https://hailiax.io/docsjs)<br>
 Insert the following script tag and theme to use DocsJS:
 ```
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Hailiax/DocsJS@1.0.0/src/docs.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Hailiax/DocsJS@1/src/docs.min.js"></script>
 <style>
 	@import url('https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css');
 	@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700');
