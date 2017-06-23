@@ -1,2 +1,2 @@
 # DocsJS
-See live example at [a link](hailiax.io/docsjs)
+See a live example [here](https://hailiax.io/docsjs)
