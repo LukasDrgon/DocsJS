@@ -1,2 +1,2 @@
 # DocsJS
-Documentation. Simplified.
+See live example at hailiax.io/docsjs
