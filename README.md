@@ -1,4 +1,5 @@
 # DocsJS
+## Live example and API under construction
 See a live example [here](https://hailiax.io/docsjs) and learn how to use DocsJS [here](https://hailiax.io/docsjs#Guide%20%2F%20API).
 <br>
 Basic usage – insert the following below your DocsJS divs:
