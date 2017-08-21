@@ -1,1 +1,1321 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DocsJS</title>
 
+<link rel="apple-touch-icon" sizes="180x180" href="/docsjs/example/favicons/apple-touch-icon.png?v=8jedNJnRp5">
+<link rel="icon" type="image/png" sizes="32x32" href="/docsjs/example/favicons/favicon-32x32.png?v=8jedNJnRp5">
+<link rel="icon" type="image/png" sizes="192x192" href="/docsjs/example/favicons/android-chrome-192x192.png?v=8jedNJnRp5">
+<link rel="icon" type="image/png" sizes="16x16" href="/docsjs/example/favicons/favicon-16x16.png?v=8jedNJnRp5">
+<link rel="manifest" href="/docsjs/example/favicons/manifest.json?v=8jedNJnRp5">
+<link rel="mask-icon" href="/docsjs/example/favicons/safari-pinned-tab.svg?v=8jedNJnRp5" color="#5bbad5">
+<link rel="shortcut icon" href="/docsjs/example/favicons/favicon.ico?v=8jedNJnRp5">
+<meta name="msapplication-TileColor" content="#2b5797">
+<meta name="msapplication-TileImage" content="/docsjs/example/favicons/mstile-144x144.png?v=8jedNJnRp5">
+<meta name="msapplication-config" content="/docsjs/example/favicons/browserconfig.xml?v=8jedNJnRp5">
+<meta name="theme-color" content="#2b2b2b">
+
+<link href="/docsjs/example/style.css" rel="stylesheet">
+<script src="/docsjs/example/script.js"></script>
+
+</head>
+
+<body onload="init()">
+<!--Make columns more obvious (onhover and when opened), Proper embedded code (c9 ACE), cross-browser screenshots, restore original defaults on half minimizze, differentiate section minimize and header minimize, keep header at top, jump to minimized topic will maximize-->
+<!--keep varible sourcing for refresh, create your own doc-->
+<div></div>
+<div docsjs-tag="DocsJS-This-Baby">
+	<v-r rightArrow>
+		<div style="padding-top: 0.1em; display: inline-block;">
+			<div docsjs-tag="button-parent" style="display: inline-block;">
+				<div style="position: absolute; margin-left: -10%; height: 100%; width: 100%;">
+					<div docsjs-tag="button-child" style="height: 70%; width: 70%; background-color: transparent; -ms-filter:'progid:DXImageTransform.Microsoft.Matrix(M11=0.7071067811865474,M12=-0.7071067811865477,M21=0.7071067811865477, M22=0.7071067811865474,SizingMethod='auto expand')';filter: progid:DXImageTransform.Microsoft.Matrix(M11=0.7071067811865474,M12=-0.7071067811865477,M21=0.7071067811865477,M22=0.7071067811865474,SizingMethod='auto expand');-o-transform: rotate(45deg);-moz-transform: rotate(45deg);-webkit-transform: rotate(45deg);transform: rotate(45deg); -webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;*behavior: url(https://raw.github.com/Schepp/box-sizing-polyfill/master/boxsizing.htc); border-radius: 0; border-bottom: none; border-left: none;"></div>
+				</div>
+			</div>
+		</div>
+	</v-r>
+	<v-r egArrow>
+		<div docsjs-tag="button-parent" style="display:inline-block; font-size: 0.8em;"><div style="position: absolute; margin-left: -10%; height: 100%; width: 100%;"><div docsjs-tag="button-child" style="height: 70%; width: 70%; background-color: transparent; -ms-filter: 'progid:DXImageTransform.Microsoft.Matrix(M11=0.7071067811865474,M12=-0.7071067811865477,M21=0.7071067811865477, M22=0.7071067811865474,SizingMethod='auto expand')';filter: progid:DXImageTransform.Microsoft.Matrix(M11=0.7071067811865474,M12=-0.7071067811865477,M21=0.7071067811865477,M22=0.7071067811865474,SizingMethod='auto expand');-o-transform: rotate(45deg);-moz-transform: rotate(45deg);-webkit-transform: rotate(45deg);transform: rotate(45deg); -webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;*behavior: url(https://raw.github.com/Schepp/box-sizing-polyfill/master/boxsizing.htc); border-radius: 0; border-bottom: none; border-left: none;"></div><div docsjs-tag="button-child" style="width: 60%; margin-right: 5%; border-bottom: none; height: 0; border-radius: 0;"></div></div></div>
+	</v-r>
+	<v-r exArrow>
+		<div docsjs-tag="button-parent" style="display:inline-block; font-size: 0.8em;"><div style="position: absolute; margin-left: -10%; height: 100%; width: 100%;"><div docsjs-tag="button-child" style="height: 70%; width: 70%; background-color: transparent; -ms-filter: 'progid:DXImageTransform.Microsoft.Matrix(M11=0.7071067811865474,M12=-0.7071067811865477,M21=0.7071067811865477, M22=0.7071067811865474,SizingMethod='auto expand')';filter: progid:DXImageTransform.Microsoft.Matrix(M11=0.7071067811865474,M12=-0.7071067811865477,M21=0.7071067811865477,M22=0.7071067811865474,SizingMethod='auto expand');-o-transform: rotate(45deg);-moz-transform: rotate(45deg);-webkit-transform: rotate(45deg);transform: rotate(45deg); -webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;*behavior: url(https://raw.github.com/Schepp/box-sizing-polyfill/master/boxsizing.htc); border-radius: 0; border-bottom: none; border-left: none;"></div><div docsjs-tag="button-child" style="margin-left: 20%; -webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;*behavior: url(https://raw.github.com/Schepp/box-sizing-polyfill/master/boxsizing.htc); border-radius: 100%;"></div><div docsjs-tag="button-child" style="margin-right: 35%;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;*behavior: url(https://raw.github.com/Schepp/box-sizing-polyfill/master/boxsizing.htc); border-radius: 100%;"></div></div></div>
+	</v-r>
+	<s-c>
+		<div style="height: 8em; position: relative;" class="logoImage">
+			<img src="/docsjs/example/logo.png" alt="logo" style="position: absolute; max-height: 110%; left: 0; right: 0; margin-left: auto; margin-right: auto; top: 0; bottom: 0; margin-top: auto; margin-bottom: auto; max-width: 70%;">
+		</div>
+	</s-c>
+	<s-c>
+		<h-d>
+			<t-l>What is DocsJS?</t-l>
+			<t-x>
+				DocsJS aims to be an open-source, easily writable, and fully customizable documentation library. The ultimate goal is to provide a more consistent, aestheic, and accessible documentation experience for readers and an easier, faster, and worry-free documentation writing experince for developers.<br><br>
+				<c-d docsjs-lang="html">Basic usage:
+&lt;script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Hailiax/DocsJS@1/src/docs.min.js"&gt;&lt;/script&gt;
+&lt;script defer&gt;DocsJS.init();&lt;/script&gt;
+&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Hailiax/DocsJS@1/themes/frost.min.css"&gt;</c-d>
+			</t-x>
+			<e-x docsjs-name="Changelog" class="changelog">
+				<p>Please use a CDN to deliver the newest release. Near future versions will focus on accessibility and handling large docs.</p>
+				
+				<p style="margin-top: 0.6em;">Release 1.0.0 on 17 July 2017</p>
+				<ol>
+					<li>DocsJS released!</li>
+				</ol>
+			</e-x>
+			
+			<a href="https://github.com/Hailiax/DocsJS" style="color: inherit; text-decoration: none;" target="_blank" rel="noopener">
+				<t-x style="height: 1.75em; line-height: 1.75em; padding: 0; padding-left: 1em; border-top: #E0E0E0 solid 1px; cursor: pointer;">
+					<v-r rightArrow></v-r>
+					<span style="margin-left: 0.4em; top: 0; position: absolute;">Github (Link)</span>
+				</t-x>
+			</a>
+		</h-d>
+	</s-c>
+	<s-c>
+		<h-d>
+			<t-l>Quick Intro</t-l>
+			<t-x>Here's a quick breifing on how you can write in DocsJS.</t-x>
+		</h-d>
+		<t-p>
+			<t-l>Compact custom tags</t-l>
+			<t-x>
+				DocsJS recognizes the following lowercase, two-letter html tags.
+				<br><br>
+				<c-d docsjs-lang="html">&lt;s-c&gt;Section: Container for topics&lt;/s-c&gt;
+&lt;h-d&gt;Header: Top of each section&lt;/h-d&gt;
+&lt;t-p&gt;Topic: Container for content&lt;/t-p&gt;
+&lt;t-l&gt;Title: Title of topic/header&lt;/t-l&gt;
+&lt;t-x&gt;Text: Summary of topic&lt;/t-x&gt;
+&lt;e-g&gt;Example: I wonder what this is for&lt;/e-g&gt;
+&lt;e-x&gt;Extra Details/Extraneous: Hmmmmmmm&lt;/e-x&gt;
+&lt;c-d&gt;Code: DocsJS embeds Cloud9's Ace code editor by default&lt;/c-d&gt;
+&lt;v-r&gt;Varible: Varibles?? What?? We'll get into this later&lt;/v-r&gt;</c-d>
+				<br>
+				Click Try it! below to edit a doc realtime.
+			</t-x>
+
+			<e-g docsjs-name="Try it!">
+				<c-d docsjs-lang="html" docsjs-editable="true" class="parse1 src parse">&lt;div docsjs-tag="DocsJS-This-Baby"&gt;
+	&lt;s-c&gt;
+		&lt;h-d&gt;
+			&lt;t-l&gt;Sample header&lt;/t-l&gt;
+			&lt;t-x&gt;Something describing your awe-inspiring section.&lt;/t-x&gt;
+		&lt;/h-d&gt;
+		&lt;t-p&gt;
+			&lt;t-l&gt;Sample topic&lt;/t-l&gt;
+			&lt;t-x&gt;Wow! What a moving topic this is.&lt;/t-x&gt;
+			&lt;e-g&gt;Here's an example of how this topic will change your life.&lt;/e-g&gt;
+			&lt;e-x&gt;You won't believe what extra details this contains next.&lt;/e-x&gt;
+		&lt;/t-p&gt;
+		&lt;t-p&gt;
+			&lt;t-l&gt;Ohmygosh another topic appeared&lt;/t-l&gt;
+			&lt;t-x&gt;Level 4 summary.&lt;/t-x&gt;
+			&lt;e-x&gt;Level 2 example.&lt;/e-x&gt;
+		&lt;/t-p&gt;
+	&lt;/s-c&gt;
+&lt;/div&gt;</c-d>
+			<iframe class="parse1 dest" title="Try it example result"></iframe>
+			</e-g>
+		</t-p>
+		<t-p>
+			<t-l>Flexibility of divs</t-l>
+			<t-x>Every custom tag is essentially a div, which means you can nest them inside each other, add attributes like <pre>style=""</pre>, etc. Nesting custom tags helps create a very organized doc: you can add sections in topics, sections in sections, sections in examples, topics in sections in extra details in topics in sections in sections... yeah. Nothing fancy, just intuitive, simple divs.</t-x>
+
+			<e-g docsjs-name="Try it!">
+				<c-d docsjs-lang="html" docsjs-editable="true" class="parse2 src parse">&lt;div docsjs-tag="DocsJS-This-Baby"&gt;
+	&lt;s-c&gt;
+		&lt;h-d&gt;
+			&lt;t-l&gt;Regular header&lt;/t-l&gt;
+			&lt;t-x&gt;Nothing cool here&lt;/t-x&gt;
+		&lt;/h-d&gt;
+		&lt;t-p&gt;
+			&lt;t-l&gt;Section in topic&lt;/t-l&gt;
+			&lt;t-x&gt;This contains a section, containing a header, in a topic.&lt;/t-x&gt;
+			&lt;s-c&gt;
+				&lt;h-d&gt;
+					&lt;t-l&gt;Regular header&lt;/t-l&gt;
+					&lt;t-x&gt;Nothing cool here&lt;/t-x&gt;
+				&lt;/h-d&gt;
+			&lt;/s-c&gt;
+		&lt;/t-p&gt;
+		&lt;s-c&gt;
+			&lt;t-p&gt;
+				&lt;t-l&gt;Topic in section in section.&lt;/t-l&gt;
+				&lt;t-x&gt;This is what a section inside a section looks like.&lt;/t-x&gt;
+			&lt;/t-p&gt;
+		&lt;/s-c&gt;
+	&lt;/s-c&gt;
+&lt;/div&gt;</c-d>
+			<iframe class="parse2 dest" title="Try it example result"></iframe>
+			</e-g>
+		</t-p>
+	</s-c>
+	<s-c>
+		<h-d>
+			<t-l>Features</t-l>
+			<t-x>DocsJS makes writing docs so easy, you'll actually write it.</t-x>
+		</h-d>
+		<t-p>
+			<t-l>Navigation</t-l>
+			<t-x>DocsJS scans how your doc is structured (nested tags and all) and automatically generates a matching menu which serves as a useful table of contents and navigation. The names used in the menu come from your &lt;t-l&gt; tags. Cliking a name in the menu will scroll the user to the corresponding section or topic in your doc. Scroll to top, scroll to bottom, and preference buttons are also added to the menu.<br><br>
+			Also, adding the hash symbol, #, followed by the title of a topic or section to the end of your doc's url will automatically scroll the reader to the named section on pageload/refresh. DocsJS also allows for inline navigation buttons as shown in the examples.<br><br>
+			Finally, the menu contains readability options for the user. The user can change font size, minimize everything, maximize everything, reset mins and maxes to default, invert colors for day/night readability, turn off animations (save power), and reset all preferences.</t-x>
+
+			<e-g docsjs-name="Examples">
+				To open the menu for this doc, just click the menu symbol. It looks like an equals sign and it's found near the top of the page next to a topic title. Annnddd, for the hash symbol feature:<br><br>
+				Let's say that I want to send the "Compact custom tags" topic to my friend. Well this url is https://hailiax.io/docsjs and the title of that section, encoded so spaces become %20, is Compact%20custom%20tags, so I would send my friend the url <a href="#Compact%20custom%20tags" target="_blank" rel="noopener" style="color:#505050;">https://hailiax.io/docsjs#Compact%20custom%20tags</a>. Try clicking on that link or even try making a link to this topic to see what this feature does.<br><br>
+				Finally, let's say you want to create an inline navigation button like <a onClick="DocsJS.jumpTo('Compact custom tags');" style="color:#505050;" href="javascript:void(0);">this</a>. This button just uses the attribute: <c-d docsjs-lang="html">onClick="DocsJS.jumpTo('Compact custom tags');"</c-d> You can replace 'Compact custom tags' with any location you want.
+			</e-g>
+
+			<e-x docsjs-name="Why is the menu... there?">There are two areas where the menu can be accessed: the traditional left sidebar by dragging the sidebar out and the menu button that moves between the uppermost topic's title. A simple menu on the left side just doesn't cut it: mobile devices don't have space for that and the sidebars may have other perferred uses. By embedding a menu button into the uppermost topic titles, the menu will be always and easily accessible on every device while keeping clutter to a minimum. Section titles will have a circular button which minimizes that section.</e-x>
+		</t-p>
+		<t-p>
+			<t-l>Sidebars</t-l>
+			<t-x>Traditionally, good documentation has two sidebars: a menu on the left and examples/code-sinppets on the right. This keeps the documentation easy to read while making it appear shorter and more inviting to read. However, formatting these columns can be difficult and they straight up just don't work on mobile devices. DocsJS' solution: the &lt;e-g&gt; (<v-r egArrow></v-r> for examples) and &lt;e-x&gt; (<v-r exArrow></v-r> for extra details or extraneous) tags.<br><br>
+			By default, content in these tags are enclosed in an expandable container, preserving the shorter and inviting look. If the reader has enough screen space, they can move these tags to a side bar. Dragging out the <v-r egArrow></v-r> on the right sidebar will move all example containers to the right sidebar and expand them. Dragging <v-r exArrow></v-r> will move the ex containers. Sidebars can be adjusted or closed by dragging the edge of the sidebar.</t-x>
+
+			<e-g>I figured a good example of this would be moving this example to the right sidebar. Try it!</e-g>
+
+			<e-x docsjs-name="Move both eg and ex?">After moving eg or ex to the right sidebar, you'll have the option to move the other to the left sidebar. If the menu is open in the left sidebar, close it by dragging it back. Try moving this to the left sidebar.</e-x>
+		</t-p>
+		<t-p>
+			<t-l>HTML Variables</t-l>
+			<t-x>
+			When writing documentation in HTML, varibles would be extremely useful for effecient writing and beautiful, clutter-free HTML. If your document needs a certain graphic to be in many places, it would be a lot easier to declare that graphic as a short varible than copy pasting a length img or div tag every time. That's why DocsJS adds varible tags.
+			<c-d docsjs-lang="html">Declare varible named "varName":
+&lt;v-r varName&gt;
+&lt;p&gt;Varible Content Here&lt;/p&gt;
+&lt;/v-r&gt;</c-d>
+			<c-d docsjs-lang="javascript">//That is basiclly:
+var varName = "&lt;p&gt;Varible Content Here&lt;/p&gt;"</c-d>
+			<c-d docsjs-lang="html">Invoke varible named "varName":
+&lt;v-r varName&gt;&lt;/v-r&gt;</c-d>
+			Yes, declaring and invoking uses the same tag. If there's something inside the tag, it's a varible declaration. If the tag is empty, it gets replaced by what the varible equals.
+			</t-x>
+			<e-g docsjs-name="Try it!">
+				<c-d docsjs-lang="html" docsjs-editable="true" class="parse3 src parse">&lt;div docsjs-tag="DocsJS-This-Baby"&gt;
+	&lt;v-r logo&gt;
+		&lt;div docsjs-tag="button-parent" style="display:inline-block;"&gt;&lt;div docsjs-tag="button-child" style="width: 50%; height: 100%; margin-left:0; background: none; overflow: hidden; border: none; border-radius: 0; margin-top: -0.35em;"&gt;&lt;div docsjs-tag="button-child" style="width: 100%; height: 100%; top: 0.29228614em; left: 0.28750195em; margin: 0; -webkit-transform:rotate(30deg);-moz-transform:rotate(30deg);-ms-transform:rotate(30deg);-o-transform:rotate(30deg);transform:rotate(30deg);ms-filter:'progid:DXImageTransform.Microsoft.Matrix(M11=0.8660252915835662, M12=-0.5000001943375613, M21=0.5000001943375613, M22=0.8660252915835662, SizingMethod='auto expand')';filter:progid:DXImageTransform.Microsoft.Matrix(M11=0.8660252915835662, M12=-0.5000001943375613, M21=0.5000001943375613, M22=0.8660252915835662, SizingMethod='auto expand');-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;*behavior: url(https://raw.github.com/Schepp/box-sizing-polyfill/master/boxsizing.htc);border-radius: 0;"&gt;&lt;/div&gt;&lt;/div&gt;&lt;div docsjs-tag="button-child" style="width: 50%; height: 100%; left:50%; top:0.775em; margin-left:0; background: none; overflow: hidden; border: none; border-radius: 0; -webkit-transform:rotate(180deg);-moz-transform:rotate(180deg);-ms-transform:rotate(180deg);-o-transform:rotate(180deg);transform:rotate(180deg);ms-filter:'progid:DXImageTransform.Microsoft.Matrix(M11=-0.9999999999990936, M12=0.0000013464102072028608, M21=-0.0000013464102072028608, M22=-0.9999999999990936, SizingMethod='auto expand')';filter:progid:DXImageTransform.Microsoft.Matrix(M11=-0.9999999999990936, M12=0.0000013464102072028608, M21=-0.0000013464102072028608, M22=-0.9999999999990936, SizingMethod='auto expand');"&gt;&lt;div docsjs-tag="button-child" style="width: 100%; height: 100%; top: 0.29228614em; left: 0.28750195em; margin: 0; -webkit-transform:rotate(30deg);-moz-transform:rotate(30deg);-ms-transform:rotate(30deg);-o-transform:rotate(30deg);transform:rotate(30deg);ms-filter:'progid:DXImageTransform.Microsoft.Matrix(M11=0.8660252915835662, M12=-0.5000001943375613, M21=0.5000001943375613, M22=0.8660252915835662, SizingMethod='auto expand')';filter:progid:DXImageTransform.Microsoft.Matrix(M11=0.8660252915835662, M12=-0.5000001943375613, M21=0.5000001943375613, M22=0.8660252915835662, SizingMethod='auto expand');-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;*behavior: url(https://raw.github.com/Schepp/box-sizing-polyfill/master/boxsizing.htc);border-radius: 0;"&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+	&lt;/v-r&gt;
+	&lt;s-c&gt;
+		&lt;t-p&gt;
+			&lt;t-l&gt;LightningMouse 1337&lt;/t-l&gt;
+			&lt;t-x&gt;LightningMouse is an international corporation dedicated to creating mice out of lightning. Our products are named according to their model number preceeded by our logo: &lt;v-r logo&gt;&lt;/v-r&gt;&lt;br&gt;
+			Today, we're releasing product &lt;v-r logo&gt;&lt;/v-r&gt;1337, otherwise known as our elite model. It's made from 42 separate strands of lightning to create our most robust, delicious, and blue &lt;v-r logo&gt;&lt;/v-r&gt;Mouse yet. Order &lt;v-r logo&gt;&lt;/v-r&gt;1337 today!&lt;/t-x&gt;
+		&lt;/t-p&gt;
+	&lt;/s-c&gt;
+&lt;/div&gt;</c-d>
+			<iframe class="parse3 dest" title="Try it example result"></iframe>
+			</e-g>
+		</t-p>
+		<t-p>
+			<t-l>Animations</t-l>
+			<t-x>Animations don't only just make your documentation look better, they have important functions: drawing attention to important details, suggesting how certain features work, and giving context when large opened menus or containers are opened so it doesn't look the rest of the content just dissapeared.<br><br>
+
+			However, programming lightweight, browser-consistent, and cross-browser animations can be a pain. That's why DocsJS automatically generates animations where needed to improve the functionality and feel of your doc.</t-x>
+
+			<e-g docsjs-name="Proof">Click a title and you'll see that the topic minimizes. If there were animations, you would just see the topic dissapear. If you didn't know that this was intended, you might assume it was a bug. Or even worse, if you accidentally clicked the title, all you would see is a topic randomly dissapearing. But since you saw the topic shrink, it would be logical to click the title to unminimize the topic.<br><br>
+
+			Also, lets say you clicked on a really big example, one that fill the enitre screen. If there was no animation, you would just see a example just appear and fill out your screen. If you click on the menu, an animation preserves your context. If you try to close a sidebar, an animation draws attention to a panel labeled "X" which suggests how to close the sidebar. In the menu, click the thunderbolt sign to see DocsJS without animations. Click again to re-enable animations.</e-g>
+		</t-p>
+		<t-p>
+			<t-l>Complete access</t-l>
+			<t-x>Dealing with different browsers in general is a huge pain, espeically for documentation where support for old browsers is vital. That's why DocsJS places huge empahasis on compatability and has been tested with <a href="https://www.browserstack.com" target="_blank"><img src="/docsjs/example/BrowserStack.png" style="display:inline; height: 0.7em;"></a> on browsers all the way back to IE7 (2006) and partial compatability with IE6 (2001).</t-x>
+
+			<e-g docsjs-name="Screenshots">*Self note* Put screenshots here last</e-g>
+
+			<t-x style="padding-left:0; padding-right:0;">
+				<p style="padding-left:1em; padding-right:1em;">Dealing with different screen sizes is also a huge pain. But, I'm sure you've figured out that DocsJS has covered every mobile base by now. Everything that can be accessed on this doc on a big screen is equally accessible on a mobile screen. If you really need sidebars on a mobile device, just rotate the device to landscape. DocsJS is entirely styled in em units which allows for perfect scaling for different screen sizes, esepcially really small ones. Try resizing this doc below by holding the – sign.</p><br>
+				<p style="font-size:2.5em; width: 100%; line-height: 2em;"><span style="cursor:pointer; width: 30%; display: inline-block; text-align: center; border: solid 1px #E0E0E0; border-left: none; border-right: none; box-sizing: border-box;" id="windowScalarMinus">–</span><span id="windowScalarPercent" style="width: 40%; display: inline-block; text-align: center; border: solid 1px #E0E0E0; box-sizing: border-box;">100%</span><span style="cursor:pointer; width: 30%; display: inline-block; text-align: center; border: solid 1px #E0E0E0; border-left: none; border-right: none; box-sizing: border-box; color: #909090;" id="windowScalarPlus"> +</span></p>
+				<p id="windowScalarPixels" style="width:100%; text-align: center;">Simulated window width displayed here.</p>
+			</t-x>
+
+			<t-x>A near future version of DocsJS will generate plain-text and very simple HTML versions of your doc for full compatability and accessibility. Expect a blurb here about thorough accessibility in the near future. I haven't released accessibility yet because I have zero experince on this sensitive topic and I'd rather release DocsJS to the public and seek advice on how to do acessibility correctly. Make sure to use a CDN to devlier the newest version of DocsJS so you'll get the accessibility update right away.
+			<c-d docsjs-lang="html">Up-to-date CDN:
+&lt;script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Hailiax/DocsJS@1/src/docs.min.js"&gt;&lt;/script&gt;
+&lt;script defer&gt;DocsJS.init();&lt;/script&gt;
+&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Hailiax/DocsJS@1/themes/frost.min.css"&gt;</c-d>
+			</t-x>
+		</t-p>
+		<t-p>
+			<t-l>Customizable</t-l>
+			<t-x>DocsJS is fully customizable. You can customize this doc below and download DocsJS with your choosen settings or customize DocsJS yourself by checking out the <a onClick="DocsJS.jumpTo('Reference');" style="color:#505050;" href="javascript:void(0);">reference</a>.</t-x>
+			<e-g docsjs-state="max">For example, this example is already expanded by default, where you manually had to open previous examples. This is set by a simple HTML attribute: docsjs-state="max".</e-g>
+		</t-p>
+	</s-c>
+	<s-c>
+		<h-d>
+			<t-l>Download</t-l>
+			<t-x>DocsJS does a lot for you, but you can tell it exactly how to work through HTML, CSS, and Javascript. This section just breifly coveres what you can customize and not how to customize. For full details, please see the .</t-x>
+		</h-d>
+		<t-p>
+			<t-l>Basic</t-l>
+			<t-x>DocsJS does a lot for you, but you can tell it exactly how to work through HTML, CSS, and Javascript. This section just breifly coveres what you can customize and not how to customize. For full details, please see the .</t-x>
+		</t-p>
+		<t-p>
+			<t-l>Developer</t-l>
+			<t-x>DocsJS does a lot for you, but you can tell it exactly how to work through HTML, CSS, and Javascript. This section just breifly coveres what you can customize and not how to customize. For full details, please see the .</t-x>
+		</t-p>
+		<t-p>
+			<t-l>Customize</t-l>
+			<t-x>Finally, from font size to sidebar sizes, essentially everything else is customizable through the DocsJS object.<br>
+			*multiple sliders here</t-x>
+			<s-c>
+				<h-d>
+					<t-l>Included packages</t-l>
+					<t-x>Finally, from font size to sidebar sizes, essentially everything else is customizable through the DocsJS object.<br>
+					*multiple sliders here</t-x>
+				</h-d>
+			</s-c>
+			<s-c>
+				<h-d>
+					<t-l>CSS themes</t-l>
+					<t-x>You can control how the doc looks through CSS. You can reference custom tags by [docsjs-tag="TAGNAME"], for example, a CSS style for a &lt;t-l&gt; tag would be:
+						<c-d docsjs-lang="css">[docsjs-tag="t-l"]{
+	color: #FFF;
+}</c-d>
+					You can also style the sidebars and menus with column-* and menu-* .<br>
+					*CSS theme and editor here.</t-x>
+				</h-d>
+			</s-c>
+			<s-c>
+				<h-d>
+					<t-l>Javascript options</t-l>
+					<t-x>Finally, from font size to sidebar sizes, essentially everything else is customizable through the DocsJS object.<br>
+					*multiple sliders here</t-x>
+				</h-d>
+			</s-c>
+		</t-p>
+	</s-c>
+	<s-c>
+		<h-d>
+			<t-l>Reference</t-l>
+			<t-x>You'll find DocsJS' Javascript &amp; HTML API, CSS themeing guidelines, and a quick refresher on how DocsJS' HTML structure works here.</t-x>
+		</h-d>
+		<s-c docsjs-state="min">
+			<h-d>
+				<t-l>HTML</t-l>
+				<t-x>Here's an example of a basic doc structure:
+				<c-d docsjs-lang="html">&lt;div docsjs-tag="DocsJS-This-Baby"&gt;
+	&lt;v-r varName&gt;
+		&lt;p&gt;Varible Content&lt;/p&gt;
+	&lt;/v-r&gt;
+	&lt;s-c&gt;
+		&lt;h-d&gt;
+			&lt;t-l&gt;Sample header&lt;/t-l&gt;
+			&lt;t-x&gt;&lt;v-r varName&gt;&lt;/v-r&gt;&lt;/t-x&gt;
+		&lt;/h-d&gt;
+		&lt;t-p&gt;
+			&lt;t-l&gt;Sample topic&lt;/t-l&gt;
+			&lt;t-x&gt;Wow! What a moving topic this is.&lt;/t-x&gt;
+			&lt;e-g&gt;Here's an example of how this topic will change your life.&lt;/e-g&gt;
+			&lt;e-x&gt;You won't believe what extra details this contains next.&lt;/e-x&gt;
+		&lt;/t-p&gt;
+	&lt;/s-c&gt;
+&lt;/div&gt;</c-d>
+				Below are the recognized docsjs attributes like docjs-state. These attributes work like any data- tag and help control structure. All defaults can be changed through javascript.</t-x>
+			</h-d>
+			<t-p docsjs-state="min">
+				<t-l>docsjs-state</t-l>
+				<t-x>Allowed values: min, max<br>Allowed on tags: &lt;s-c&gt;, &lt;h-d&gt;, &lt;t-p&gt;, &lt;e-g&gt;, &lt;e-x&gt;<br>Defaults: min on &lt;e-g&gt;, &lt;e-x&gt;; max on &lt;s-c&gt;, &lt;h-d&gt;, and &lt;t-p&gt;</t-x>
+				<t-x>The value min will make the section, topic, or example/extraneous minimized initially while max will maximize it initially. This value will change if the user (un)minimizes the tag. If you want to toggle this attribute after the doc has finished loading, do so through javascript with <a onClick="DocsJS.jumpTo('DocsJS.toggle()');" style="color:#505050;" href="javascript:void(0);">DocsJS.toggle()</a>.</t-x>
+				<e-g>
+					<c-d docsjs-lang="html">&lt;div docsjs-tag="DocsJS-This-Baby"&gt;
+	&lt;s-c docsjs-state="min"&gt;
+		&lt;h-d&gt;
+			&lt;t-l&gt;Sample header&lt;/t-l&gt;
+			&lt;t-x&gt;This section (not header) will be minimized initially. This header will be maximized since that's the default. However, a docjs-state="min" can minimize this header.&lt;/t-x&gt;
+		&lt;/h-d&gt;
+		&lt;t-p docsjs-state="min"&gt;
+			&lt;t-l&gt;Sample topic&lt;/t-l&gt;
+			&lt;t-x&gt;This topic will be minimized initially.&lt;/t-x&gt;
+			&lt;e-g&gt;This will be minimized since that's the default.&lt;/e-g&gt;
+			&lt;e-x docsjs-state="max"&gt;This will be maximized initially.&lt;/e-x&gt;
+		&lt;/t-p&gt;
+	&lt;/s-c&gt;
+&lt;/div&gt;</c-d>
+				</e-g>
+				<e-x docsjs-name="Menu">
+					In this doc, the topic you're currently on will be bolded in the menu. The current topic title (docsjs-tag="menu-title") will be automatically given the attribute docsjs-state="youarehere" while others simply will not have that attribute.
+				</e-x>
+			</t-p>
+			<t-p docsjs-state="min">
+				<t-l>docsjs-name</t-l>
+				<t-x>Allowed value type: HTML Content<br>Allowed on tags: &lt;e-g&gt;, &lt;e-x&gt;<br>Defaults: Example on &lt;e-g&gt;; More on &lt;e-x&gt;</t-x>
+				<t-x>This value will be the displayed as the title for your ex or eg. It can be plain text or HTML for a more fancy title. If you have changed this attribute after the doc has finished loading, please call <a onClick="DocsJS.jumpTo('DocsJS.toggle()');" style="color:#505050;" href="javascript:void(0);">DocsJS.refresh()</a> to apply your changes.</t-x>
+				<e-g>
+					<c-d docsjs-lang="html">&lt;t-p&gt;
+	&lt;t-l&gt;Sample topic&lt;/t-l&gt;
+	&lt;t-x&gt;Sample text.&lt;/t-x&gt;
+	&lt;e-g docsjs-name="Usage"&gt;This will be given the name "Usage".&lt;/e-g&gt;
+	&lt;e-x docsjs-name="&lt;p style='color:#FF0000'&gt;Wow!&lt;/p&gt;"&gt;This will be given the name "Wow!" in red.&lt;/e-x&gt;
+&lt;/t-p&gt;</c-d>
+				</e-g>
+			</t-p>
+			<t-p docsjs-state="min">
+				<t-l>docsjs-tag</t-l>
+				<t-x>Allowed values: DocsJS-This-Baby, sc, hd, tp, tl, tx, eg, ex, vr<br>Allowed on tags: &lt;div&gt;</t-x>
+				<t-x>All custom tags get automatically converted into divs with the matching docsjs-tag attribute. However, if you want to bypass the converting step, you can just create a div with the desired tag and it will work exactly the same way as the custom tag. You must wrap all DocsJS tags inside the superparent, which is DocsJS-This-Baby by default. If you have changed this attribute after the doc has finished loading, please call <a onClick="DocsJS.jumpTo('DocsJS.toggle()');" style="color:#505050;" href="javascript:void(0);">DocsJS.refresh()</a> to apply your changes.</t-x>
+				<e-g>This is what a simple doc will look like after being converted to divs:
+					<c-d docsjs-lang="html">&lt;div docsjs-tag="DocsJS-This-Baby"&gt;
+	&lt;div docsjs-tag="vr" varName&gt;
+		&lt;p&gt;Varible Content (The varible tag used to be here)&lt;/p&gt;
+	&lt;/div&gt;
+	&lt;div docsjs-tag="sc"&gt;
+		&lt;div docsjs-tag="hd"&gt;
+			&lt;div docsjs-tag="tl"&gt;Sample header&lt;/div&gt;
+			&lt;div docsjs-tag="tx"&gt;Varible Content (The varible tag used to be here)&lt;/div&gt;
+		&lt;/div&gt;
+		&lt;div docsjs-tag="tp"&gt;
+			&lt;div docsjs-tag="tl"&gt;Sample topic&lt;/div&gt;
+			&lt;div docsjs-tag="tx"&gt;Wow! What a moving topic this is.&lt;/div&gt;
+			&lt;div docsjs-tag="eg"&gt;Here's an example of how this topic will change your life.&lt;/div&gt;
+			&lt;div docsjs-tag="ex"&gt;You won't believe what extra details this contains next.&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+&lt;/div&gt;</c-d>
+				</e-g>
+				<e-x docsjs-name="Internal values">
+					This tag has other values used internally by DocsJS and can be styled by you. Unless you know what you're doing, adding a div with these docsjs-tag values will screw up your doc. You can find those values and their purpose under "More tags" in the CSS reference.<br><br>
+				</e-x>
+			</t-p>
+			<t-p docsjs-state="min">
+				<t-l>docsjs-internal</t-l>
+				<t-x>DocsJS uses many internal tags. Unless you know what you're doing, changing these tags will really screw up your doc. They are: docsjs-extras, docsjs-extra, docsjs-side, docsjs-location, docsjs-pref, docsjs-menu-location, docsjs-menu-destination, docjs-internal.</t-x>
+			</t-p>
+			<t-p docsjs-state="min">
+				<t-l>docsjs-lang</t-l>
+				<t-x>Add this tag to any &lt;c-d&gt; tag you want syntax highlighted. Set it to the language you want it highlighted for. For example &lt;c-d docsjs-lang="html"&gt; will be syntax highlighted for HTML.</t-x>
+			</t-p>
+			<t-p docsjs-state="min">
+				<t-l>docsjs-editable</t-l>
+				<t-x>Add this tag and set it to true to any &lt;c-d&gt; tag you to be editable and vice versa. The default is controlled by <a onClick="DocsJS.jumpTo('.editable');" style="color:#505050;" href="javascript:void(0);">DocsJS.cd.editable</a>. For example, &lt;c-d docsjs-lang="javascript" docsjs-editable="true"&gt; will be editable and &lt;c-d docsjs-lang="javascript" docsjs-editable="false"&gt; will not</t-x>
+			</t-p>
+		</s-c>
+		<s-c docsjs-state="min">
+			<h-d>
+				<t-l>CSS</t-l>
+				<t-x>If you know CSS well, you'll already know how to style the doc. However, here a few things you should know before you start customizing your own theme.</t-x>
+			</h-d>
+			<t-p>
+				<t-l>Selectors</t-l>
+				<t-x>To style DocsJS, you'll need to use attribute selectors like [docsjs-tag="s-c"] since custom tags are converted to divs (&lt;s-c&gt; =&gt; &lt;div docsjs-tag="sc"&gt;). You can also style with [docsjs-state="min, max, or youarehere"]. Some other useful selectors to know are the psuedo-classes :first-child and :hover, &gt; (selects immediate children only), + (selects the next sibling), and a regular space which selects all children. The example below shows how you can style sections nested in topics:
+				<c-d docsjs-lang="css">[docsjs-tag="t-p"] &gt; [docsjs-tag="s-c"]{
+	border-bottom: solid 1em #FFF;
+	margin-top: 0;
+}</c-d></t-x>
+				<e-g docsjs-name="More examples">Here are a few snippets from the default theme:
+				<c-d docsjs-lang="css">[docsjs-tag="t-l"]{
+	/* This styles title tags */
+	position: relative;
+	background-color: rgba(255,255,255,0.85);
+	padding: 0.83333333em;
+	padding-right: 3em;
+	font-size: 1.2em;
+	cursor: pointer;
+}
+[docsjs-tag="t-x"],[docsjs-tag="e-g"],[docsjs-tag="e-x"]{
+	/* This styles tx, eg, and ex tags */
+	position: relative;
+	background-color: #FFF;
+	padding: 1em;
+	overflow: hidden;
+}
+[docsjs-tag="t-x"]{
+  /* This gives tx tags a small border at the top... */
+	border-top: #E0E0E0 solid 1px;
+}
+[docsjs-tag="t-l"] + *{
+	/* ...but this makes sure the first element next to the title doesn't have a border at the top so the first tx tag won't have an unfitting border */
+	border-top: none;
+}
+[docsjs-tag="e-x"][docsjs-state="min"],[docsjs-tag="e-g"][docsjs-state="min"]{
+	/* This styles minimized eg and ex */
+	padding-top: 0;
+	padding-bottom: 0;
+	height: 0;
+}
+[docsjs-tag='menu-title'][docsjs-state='youarehere']{
+	/* This bolds the topic the user is currently on in the menu */
+	font-weight: 700;
+}</c-d>	
+				</e-g>
+			</t-p>
+			<t-p>
+				<t-l>More tags</t-l>
+				<t-x>
+					You may have noticed that the short two letter tags are not the only values for docsjs-tag. Below, you'll find other values for that attribute that you can style with. Select them like [docsjs-tag="ebefore"]. If you're ever confused on what has each tag, just enter inspect element.<br><br>
+					<p class="bold">ebefore</p>: div added before each eg and ex which the user can click on to expand or minimize the eg/ex.<br><br>
+					<p class="bold">column-left, column-right</p>: parent div for the left and right sidebars; <p class="bold">column-content</p>: parent div for eg/ex content in sidebars; <p class="bold">column-filler</p>: div to fill in gaps between column-content, initial column background, and menu sidebar background; <p class="bold">column-handle</p>: area for user to click and drag the sidebars.<br><br>
+					<p class="bold">menu</p>: parent div for menus; <p class="bold">menu-preferences</p>: parent div for menu preferences; <p class="bold">menu-preferences-item</p>: clickable preference buttons; <p class="bold">menu-title</p>: name of section or topic; <p class="bold">menu-item</p>: parent div a group of menu-titles.<br><br>
+					<p class="bold">button-menu</p>: clickable parent div for (un)minimizing menus; <p class="bold">button-minimize</p>: clickable parent div for (un)minimizing sections; <p class="bold">button-ebefore</p>: parent div shown on ebefore; <p class="bold">button-parent</p>: parent div of all buttons; <p class="bold">button-child</p>: child elements of buttons that determine how the button looks like.
+				</t-x>
+			</t-p>
+			<t-p>
+				<t-l>Important</t-l>
+				<t-x>While DocsJS tries to give you as much freedom as possible for stylying your doc, there are some requirements for your theme:<br><br>
+				
+				DocsJS only supports <a style="color:#505050;" href="https://www.sitepoint.com/power-em-units-css/" target="_blank" rel="noopener">em units</a>: you must declare a font size in pixels for [docsjs-tag="DocsJS-This-Baby"] and style the rest of your doc in em. DocsJS will scan your styling and save your defined font-size into a javascript varible. If you want to adjust the font-size after your doc has loaded, you must do so through javascript with <a onClick="DocsJS.jumpTo('DocsJS.fontsize.set()');" style="color:#505050;" href="javascript:void(0);">DocsJS.fontsize.set()</a>. Occassionally using other units is fine, but DocsJS can't guarntee that they will scale properly.<br><br>
+				
+				Padding works well with DocsJS, especially padding-top in tx, eg, and ex. Not only does proper padding make docs easier to read, many DocsJS animations will take padding into account and will be able to create slightly parralax-like effects. Finally, I suggest using a line-height greater than 1em to improve readability. The default theme uses a line-height of 1.4em.<br><br>
+				
+				You must provide styles for the sidebars and menu. The position of sidebars with change automatically between fixed and absolute. I strongly recommend having an indicator of what menu topic the user is currently on with docsjs-state="youarehere" and indiciating where the user is hovering on the menu.<br><br>
+				
+				You can play around with how buttons like the minimize and menu buttons are styled. These are controlled by [docsjs="button-parent, button-child"]. If you want a very different type of button look, you may do so through javascript with <a onClick="DocsJS.jumpTo('DocsJS.buttons');" style="color:#505050;" href="javascript:void(0);">DocsJS.buttons</a>. However, please try to make the button look similar for consistency and accessibility reasons.<br><br>
+				Finally, be creative with your theme! Use easy to read colors and enough contrast so anyone can read your doc. Have fun and I'm sure your theme will look amazing.</t-x>
+			</t-p>
+		</s-c>
+		<s-c docsjs-state="min">
+			<h-d>
+				<t-l>Javascript</t-l>
+				<t-x>DocsJS exposes a javascript object called DocsJS. You can customize everything else through this object or even expand on DocsJS to provide a more unique experince. Below are the varibles and functions that you can call through the DocsJS object.<br><br>
+					You will find <a style="color:#505050;" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/querySelector" target="_blank" rel="noopener">.querySelector()</a> and <a style="color:#505050;" href="https://developer.mozilla.org/en-US/docs/Web/API/Element/querySelectorAll" target="_blank" rel="noopener">.querySelectorAll()</a> very helpful when manipiulating DocsJS elements. If you want to get the second topic inside 'this', you would use this.querySelectorAll('[docsjs-tag="t-p"]')[1].</t-x>
+			</h-d>
+			<s-c>
+				<h-d>
+					<t-l>Callables</t-l>
+					<t-x>These are functions that can be called.</t-x>
+				</h-d>
+				<t-p docsjs-state="min">
+					<t-l>DocsJS.init()</t-l>
+					<t-x>
+						<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Parameters</p>
+						DocsJS.init( Callback );
+						<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Where</p>
+						Callback is a <span style="font-weight: 700;">function</span> that is executed when DocsJS has finished initializing.
+					</t-x>
+					<t-x>
+						After your superparent's (div docsjs-tag="DocsJS-This-Baby") DOM is ready and the DocsJS script has loaded, call DocsJS.init() to initialize DocsJS. This can be as simple as placing the following below your superparent div.
+						<c-d docsjs-lang="html">&lt;script src="/docsjs/docs.js"&gt;&lt;/script&gt;
+	&lt;script&gt;DocsJS.init();&lt;/script&gt;</c-d>
+						DocsJS.init() adds menus and sidebars, creates binds for events like sidebar drags and hashchange, and calls DocsJS.refresh().
+					</t-x>
+				</t-p>
+				<t-p docsjs-state="min">
+					<t-l>DocsJS.refresh()</t-l>
+					<t-x>
+						<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Parameters</p>
+						DocsJS.refresh( Callback );
+						<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Where</p>
+						Callback is a <span style="font-weight: 700;">function</span> that is executed when DocsJS has been refreshed.
+					</t-x>
+					<t-x>
+						As its name implies, DocsJS.refresh() refreshes the doc. It will handle varibles, convert custom tags to divs and format them, and generate/update the menu.
+					</t-x>
+				</t-p>
+				<t-p docsjs-state="min">
+					<t-l>DocsJS.toggle()</t-l>
+					<t-x>
+						<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Parameters</p>
+						DocsJS.toggle( Element, Target? );
+						<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Where</p>
+						Element is the <span style="font-weight: 700;">HTML Node</span> of a topic, section, or eg/ex.<br>
+						Target is a <span style="font-weight: 700;">string</span> that is either 'min' or 'max'.
+					</t-x>
+					<t-x>
+						If no target is given, DocsJS.toggle() will toggle the state of the given element. E.g. if the element is minimized, DocsJS.toggle() will maximize it and vice versa.<br><br>
+						If a target is given, DocsJS.toggle() will only set the state of the element to the target. E.g. if the target is 'min' and the element is maximized, DocsJS.toggle() will minimize the element. However, if the target is 'min' and the element is already minimized, DocsJS.toggle() won't do anything.
+					</t-x>
+				</t-p>
+				<t-p docsjs-state="min">
+					<t-l>DocsJS.fontsize.set()</t-l>
+					<t-x>
+						<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Parameters</p>
+						DocsJS.fontsize.set( Value );
+						<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Where</p>
+						Value is a <span style="font-weight: 700;">number</span>.
+					</t-x>
+					<t-x>
+						Sets the fontsize of the doc to the given value in pixels. You must change font-size through this, not through CSS.
+					</t-x>
+				</t-p>
+				<t-p docsjs-state="min">
+					<t-l>DocsJS.cd.getEditor()</t-l>
+					<t-x>
+						<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Parameters</p>
+						DocsJS.cd.getEditor( Element );
+						<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Where</p>
+						Element is the <span style="font-weight: 700;">HTML Node</span> of a c-d.
+					</t-x>
+					<t-x>
+						This function will return the Ace editor object of the c-d passed as Element. What can you do with the editor object? Find basic usage <a style="color:#505050;" href="https://ace.c9.io/#embedding=&nav=howto" target="_blank" rel="noopener">here</a> and advanced usage <a style="color:#505050;" href="https://ace.c9.io/#embedding=&nav=api&api=editor" target="_blank" rel="noopener">here</a>.
+					</t-x>
+					<e-g>
+						The following will console.log the text content of a c-d with id "editor2".
+						<c-d docsjs-lang="javascript">var el = document.getElementById('editor2');
+var editor = DocsJS.cd.getEditor(el);
+var text = editor.getValue();
+console.log(text);</c-d>
+					</e-g>
+				</t-p>
+				<t-p docsjs-state="min">
+					<t-l>DocsJS.cd.refresh()</t-l>
+					<t-x>
+						<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Parameters</p>
+						None
+					</t-x>
+					<t-x>
+						Refreshes all c-d elements. Calls <a onClick="DocsJS.jumpTo('.cdRefreshed()');" style="color:#505050;" href="javascript:void(0);">DocsJS.events.cdRefreshed()</a> when done.
+					</t-x>
+				</t-p>
+				<t-p docsjs-state="min">
+					<t-l>DocsJS.apply()</t-l>
+					<t-x>
+						<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Parameters</p>
+						DocsJS.apply( AppliedFunction );
+						<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Where</p>
+						AppliedFunction is a <span style="font-weight: 700;">function</span> that accepts two parameters.
+					</t-x>
+					<t-x>
+						Runs the following code:
+						<c-d docsjs-lang="javascript">var docs = document.querySelectorAll('[docsjs-tag="'+DocsJS.superparent+'"]');
+for (var i = 0; i &lt; docs.length; i++){
+	AppliedFunction(docs[i], i);
+}</c-d>
+						It essentially runs the given function for every DocsJS div to make handling multiple docs easier.
+					</t-x>
+				</t-p>
+				<t-p docsjs-state="min">
+					<t-l>DocsJS.scrolled()</t-l>
+					<t-x>
+						<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Parameters</p>
+						None
+					</t-x>
+					<t-x>
+						Executed automatically when the user scrolls and on certain events like minimizing a topic. Should be called if DocsJS elements are moved. This moves the visible menu button and updates the current location in the menu.
+					</t-x>
+				</t-p>
+				<t-p docsjs-state="min">
+					<t-l>DocsJS.resized()</t-l>
+					<t-x>
+						<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Parameters</p>
+						None
+					</t-x>
+					<t-x>
+						Executed automatically when the user resizes the window. This adjusts the size of the sidebars. Calls DocsJS.scrolled().
+					</t-x>
+				</t-p>
+				<t-p docsjs-state="min">
+					<t-l>DocsJS.animate()</t-l>
+					<t-x>
+						<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Parameters</p>
+						DocsJS.animate( Arguments );
+						<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Where</p>
+						Arguments is an <span style="font-weight: 700;">object</span> that contains required properties: to, from, duration, step and optional properties: easing, pass, callback.
+						<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Where</p>
+						Arguments.to and Arguments.from are <span style="font-weight: 700;">number</span>s.<br>
+						Arguments.duration is a <span style="font-weight: 700;">number</span> to describe time in miliseconds.<br>
+						Arguments.step is a <span style="font-weight: 700;">function</span> that accepts one numerical argument.<br>
+						Arguments.easing is a <span style="font-weight: 700;">function</span> to manipulate numbers between 0 and 1. Easing functions given in <a onClick="DocsJS.jumpTo('DocsJS.easings');" style="color:#505050;" href="javascript:void(0);">DocsJS.easings</a> are typically used.<br>
+						Arguments.pass is <span style="font-weight: 700;">anything</span>. Pass can be used to clean up code or preserve 'this'. Make pass an array to pass multiple varibles.<br>
+						Arguments.callback is a <span style="font-weight: 700;">function</span> called when the animation is complete.
+					</t-x>
+					<t-x>
+						Super lightweight animator. Animations will run at the highest frame rate possible with a max frame rate of 1000FPS. It will transition the number given as .from to .to and pass the number to .step (one .step execution is one frame). The animation can be eased with the given .easing function and will pass the .pass varible to .step as the second parameter and .callback as the only parameter.
+					</t-x>
+					<e-g docsjs-state="max">
+						The following will animate the width of this's adjacent sibling from 100% to 0% in 350 miliseconds, then setting the element's display style to "none". The animation will run on easeOutQuart easing.
+						<c-d docsjs-lang="javascript">DocsJS.animate({
+	from: 100,
+	to: 0,
+	duration: 350,
+	easing: DocsJS.easings.easeOutQuart,
+	pass: this.nextElementSibling,
+	step: function(now, pass){
+	  pass.style.width = now + '%';
+	},
+	callback: function(pass){
+	  pass.style.display = 'none';
+	},
+});</c-d>
+					</e-g>
+				</t-p>
+				<t-p docsjs-state="min">
+					<t-l>DocsJS.jumpTo()</t-l>
+					<t-x>
+						<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Parameters</p>
+						DocsJS.jumpTo( Location );
+						<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Where</p>
+						Location is a <span style="font-weight: 700;">string</span> that is the title of the desired location or the specific period-separated locator.
+					</t-x>
+					<t-x>
+						Animates window's scroll to the top of the desired topic or section header, including Jump to top and Jump to bottom. Because there may be duplicate titles, passing the specific period-separated locator is preferred to passing the title of a section header or topic.<br><br>
+						What is a period-separated locator? It's a string that basiclly describes a specific location by describing the nesting order. The first number is the number is the superparent the location is in. Since docs normally have just one superparent div, this is just 0 most of the time. (Keep in mind that counting numbers start from 0). The next numbers describe the nesting order. The 3rd section in this doc will have the locator '0.2'. The 5th topic in the 2nd section will be '0.1.4'. The 10th topic in the 2nd section in the 4th topic in the 1st section will be '0.0.3.1.9'.<br><br>
+						If a title and not a period-separated locator is given, DocsJS will look for a section header or topic that matches the title, get its period-separated locator, and then call DocsJS.jumpTo() passing the period-separated locator. If the URL has a hash (https://hailiax.io/docsjs#ThisIsTheHashSinceItComesAfterTheHashTag), DocsJS will call DocsJS.jumpTo() passing the <a style="color:#505050;" href="https://www.w3schools.com/tags/ref_urlencode.asp" target="_blank" rel="noopener">decoded</a> hash and then clear the hash. Cliking on the menu will also call DocsJS.jumpTo() passing a period-separated locator.
+					</t-x>
+					<e-g docsjs-name="Examples">
+						Example of an inline navigation button. Clicking on the button will scroll the user to a section or topic titled "Javascript".
+						<c-d docsjs-lang="html">&lt;span onClick="DocsJS.jumpTo('Javascript');" style="color: #505050; text-decoration: underline; cursor: pointer;"&gt;Button One&lt;/span&gt;</c-d>
+						Here's a button that uses the period-separated locator. It will also scroll the user to the "Javascript" section.
+						<c-d docsjs-lang="html">&lt;span onClick="DocsJS.jumpTo('0.5.2');" style="color: #505050; text-decoration: underline; cursor: pointer;"&gt;Button Two&lt;/span&gt;</c-d>
+						You can also make a button that changes the hash of the URL.
+						<c-d docsjs-lang="html">&lt;a style="color: #505050;" href="#Javascript"&gt;Button Three&lt;/a&gt;
+	&lt;a style="color: #505050;" href="#0.5.2"&gt;Button Four&lt;/a&gt;</c-d>
+						Results: <span onClick="DocsJS.jumpTo('Javascript');" style="color: #505050; text-decoration: underline; cursor: pointer;">Button One</span> <span onClick="DocsJS.jumpTo('0.5.2');" style="color: #505050; text-decoration: underline; cursor: pointer;">Button Two</span> <a style="color: #505050;" href="#Javascript">Button Three</a> <a style="color: #505050;" href="#0.5.2">Button Four</a>
+					</e-g>
+				</t-p>
+				<t-p docsjs-state="min">
+					<t-l>DocsJS.rotate()</t-l>
+					<t-x>
+						<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Parameters</p>
+						DocsJS.rotate( Element, Angle );
+						<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Where</p>
+						Element is a <span style="font-weight: 700;">HTML Node</span>.<br>
+						Angle is a <span style="font-weight: 700;">Number</span> describing an angle in degrees.
+					</t-x>
+					<t-x>
+						Cross-browser CSS rotates the given element to the given angle by using the styles: WebkitTransform, msTransform, transform, filter, msFilter.
+					</t-x>
+				</t-p>
+				<t-p docsjs-state="min">
+					<t-l>DocsJS.addEvent()</t-l>
+					<t-x>
+						<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Parameters</p>
+						DocsJS.addEvent( Element, Event, Function, Options? );
+						<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Where</p>
+						Element is a <span style="font-weight: 700;">HTML Node</span>.<br>
+						Event is a <span style="font-weight: 700;">string</span> describing an HTML event (without the prefix, on).<br>
+						Function is a <span style="font-weight: 700;">function</span>.<br>
+						Options is an <span style="font-weight: 700;">object</span>.
+					</t-x>
+					<t-x>
+						Cross-browser implementation of addEventListener. It binds the given event to the given element to execute the given function. The options object will be added to supported browsers and can contain options like <a style="color:#505050;" href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener" target="_blank" rel="noopener">passive: true</a>.
+					</t-x>
+					<e-g docsjs-state="max">
+						The following will alert the user "Hello World" when an element with the id "button" is pressed.
+						<c-d docsjs-lang="javascript">DocsJS.addEvent(document.getElementById('button'),'mousedown',function(){
+		alert('Hello World');
+	},{
+		passive:true
+	});</c-d>
+					</e-g>
+				</t-p>
+				<t-p docsjs-state="min">
+					<t-l>DocsJS.removeEvent()</t-l>
+					<t-x>
+						<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Parameters</p>
+						DocsJS.removeEvent( Element, Event, Function, Options? );
+						<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Where</p>
+						Element is a <span style="font-weight: 700;">HTML Node</span>.<br>
+						Event is a <span style="font-weight: 700;">string</span> describing an HTML event (without the prefix, on).<br>
+						Function is a <span style="font-weight: 700;">function</span>.<br>
+						Options is an <span style="font-weight: 700;">object</span>.
+					</t-x>
+					<t-x>
+						Removes an event added with DocsJS.addEvent() with the given parameters.
+					</t-x>
+				</t-p>
+				<t-p docsjs-state="min">
+					<t-l>DocsJS.getStyle()</t-l>
+					<t-x>
+						<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Parameters</p>
+						DocsJS.getStyle( Element, Property );
+						<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Where</p>
+						Element is a <span style="font-weight: 700;">HTML Node</span>.<br>
+						Property is a <span style="font-weight: 700;">string</span> describing a CSS property.<br>
+					</t-x>
+					<t-x>
+						Cross-browser method for getting the current property of an element.
+					</t-x>
+				</t-p>
+			</s-c>
+			<s-c>
+				<h-d>
+					<t-l>Settables</t-l>
+					<t-x>These are javascript properties that can be set</t-x>
+				</h-d>
+				<t-p docsjs-state="min">
+					<t-l>DocsJS.include</t-l>
+					<t-x>Contains settings on how the menu is displayed.</t-x>
+					<t-p docsjs-state="min">
+						<t-l>.ace</t-l>
+						<t-x>
+							<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Type</p>
+							Boolean
+							<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Default</p>
+							true
+						</t-x>
+						<t-x>
+							Loads the ace.js from cdnjs. This is required if you want to you c-d tags.
+						</t-x>
+					</t-p>
+					<t-p docsjs-state="min">
+						<t-l>.mathJax</t-l>
+						<t-x>
+							<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Type</p>
+							Boolean
+							<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Default</p>
+							false
+						</t-x>
+						<t-x>
+							Loads mathjax.js from cdnjs. This is an inefficient way to load MathJax and can be used to get started.
+						</t-x>
+					</t-p>
+				</t-p>
+				<t-p docsjs-state="min">
+					<t-l>DocsJS.events</t-l>
+					<t-x>
+						This object contains functions that are fired on certain DocsJS actions. By default they do nothing, but you can redefine these functions as you like, for example:
+						<c-d docsjs-lang="javascript">DocsJS.events.menuToggle = function(el){
+	var rand = function(){return Math.round(Math.random()*255)};
+	el.style.backgroundColor = 'rgba('+rand()+','+rand()+','+rand()+',1)';
+}</c-d>
+					will change the background color of the menu that was just opened to a random color.
+					</t-x>
+					<t-p docsjs-state="min">
+						<t-l>.ready()</t-l>
+						<t-x>
+							<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Parameters</p>
+							None
+						</t-x>
+						<t-x>
+							This function is called when DocsJS has finished intializing. This is fired after the callback of DocsJS.init().
+						</t-x>
+					</t-p>
+					<t-p docsjs-state="min">
+						<t-l>.columnResize()</t-l>
+						<t-x>
+							<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Parameters</p>
+							DocsJS.events.columnResize( Side )
+							<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Where</p>
+							Side is a <span style="font-weight: 700;">string</span> that is either 'left' or 'right'.
+						</t-x>
+						<t-x>
+						This function is called when a sidebar has resized (dragged) by the user. The function will be passed 'left' if the left sidebar was resized and 'right' for the right sidebar.
+						</t-x>
+					</t-p>
+					<t-p docsjs-state="min">
+						<t-l>.sectionToggle()</t-l>
+						<t-x>
+							<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Parameters</p>
+							DocsJS.events.sectionToggle( Section )
+							<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Where</p>
+							Section is a <span style="font-weight: 700;">HTML Node</span>.
+						</t-x>
+						<t-x>
+						This function is called when a section has been minimized or maximized. The function is passed the HTML node of that section.
+						</t-x>
+					</t-p>
+					<t-p docsjs-state="min">
+						<t-l>.topicToggle()</t-l>
+						<t-x>
+							<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Parameters</p>
+							DocsJS.events.topicToggle( Topic )
+							<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Where</p>
+							Topic is a <span style="font-weight: 700;">HTML Node</span>.
+						</t-x>
+						<t-x>
+						This function is called when a topic has been minimized or maximized. The function is passed the HTML node of that topic.
+						</t-x>
+					</t-p>
+					<t-p docsjs-state="min">
+						<t-l>.menuToggle()</t-l>
+						<t-x>
+							<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Parameters</p>
+							DocsJS.events.menuToggle( Menu )
+							<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Where</p>
+							Menu is a <span style="font-weight: 700;">HTML Node</span>.
+						</t-x>
+						<t-x>
+						This function is called when a menu has been opened or closed. The function is passed the HTML node of that menu.
+						</t-x>
+					</t-p>
+					<t-p docsjs-state="min">
+						<t-l>.eToggle()</t-l>
+						<t-x>
+							<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Parameters</p>
+							DocsJS.events.eToggle( ExEg )
+							<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Where</p>
+							ExEg is a <span style="font-weight: 700;">HTML Node</span>.
+						</t-x>
+						<t-x>
+						This function is called when an ex or eg has been minimized or maximized. The function is passed the HTML node of that eg or ex.
+						</t-x>
+					</t-p>
+					<t-p docsjs-state="min">
+						<t-l>.cdRefreshed()</t-l>
+						<t-x>
+							<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Parameters</p>
+							None
+						</t-x>
+						<t-x>
+						Called when c-d elements have been refreshed. This is called every time a sidebar has been activated or put away.
+						</t-x>
+					</t-p>
+					<t-p docsjs-state="min">
+						<t-l>.preferenceChanged()</t-l>
+						<t-x>
+							<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Parameters</p>
+							DocsJS.events.preferenceChanged( Preference )
+							<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Where</p>
+							Preference is a <span style="font-weight: 700;">string</span> that is one of the following: 'Fontsize up', 'Fontisze down', 'Minimize all', 'Minimize half', 'Minimize none', 'Invert colors', 'Lightning', 'Reset'.
+						</t-x>
+						<t-x>
+						This function is called when a preference been changed by the user. The function is passed the name of the changed preference.
+						</t-x>
+					</t-p>
+					<t-p docsjs-state="min">
+						<t-l>.jumpTo()</t-l>
+						<t-x>
+							<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Parameters</p>
+							DocsJS.events.jumpTo( Location )
+							<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Where</p>
+							Location is a <span style="font-weight: 700;">string</span> that is one of the following: 'top', 'bottom', or the <a onClick="DocsJS.jumpTo('DocsJS.jumpTo()');" style="color:#505050;" href="javascript:void(0);">period-separated locator</a>.
+						</t-x>
+						<t-x>
+							This function is called when <a onClick="DocsJS.jumpTo('DocsJS.jumpTo()');" style="color:#505050;" href="javascript:void(0);">DocsJS.jumpTo()</a> is called with a valid location. The function is passed 'top' if the user jumped to the top of the page, bottom if the user jumped to the bottom of the page, or the <a onClick="DocsJS.jumpTo('DocsJS.jumpTo()');" style="color:#505050;" href="javascript:void(0);">period-separated locator</a> for all other locations.
+						</t-x>
+					</t-p>
+				</t-p>
+				<t-p docsjs-state="min">
+					<t-l>DocsJS.buttons</t-l>
+					<t-x>
+						All buttons used in DocsJS are made of just HTML and CSS stored in this property. You can customize buttons and their animations by changing the values of the properties here. If you want to use an image as a button, simply use a &lt;img&gt; tag. I would recommend images size 256x256 to ensure clarity on high-def screens.
+					</t-x>
+					<t-x>
+						<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Animatable buttons</p>
+						The buttons below contain .html() and .animation() properties. .html() simply returns the HTML string for the button. .animation() is a function called when the button has been pressed. It's passed two parameters, button and now. button is the HTML node of the button pressed and now is a number describing the progress of the animation, between 1 and 0. .animation() will be called as much as possible for <a onClick="DocsJS.jumpTo('.duration');" style="color:#505050;" href="javascript:void(0);">DocsJS.animation.duration</a> miliseconds. now will progress from 0 to 1 in the foward animation and 1 to 0 in the reverse animation.
+					</t-x>
+					<e-g docsjs-name=".html() example">
+						<c-d docsjs-lang="javascript">DocsJS.buttons.minimize.html = function(){
+	'use strict';
+	return '&lt;div docsjs-tag="button-parent"&gt;&lt;div style="position: absolute; height: 100%; width: 100%; -ms-filter: '+"'progid:DXImageTransform.Microsoft.Matrix(M11=0.4999999999999997, M12=0.8660254037844388, M21=-0.8660254037844388, M22=0.4999999999999997, SizingMethod='auto expand')'"+';filter: progid:DXImageTransform.Microsoft.Matrix(M11=0.4999999999999997,M12=0.8660254037844388,M21=-0.8660254037844388,M22=0.4999999999999997,SizingMethod='+"'auto expand'"+');-o-transform: rotate(-60deg);-moz-transform: rotate(-60deg);-webkit-transform: rotate(-60deg);transform: rotate(-60deg);"&gt;&lt;div style="position: absolute; width: 100%; height: 50%; overflow: hidden;"&gt;&lt;div docsjs-tag="button-child" style="background-color: transparent; width: 100%; height: 200%; border-radius: 10000000px; top: 100%;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;*behavior: url(https://raw.github.com/Schepp/box-sizing-polyfill/master/boxsizing.htc);"&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div style="position: absolute; width: 100%; height: 50%; top: 50%; overflow: hidden;"&gt;&lt;div docsjs-tag="button-child" style="background-color: transparent; width: 100%; height: 200%; border-radius: 10000000px; top: -100%;-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;*behavior: url(https://raw.github.com/Schepp/box-sizing-polyfill/master/boxsizing.htc);"&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;';
+}</c-d>
+					</e-g>
+					<e-g docsjs-name=".animation() example">
+						<c-d docsjs-lang="javascript">DocsJS.buttons.minimize.animation = function(button, now){
+	'use strict';
+	DocsJS.rotate(button.firstChild, (1-now)*60 - 60);
+	DocsJS.rotate(button, (1-now)*60);
+}</c-d>
+					</e-g>
+					<t-p docsjs-state="min">
+						<t-l>.minimize.</t-l>
+						<t-x>
+							This button is by default the circular buttons shown on the right of h-d titles. Clicking on this button will cause the header's section and the header itself to minimize. The default animation opens/closes the circle.
+						</t-x>
+					</t-p>
+					<t-p docsjs-state="min">
+						<t-l>.menu.</t-l>
+						<t-x>
+							This button is by default the equals-sign shaped button at the right of t-p titles. Clicking on this will open/close the menu at the top of that topic. The default animations rotates the two bars into a cross shape.
+						</t-x>
+					</t-p>
+					<t-p docsjs-state="min">
+						<t-l>.ex.</t-l>
+						<t-x>
+							This button is shown to the left of e-x names. Clicking on this will reveal/close the e-x. The default animation rotates this 90 degrees.
+						</t-x>
+					</t-p>
+					<t-p docsjs-state="min">
+						<t-l>.eg.</t-l>
+						<t-x>
+							This button is shown to the left of e-g names. Clicking on this will reveal/close the e-g. The default animation rotates this 90 degrees.
+						</t-x>
+					</t-p>
+					<t-x>
+						<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Simple buttons</p>
+						The below do not animate. They are simply functions that return HTML strings.
+					</t-x>
+					<e-g>
+						<c-d docsjs-lang="javascript">DocsJS.buttons.close = function(){
+	'use strict';
+	return '&lt;div docsjs-tag="button-parent"&gt;&lt;div docsjs-tag="button-child" style="height: 100%; border: none; -ms-filter: '+"'progid:DXImageTransform.Microsoft.Matrix(M11=0.7071067811865474,M12=-0.7071067811865477,M21=0.7071067811865477,M22=0.7071067811865474,SizingMethod='auto expand')';filter: progid:DXImageTransform.Microsoft.Matrix(M11=0.7071067811865474,M12=-0.7071067811865477,M21=0.7071067811865477,M22=0.7071067811865474,SizingMethod='auto expand'"+');-o-transform: rotate(45deg);-moz-transform: rotate(45deg);-webkit-transform: rotate(45deg);transform: rotate(45deg);"&gt;&lt;/div&gt;&lt;div docsjs-tag="button-child" style="width: 100%; border: none; -ms-filter: '+"'progid:DXImageTransform.Microsoft.Matrix(M11=0.7071067811865474,M12=-0.7071067811865477,M21=0.7071067811865477, M22=0.7071067811865474,SizingMethod='auto expand')';filter: progid:DXImageTransform.Micrxosoft.Matrix(M11=0.7071067811865474,M12=-0.7071067811865477,M21=0.7071067811865477,M22=0.7071067811865474,SizingMethod='auto expand'"+');-o-transform: rotate(45deg);-moz-transform: rotate(45deg);-webkit-transform: rotate(45deg);transform: rotate(45deg);"&gt;&lt;/div&gt;&lt;/div&gt;';
+}</c-d>
+					</e-g>
+					<t-p docsjs-state="min">
+						<t-l>.close()</t-l>
+						<t-x>
+							This button is shown on a panel that appears when the user resizes a sidebar. Resizing the sidebar into the panel will close that sidebar.
+						</t-x>
+					</t-p>
+					<t-p docsjs-state="min">
+						<t-l>.fontplus()</t-l>
+						<t-x>
+							This button is shown in the group of preferences at the top of the menu. Clicking on this will increase the doc's fontsize.
+						</t-x>
+					</t-p>
+					<t-p docsjs-state="min">
+						<t-l>.fontminus()</t-l>
+						<t-x>
+							This button is shown in the group of preferences at the top of the menu. Clicking on this will decrease the doc's fontsize.
+						</t-x>
+					</t-p>
+					<t-p docsjs-state="min">
+						<t-l>.menuminimize()</t-l>
+						<t-x>
+							This button is shown in the group of preferences at the top of the menu. Clicking on this will expand all topics, sections, menus, e-x, and e-g.
+						</t-x>
+					</t-p>
+					<t-p docsjs-state="min">
+						<t-l>.partialminimize()</t-l>
+						<t-x>
+							This button is shown in the group of preferences at the top of the menu. Clicking on this will expand all topics and sections, then minimize all menus, e-x, and e-g.
+						</t-x>
+					</t-p>
+					<t-p docsjs-state="min">
+						<t-l>.menuminimized()</t-l>
+						<t-x>
+							This button is shown in the group of preferences at the top of the menu. Clicking on this will minimize all topics, sections, menus, e-x, and e-g.
+						</t-x>
+					</t-p>
+					<t-p docsjs-state="min">
+						<t-l>.invert()</t-l>
+						<t-x>
+							This button is shown in the group of preferences at the top of the menu. Clicking on this will apply/remove the CSS property "filter: invert(100%)" to the superparent and docsjs-tag="bg" div. This essentially inverts everthing except the background.
+						</t-x>
+					</t-p>
+					<t-p docsjs-state="min">
+						<t-l>.gpu()</t-l>
+						<t-x>
+							This button is shown in the group of preferences at the top of the menu. Clicking on this will set <a onClick="DocsJS.jumpTo('.duration');" style="color:#505050;" href="javascript:void(0);">DocsJS.animation.duration</a> to 0 (clicking again will restore the original value) and remove/restore all filters from the superparent (no hardware acceleration).
+						</t-x>
+					</t-p>
+					<t-p docsjs-state="min">
+						<t-l>.reset()</t-l>
+						<t-x>
+							This button is shown in the group of preferences at the top of the menu. Clicking on this will reset the doc.
+						</t-x>
+					</t-p>
+				</t-p>
+				<t-p docsjs-state="min">
+					<t-l>DocsJS.cd</t-l>
+					<t-x>Contains settings on how c-d is displayed. c-d uses Cloud9's Ace code editor, so all options will be taken from their API.</t-x>
+					<t-p docsjs-state="min">
+						<t-l>.theme</t-l>
+						<t-x>
+							<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Type</p>
+							String
+							<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Default</p>
+							monokai
+						</t-x>
+						<t-x>
+							This determines the theme for c-d. You can find a list of themes <a style="color:#505050;" href="https://github.com/ajaxorg/ace/tree/master/lib/ace/theme" target="_blank" rel="noopener">here</a>. Just remove the .css or .js extention from the name. You can preview themes <a style="color:#505050;" href="https://ace.c9.io/build/kitchen-sink.html" target="_blank" rel="noopener">here</a>. All theme names are lowercase.
+						</t-x>
+					</t-p>
+					<t-p docsjs-state="min">
+						<t-l>.tabSize</t-l>
+						<t-x>
+							<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Type</p>
+							Number
+							<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Default</p>
+							4
+						</t-x>
+						<t-x>
+							Determines how wide a tab is in spaces.
+						</t-x>
+					</t-p>
+					<t-p docsjs-state="min">
+						<t-l>.editable</t-l>
+						<t-x>
+							<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Type</p>
+							Boolean
+							<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Default</p>
+							false
+						</t-x>
+						<t-x>
+							Default editablilty of c-d. If set to true, c-d will be editable by default and vice versa.
+						</t-x>
+					</t-p>
+					<t-p docsjs-state="min">
+						<t-l>.scriptLoaded</t-l>
+						<t-x>
+							<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Type</p>
+							Boolean
+							<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Default</p>
+							false
+						</t-x>
+						<t-x>
+							Set to true if and when DocsJS has finished loading ace.js.
+						</t-x>
+					</t-p>
+					<t-p docsjs-state="min">
+						<t-l>.options()</t-l>
+						<t-x>
+							<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Parameters</p>
+							DocsJS.cd.options( Editor, Editable )
+							<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Where</p>
+							Editor is a <span style="font-weight: 700;">Ace object</span>.<br>
+							Editable is a <span style="font-weight: 700;">boolean</span>.
+						</t-x>
+						<t-x>
+							This function is called for each c-d element. The function will be passed true for Editable if that c-d is editable and vice versa. It will be passed the ace editor object. You can see some basic usage for the editor object <a style="color:#505050;" href="https://ace.c9.io/#nav=howto" target="_blank" rel="noopener">here</a> under "Common Operations". Full Ace API is <a style="color:#505050;" href="https://ace.c9.io/#nav=api" target="_blank"  rel="noopener">here</a>.
+						</t-x>
+					</t-p>
+				</t-p>
+				<t-p docsjs-state="min">
+					<t-l>DocsJS.superparent</t-l>
+					<t-x>
+						<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Type</p>
+						String
+						<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Default</p>
+						DocsJS-This-Baby
+					</t-x>
+					<t-x>
+						The superparent is the value for docsjs-tag="" that DocsJS looks for. Everything inside a div with the docsjs-tag="SUPERPARENT" attribute will be processed by DocsJS.
+					</t-x>
+				</t-p>
+				<t-p docsjs-state="min">
+					<t-l>DocsJS.width</t-l>
+					<t-x>Contains the maximum and minimum widths of the doc in px.</t-x>
+					<t-p docsjs-state="min">
+						<t-l>.max</t-l>
+						<t-x>
+							<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Type</p>
+							Number
+							<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Default</p>
+							1280
+						</t-x>
+						<t-x>
+							If the screen is wider than this width, the extra space will be filled in by sidebars.
+						</t-x>
+					</t-p>
+					<t-p docsjs-state="min">
+						<t-l>.min</t-l>
+						<t-x>
+							<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Type</p>
+							Number
+							<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Default</p>
+							340
+						</t-x>
+						<t-x>
+							If the screen is smaller than this width, DocsJS will decrease the fontsize by a logarithmic scale. As the screen width approaches this number, the sidebars will shrink and eventually dissapear.
+						</t-x>
+					</t-p>
+				</t-p>
+				<t-p docsjs-state="min">
+					<t-l>DocsJS.menu</t-l>
+					<t-x>Contains settings on how the menu is displayed.</t-x>
+					<t-p docsjs-state="min">
+						<t-l>.top</t-l>
+						<t-x>
+							<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Type</p>
+							String
+							<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Default</p>
+							Jump to top
+						</t-x>
+						<t-x>
+							This text is shown at the top of the menu. If the user clicks on this, the user will be sent to the top of the page.
+						</t-x>
+					</t-p>
+					<t-p docsjs-state="min">
+						<t-l>.bottom</t-l>
+						<t-x>
+							<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Type</p>
+							String
+							<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Default</p>
+							Jump to bottom
+						</t-x>
+						<t-x>
+							This text is shown at the bottom of the menu. If the user clicks on this, the user will be sent to the bottom of the page.
+						</t-x>
+					</t-p>
+				</t-p>
+				<t-p docsjs-state="min">
+					<t-l>DocsJS.eg</t-l>
+					<t-x>Contains settings on how eg is displayed.</t-x>
+					<t-p docsjs-state="min">
+						<t-l>.name</t-l>
+						<t-x>
+							<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Type</p>
+							String that describes HTML content.
+							<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Default</p>
+							Example
+						</t-x>
+						<t-x>
+							This is the default name shown on all eg ebefores. (The box that the user can click on to expand and hide the eg). This sets the default for <a onClick="DocsJS.jumpTo('docsjs-name');" style="color:#505050;" href="javascript:void(0);">docsjs-name</a> on eg elements.
+						</t-x>
+					</t-p>
+					<t-p docsjs-state="min">
+						<t-l>.default</t-l>
+						<t-x>
+							<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Type</p>
+							String which is either 'min' or 'max'.
+							<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Default</p>
+							min
+						</t-x>
+						<t-x>
+							This is the default state of eg elements. If this is set to 'min', eg elements will be minimized by default and vice versa for 'max'.
+						</t-x>
+					</t-p>
+				</t-p>
+				<t-p docsjs-state="min">
+					<t-l>DocsJS.ex</t-l>
+					<t-x>Contains settings on how ex is displayed.</t-x>
+					<t-p docsjs-state="min">
+						<t-l>.name</t-l>
+						<t-x>
+							<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Type</p>
+							String that describes HTML content.
+							<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Default</p>
+							Example
+						</t-x>
+						<t-x>
+							This is the default name shown on all ex ebefores. (The box that the user can click on to expand and hide the ex). This sets the default for <a onClick="DocsJS.jumpTo('docsjs-name');" style="color:#505050;" href="javascript:void(0);">docsjs-name</a> on ex elements.
+						</t-x>
+					</t-p>
+					<t-p docsjs-state="min">
+						<t-l>.default</t-l>
+						<t-x>
+							<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Type</p>
+							String which is either 'min' or 'max'.
+							<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Default</p>
+							min
+						</t-x>
+						<t-x>
+							This is the default state of ex elements. If this is set to 'min', ex elements will be minimized by default and vice versa for 'max'.
+						</t-x>
+					</t-p>
+				</t-p>
+				<t-p docsjs-state="min">
+					<t-l>DocsJS.animation</t-l>
+					<t-x>Controls settings for DocsJS animations.</t-x>
+					<t-p docsjs-state="min">
+						<t-l>.duration</t-l>
+						<t-x>
+							<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Type</p>
+							Number that described time in miliseconds
+							<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Default</p>
+							300
+						</t-x>
+						<t-x>
+							This determines the duration for DocsJS animations. Beware of setting the duration too long (over 500) as this can make reading your doc annoying.
+						</t-x>
+					</t-p>
+					<t-p docsjs-state="min">
+						<t-l>.styles</t-l>
+						<t-x>
+							<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Type</p>
+							Array containing strings that describe CSS properties.
+							<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Default</p>
+							['height']
+						</t-x>
+						<t-x>
+							Determines what properties are animated on opening/closing eg/ex. This doesn't really do much now but I may increase the functionality of this property in the future.
+						</t-x>
+					</t-p>
+				</t-p>
+				<t-p docsjs-state="min">
+					<t-l>DocsJS.easings</t-l>
+					<t-x>Contains easing functions for <a onClick="DocsJS.jumpTo('DocsJS.animate()');" style="color:#505050;" href="javascript:void(0);">DocsJS.animate()</a>.</t-x>
+					<t-x>
+						<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Values</p>
+							DocsJS.easings.linear<br>
+							DocsJS.easings.easeInQuad<br>
+							DocsJS.easings.easeOutQuad<br>
+							DocsJS.easings.easeInOutQuad<br>
+							DocsJS.easings.easeInCubic<br>
+							DocsJS.easings.easeOutCubic<br>
+							DocsJS.easings.easeInOutCubic<br>
+							DocsJS.easings.easeInQuart<br>
+							DocsJS.easings.easeOutQuart<br>
+							DocsJS.easings.easeInOutQuart<br>
+							DocsJS.easings.easeInQuint<br>
+							DocsJS.easings.easeOutQuint<br>
+							DocsJS.easings.easeInOutQuint<br>
+					</t-x>
+					<e-x docsjs-name="See code">
+					<c-d docsjs-lang="javascript">easings:{
+	linear: function (t) { return t },
+	easeInQuad: function (t) { return t*t },
+	easeOutQuad: function (t) { return t*(2-t) },
+	easeInOutQuad: function (t) { return t&lt;.5 ? 2*t*t : -1+(4-2*t)*t },
+	easeInCubic: function (t) { return t*t*t },
+	easeOutCubic: function (t) { return (--t)*t*t+1 },
+	easeInOutCubic: function (t) { return t&lt;.5 ? 4*t*t*t : (t-1)*(2*t-2)*(2*t-2)+1 },
+	easeInQuart: function (t) { return t*t*t*t },
+	easeOutQuart: function (t) { return 1-(--t)*t*t*t },
+	easeInOutQuart: function (t) { return t&lt;.5 ? 8*t*t*t*t : 1-8*(--t)*t*t*t },
+	easeInQuint: function (t) { return t*t*t*t*t },
+	easeOutQuint: function (t) { return 1+(--t)*t*t*t*t },
+	easeInOutQuint: function (t) { return t&lt;.5 ? 16*t*t*t*t*t : 1+16*(--t)*t*t*t*t }
+}</c-d>
+					</e-x>
+				</t-p>
+				<t-p docsjs-state="min">
+					<t-l>DocsJS.window</t-l>
+					<t-x>DocsJS uses the functions here to retreive the client's browser height and width. This ensures consistent browser sizes on old browsers. You can also set them to return a number to change the doc's width and height as shown in the <a onClick="DocsJS.jumpTo('Complete access');" style="color:#505050;" href="javascript:void(0);">complete access</a> example</t-x>
+					<t-p docsjs-state="min">
+						<t-l>.width()</t-l>
+						<t-x>
+							<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Type</p>
+							Function
+							<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Default</p>
+							window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth
+						</t-x>
+						<t-x>
+							Returns the width of the browser.
+						</t-x>
+					</t-p>
+					<t-p docsjs-state="min">
+						<t-l>.height()</t-l>
+						<t-x>
+							<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Type</p>
+							Function
+							<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Default</p>
+							window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
+						</t-x>
+						<t-x>
+							Returns the height of the browser.
+						</t-x>
+					</t-p>
+				</t-p>
+				<t-p docsjs-state="min">
+					<t-l>DocsJS.columnOffsets</t-l>
+					<t-x>These values determine the sizes of the sidebars. They are changed when the user resizes the sidebar. Each sidebar is 100px plus the corresponding (.left or .right) columnOffset. The minimum value is -50 so the minimum column width is 50px.</t-x>
+					<t-p docsjs-state="min">
+						<t-l>.left</t-l>
+						<t-x>
+							<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Type</p>
+							Number
+							<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Default</p>
+							0
+						</t-x>
+					</t-p>
+					<t-p docsjs-state="min">
+						<t-l>.right</t-l>
+						<t-x>
+							<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Type</p>
+							Number
+							<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Default</p>
+							0
+						</t-x>
+					</t-p>
+				</t-p>
+				<t-p docsjs-state="min">
+					<t-l>DocsJS.readystatechangemax</t-l>
+					<t-x>The number of times document.readystatechange should occur after DocsJS.init() before the doc's dom is ready again.</t-x>
+				</t-p>
+			</s-c>
+		</s-c>
+	</s-c>
+</div>
+<script src="/docsjs/src/docs.js"></script>
+<!--Should load these dymaically-->
+<script>
+	DocsJS.theme = 'Hailaxian';
+	DocsJS.include.ace = true;
+	DocsJS.include.mathJax = false;
+	DocsJS.superparent = 'DocsJS-This-Baby';
+	DocsJS.width.max = 1280;
+	DocsJS.width.min = 340;
+	DocsJS.eg.name = 'Example';
+	DocsJS.ex.name = 'More';
+	DocsJS.cd.theme = 'chrome';
+	DocsJS.menu.top = 'Jump to top';
+	DocsJS.menu.bottom = 'Jump to bottom';
+	DocsJS.animation.duration = 300;
+	DocsJS.eg.default = 'min';
+	DocsJS.ex.default = 'min';
+	
+	DocsJS.init();
+</script>
+
+<div class="baseground left"></div>
+<div class="baseground right"></div>
+
+</body>
+</html>

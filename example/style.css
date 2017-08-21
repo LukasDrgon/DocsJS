@@ -1,0 +1,48 @@
+/* CSS Document */
+.changelog p{
+	font-size: 1.1em;
+	text-decoration: none;
+}
+.changelog ol{
+	padding-bottom: 0.6em;
+}
+.changelog li{
+	list-style-type: circle;
+	list-style-position: inside;
+}
+.baseground{
+	position: fixed;
+	height: 100%;
+	top: 0;
+	width: 0;
+	left: 0; right: 0; margin-left: 0; margin-right: auto;
+	background-color: #000000;
+}
+.baseground.right{
+	margin-left: auto; margin-right: 0;
+}
+.bold{
+	font-weight: 700;
+	display: inline;
+}
+iframe{
+	position: relative;
+	width: 100%;
+	height: 30em;
+	margin-top: 1em !important;
+	box-shadow: 1px 1px 15px 2px rgba(0,0,0,0.3);
+	border: none;
+}
+[docsjs-tag="accessibility"] iframe{
+	display: none;
+	visibility: hidden;
+}
+[docsjs-tag="accessibility"] .logoImage{
+	background-color: #303030;
+}
+p{
+	margin: 0;
+}
+[docsjs-tag="bg"]{
+	background-image: none !important;
+}
