@@ -10,7 +10,7 @@ function init(){
 	
 	// Set up examples where the user edits code to an iframe
 	parse = function(el){
-		var html = '<!doctype html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Example</title><script src="https://hailiax.io/docsjs/src/docs.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.8/ace.js"></script><script>function init(){DocsJS.apply(function(doc){doc.querySelector("[docsjs-tag="+"bg"+"]").setAttribute("style","background-image:url(https://hailiax.io/docsjs/example/backgrounds/"+Math.round(Math.random()*20)+".jpg);");});}</script></head><body onload="init()">'+DocsJS.cd.getEditor(el).getValue()+'<script defer>DocsJS.init();</script></body></html>';
+		var html = '<!doctype html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Example</title></head><body>'+DocsJS.cd.getEditor(el).getValue()+'<script defer>DocsJS.init();</script></body></html>';
 		document.getElementsByClassName(el.className.split(' ')[0]+' dest')[0].src = 'data:text/html,'+html;
 	};
 	var bindParse = function(){
