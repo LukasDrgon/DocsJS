@@ -20,7 +20,7 @@ var DocsJS = {
 				'<div docsjs-tag="menu" style="display: none;"></div>' +
 				'<div docsjs-tag="column-left">'+DocsJS.column.choice(-1)+'</div>' +
 				'<div docsjs-tag="column-right" style="left:100%;">'+DocsJS.column.choice(1)+'</div>' +
-				'<div docsjs-extras="learnmore" style="position: relative; width: 100%; height: 1.25em; line-height:1.25em; text-align: center; font-size: 0.75em; opacity: 0.5; text-shadow: -0.04em -0.04em 0.12em #fff,0.04em 0.04em 0.12em #fff,-0.04em 0.04em 0.12em #fff,0.04em -0.04em 0.12em #fff;"><a href="https://hailiax.io/docsjs" target="_blank" style="text-decoration: none; color: #000; line-height: 1.25em;">– Powered by Docs.JS –</a></div>' +
+				'<div docsjs-extras="learnmore" style="position: relative; width: 100%; height: 1.25em; line-height:1.25em; text-align: center; font-size: 0.75em; opacity: 0.5; text-shadow: -0.04em -0.04em 0.12em #fff,0.04em 0.04em 0.12em #fff,-0.04em 0.04em 0.12em #fff,0.04em -0.04em 0.12em #fff;"><a href="https://hailiax.io/docsjs/" target="_blank" style="text-decoration: none; color: #000; line-height: 1.25em;">– Powered by Docs.JS –</a></div>' +
 				'</div>';
 		});
 		DocsJS.apply(function(doc){
