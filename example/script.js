@@ -5,7 +5,7 @@ function init(){
 	
 	// Setup background
 	DocsJS.apply(function(doc){
-		doc.querySelector('[docsjs-tag="bg"]').setAttribute('style','background-image:url(/docsjs/example/backgrounds/'+Math.round(Math.random()*20)+'.jpg) !important;');
+		doc.querySelector('[docsjs-tag="bg"]').setAttribute('style','background-image:url(example/backgrounds/'+Math.round(Math.random()*20)+'.jpg) !important;');
 	});
 	
 	// Set up examples where the user edits code to an iframe
