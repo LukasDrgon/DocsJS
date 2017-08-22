@@ -1,6 +1,6 @@
 // JavaScript Document
 // Planned for future releases: fix bug with topic embedded in eg, documentation search, better & more efficient sidebar animations, menu as a popup on mobile (make other things popup on mobile), Massive improvements for column animations
-var DocsJS = {
+window.DocsJS = {
 	apply: function (func){
 		'use strict';
 		var docs = document.querySelectorAll('[docsjs-tag="'+DocsJS.superparent+'"]');
