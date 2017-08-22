@@ -320,7 +320,7 @@ window.DocsJS = {
 				s.querySelectorAll('[docsjs-tag="e-g"]').forEach(function(el){
 					el.setAttribute('labelledby','docsjs-aria-eg-'+(el.docsjs.name === undefined? DocsJS.eg.name.replace(/\W+/g,'_')+egCounter : el.docsjs.name.replace(/\W+/g,'_')+egCounter));
 					if (el.docsjs.state === undefined){
-						el.setAttribute('docsjs-state',DocsJS.eg.default);
+						el.setAttribute('docsjs-state',DocsJS.eg.defaultState);
 					}
 					if (el.previousSibling === null || el.previousSibling.docsjs === undefined || (el.previousSibling.docsjs.tag !== 'ebefore' && el.parentElement.docsjs.tag !== 'column-content')){
 						el.insertAdjacentHTML( 'beforeBegin', '<div docsjs-tag="ebefore" role="button" tabindex="0" id="docsjs-aria-eg-'+(el.docsjs.name === undefined? DocsJS.eg.name.replace(/\W+/g,'_')+egCounter : el.docsjs.name.replace(/\W+/g,'_')+egCounter)+'"><div docsjs-tag="button-ebefore" >'+DocsJS.buttons.eg.html()+'</div>'+(el.docsjs.name === undefined? DocsJS.eg.name : el.docsjs.name)+'</div>' );
@@ -335,7 +335,7 @@ window.DocsJS = {
 				s.querySelectorAll('[docsjs-tag="e-x"]').forEach(function(el){
 					el.setAttribute('labelledby','docsjs-aria-ex-'+(el.docsjs.name === undefined? DocsJS.eg.name.replace(/\W+/g,'_')+exCounter : el.docsjs.name.replace(/\W+/g,'_')+exCounter));
 					if (el.docsjs.state === undefined){
-						el.setAttribute('docsjs-state',DocsJS.ex.default);
+						el.setAttribute('docsjs-state',DocsJS.ex.defaultState);
 					}
 					if (el.previousSibling === null || el.previousSibling.docsjs === undefined || el.previousSibling.docsjs.tag !== 'ebefore'){
 						el.insertAdjacentHTML( 'beforeBegin', '<div docsjs-tag="ebefore" role="button" tabindex="0" id="docsjs-aria-ex-'+(el.docsjs.name === undefined? DocsJS.ex.name.replace(/\W+/g,'_')+exCounter : el.docsjs.name.replace(/\W+/g,'_')+exCounter)+'"><div docsjs-tag="button-ebefore" >'+DocsJS.buttons.ex.html()+'</div>'+(el.docsjs.name === undefined? DocsJS.ex.name : el.docsjs.name)+'</div>' );
@@ -1286,11 +1286,11 @@ window.DocsJS = {
 	},
 	eg: {
 		name: 'Example',
-		default: 'min',
+		defaultState: 'min',
 	},
 	ex: {
 		name: 'More',
-		default: 'min',
+		defaultState: 'min',
 	},
 	cd: {
 		theme: 'monokai',
