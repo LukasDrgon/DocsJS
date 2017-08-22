@@ -1481,19 +1481,19 @@ DocsJS.easings = {
 };
 DocsJS.cache = {
 	watches:{},
-	events:{
-		oncolumn: 0,
-		load: 0,
-		columnchoice: 0
-	},
 	lastscrolled: Date.now(),
 	extraWidth: 0,
-	fastmode:{
-		active: false,
-		durtation: 0
-	},
 	aceEditors: [],
 	accessibility: ''
+};
+DocsJS.cache.events = {
+	oncolumn: 0,
+	load: 0,
+	columnchoice: 0
+};
+DocsJS.cache.fastmode = {
+	active: false,
+	durtation: 0
 };
 DocsJS.window = {
 	width: function(){
