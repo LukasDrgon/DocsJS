@@ -1481,7 +1481,6 @@ DocsJS.easings = {
 };
 DocsJS.cache = {
 	watches:{},
-	lastscrolled: Date.now(),
 	extraWidth: 0,
 	aceEditors: [],
 	accessibility: ''
