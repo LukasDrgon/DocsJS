@@ -1,5 +1,8 @@
 // JavaScript Document
-var DocsJS = {test:'hi'};
+var DocsJS = {
+	test:'hi',
+	test2:'hi'
+};
 // Planned for future releases: fix bug with topic embedded in eg, documentation search, better & more efficient sidebar animations, menu as a popup on mobile (make other things popup on mobile), Massive improvements for column animations
 DocsJS = {
 	apply: function (func){
