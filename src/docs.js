@@ -1484,13 +1484,13 @@ DocsJS.cache = {
 	events:{
 		oncolumn: 0,
 		load: 0,
-		columnchoice: 0,
+		columnchoice: 0
 	},
 	lastscrolled: Date.now(),
 	extraWidth: 0,
 	fastmode:{
 		active: false,
-		durtation: 0,
+		durtation: 0
 	},
 	aceEditors: [],
 	accessibility: ''
