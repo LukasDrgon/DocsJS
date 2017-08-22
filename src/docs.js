@@ -1,8 +1,4 @@
 // JavaScript Document
-var DocsJS = {
-	test:'hi',
-	test2:'hi',
-};
 // Planned for future releases: fix bug with topic embedded in eg, documentation search, better & more efficient sidebar animations, menu as a popup on mobile (make other things popup on mobile), Massive improvements for column animations
 DocsJS = {
 	apply: function (func){
@@ -32,7 +28,7 @@ DocsJS = {
 			doc.querySelector('[docsjs-tag="column-right"]').style.position = 'fixed';
 			doc.innerHTML += '<div docsjs-tag="bg" docsjs-extra="invert"></div>';
 		});
-		if (DocsJS.include.mathJax){
+		if (DocsJS.loadExt.mathJax){
 			DocsJS.loadScript('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML',function(){});
 			// If asked for, I may add a more specific MathJax integration. For example, only loading LaTeX and changing delimeters to a conversion of <m-t></m-t>.
 		}
@@ -621,7 +617,7 @@ DocsJS = {
 		if (DocsJS.scriptLoaded){
 			DocsJS.cd.refresh();
 		} else{
-			if (DocsJS.include.ace){
+			if (DocsJS.loadExt.ace){
 				DocsJS.loadScript('https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.8/ace.js',function(){
 					DocsJS.cd.scriptLoaded = true;
 					DocsJS.cd.refresh();
@@ -1271,7 +1267,7 @@ DocsJS = {
 	},
 	origin: document.getElementsByTagName('script')[document.getElementsByTagName('script').length - 1].src,
 	theme: 'Hailaxian',
-	include: {
+	loadExt: {
 		ace: true,
 		mathJax: false,
 	},

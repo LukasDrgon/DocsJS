@@ -1293,10 +1293,10 @@ for (var i = 0; i &lt; docs.length; i++){
 	</s-c>
 </div>
 <!--Should load these dymaically-->
-<script>
+<script defer>
 	DocsJS.theme = 'Hailaxian';
-	DocsJS.include.ace = true;
-	DocsJS.include.mathJax = false;
+	DocsJS.loadExt.ace = true;
+	DocsJS.loadExt.mathJax = false;
 	DocsJS.superparent = 'DocsJS-This-Baby';
 	DocsJS.width.max = 1280;
 	DocsJS.width.min = 340;
