@@ -17,6 +17,12 @@
 <meta name="msapplication-config" content="example/favicons/browserconfig.xml?v=8jedNJnRp5">
 <meta name="theme-color" content="#2b2b2b">
 
+<script>
+	if (window.location.href.slice(-1) !== '/'){
+		window.location = window.location.href+'/';
+	}
+</script>
+
 <script src="src/docs.js"></script>
 <link href="example/style.css" rel="stylesheet">
 </head>
