@@ -432,6 +432,7 @@ DocsJS.refresh = function(callback){
 		var menu = doc.querySelector('[docsjs-tag="menu"]');
 		var readStructure = function(parent, location){
 			var structure = '';
+			console.log(parent);
 			var contents = parent.querySelectorAll('[docsjs-tag="s-c"],[docsjs-tag="t-p"]');
 			if (contents.length !== 0){
 				for (var i = 0; i < contents.length; i++){
