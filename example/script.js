@@ -14,7 +14,7 @@ function init(){
 		document.getElementsByClassName(el.className.split(' ')[0]+' dest')[0].src = 'data:text/html,'+html;
 	};
 	var bindParse = function(){
-		document.querySelectorAll('.parse').forEach(function(el){
+		DocsJS.forEach(document.querySelectorAll('.parse'),function(el){
 			var timeout;
 			DocsJS.addEvent(el, 'keydown', function(){
 				document.getElementsByClassName(el.className.split(' ')[0]+' dest')[0].src = '';
@@ -47,7 +47,7 @@ function init(){
 			
 			document.querySelector('[docsjs-tag="column-right"]').style.marginLeft = -1*document.querySelector('[docsjs-tag="column-right"]').clientWidth + (document.querySelector('[docsjs-tag="column-right"]').style.position === 'absolute'? difference : -1*difference) + 'px';
 			document.querySelector('[docsjs-tag="column-left"]').style.marginLeft = difference + 'px';
-			document.querySelectorAll('main > [docsjs-tag="s-c"]').forEach(function(el){
+			DocsJS.forEach(document.querySelectorAll('main > [docsjs-tag="s-c"]'),function(el){
 				el.style.marginLeft = parseInt(el.style.marginLeft) + difference + 'px';
 			});
 			document.getElementsByClassName('baseground')[0].style.width = difference + 'px';

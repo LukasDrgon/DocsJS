@@ -34,13 +34,9 @@ DocsJS.init = function(callback){
 		doc.querySelector('[docsjs-tag="column-right"]').style.position = 'fixed';
 		doc.innerHTML += '<div docsjs-tag="bg" docsjs-extra="invert"></div>';
 	});
-	if (DocsJS.include.mathJax){
-		DocsJS.loadScript('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML',function(){});
-		// If asked for, I may add a more specific MathJax integration. For example, only loading LaTeX and changing delimeters to a conversion of <m-t></m-t>.
-	}
 
-	// Process DocsJS syntax
-	DocsJS.refresh(function(){
+	// Finish initiation
+	var finish = function(){
 		// Watch events
 		DocsJS.addEvent(window,'scroll',DocsJS.scrolled);
 		DocsJS.addEvent(window,'resize',function(){
@@ -60,44 +56,42 @@ DocsJS.init = function(callback){
 
 		// Prefire events onready.
 		DocsJS.addEvent(document,'readystatechange',function(){
-			DocsJS.cache.events.load++;
-			if (DocsJS.cache.events.load > DocsJS.readystatechangemax){
-				DocsJS.fontsize._value = parseInt(DocsJS.getStyle(document.querySelector('[docsjs-tag="'+DocsJS.superparent+'"]'),'font-size'));
-				DocsJS.scrolled();
-				DocsJS.resized();
-				hashChange();
+			DocsJS.fontsize._value = parseInt(DocsJS.getStyle(document.querySelector('[docsjs-tag="'+DocsJS.superparent+'"]'),'font-size'));
+			DocsJS.scrolled();
+			DocsJS.resized();
+			hashChange();
 
-				// Check for min and max
-				var duration = DocsJS.animation.duration;
-				DocsJS.animation.duration = 0;
-				DocsJS.apply(function(doc){
-					DocsJS.forEach(doc.querySelectorAll('[docsjs-state="max"]'),function(el){
-						if (el.docsjs.tag === 'e-x' || el.docsjs.tag === 'e-g'){
-							DocsJS.rotate(el.previousSibling.querySelector('[docsjs-tag="button-ebefore"]'),90);
-						}
-					});
-					DocsJS.forEach(doc.querySelectorAll('[docsjs-state="min"]'),function(el){
-						if (el.docsjs.tag === 't-p' || el.docsjs.tag === 'h-d'){
-							el.docsjs.state = 'max';
-							el.querySelector('[docsjs-tag="t-l"]').onclick({target:{docsjs:{tag:'t-l'}}});
-						}
-						if (el.docsjs.tag === 's-c'){
-							el.docsjs.state = 'max';
-							el.querySelector('[docsjs-tag="h-d"]').querySelector('[docsjs-tag="t-l"]').querySelector('[docsjs-tag="button-minimize"]').onclick();
-						}
-					});
+			// Check for min and max
+			var duration = DocsJS.animation.duration;
+			DocsJS.animation.duration = 0;
+			DocsJS.apply(function(doc){
+				DocsJS.forEach(doc.querySelectorAll('[docsjs-state="max"]'),function(el){
+					if (el.docsjs.tag === 'e-x' || el.docsjs.tag === 'e-g'){
+						DocsJS.rotate(el.previousSibling.querySelector('[docsjs-tag="button-ebefore"]'),90);
+					}
 				});
-				DocsJS.animation.duration = duration;
+				DocsJS.forEach(doc.querySelectorAll('[docsjs-state="min"]'),function(el){
+					if (el.docsjs.tag === 't-p' || el.docsjs.tag === 'h-d'){
+						el.docsjs.state = 'max';
+						el.querySelector('[docsjs-tag="t-l"]').onclick({target:{docsjs:{tag:'t-l'}}});
+					}
+					if (el.docsjs.tag === 's-c'){
+						el.docsjs.state = 'max';
+						el.querySelector('[docsjs-tag="h-d"]').querySelector('[docsjs-tag="t-l"]').querySelector('[docsjs-tag="button-minimize"]').onclick();
+					}
+				});
+			});
+			DocsJS.animation.duration = duration;
 
-				if (callback === undefined){callback = function(){};}
-				callback();
-				DocsJS.events.ready();
-			}
+			if (callback === undefined){callback = function(){};}
+			callback();
+			DocsJS.events.ready();
 			var accessStyle = document.createElement('style');
 			accessStyle.innerHTML = '[docsjs-tag=accessibility-mode-content] h1,[docsjs-tag=accessibility-mode-content] h2,[docsjs-tag=accessibility-mode-content] h3,[docsjs-tag=accessibility-mode-content] h4,[docsjs-tag=accessibility-mode-content] h5,[docsjs-tag=accessibility-mode-content] h6{line-height:2em;font-weight:bold;text-decoration:underline;margin:0}[docsjs-tag=accessibility-mode-wrapper]{position:fixed;width:100%;height:100%;overflow:auto;-webkit-overflow-scrolling:touch;z-index:999999999999;padding:1em;box-sizing:border-box;background:#eaeaea}[docsjs-tag=accessibility-mode-content]{position:relative;width:100%;left:0;right:0;margin-left:auto;margin-right:auto;padding:1em;background-color:'+DocsJS.getStyle(document.querySelector('[docsjs-tag="t-x"]'),'background-color')+';color:'+DocsJS.getStyle(document.querySelector('[docsjs-tag="t-x"]'),'color')+';box-shadow:0 5px 20px 3px rgba(0,0,0,.3);box-sizing:border-box;overflow:hidden;font-size:1.2em}[docsjs-tag=accessibility-mode-content] p[docsjs-tag=textNode]{display:inline;margin-top:0;margin-bottom:0}[docsjs-tag=accessibility-mode-content] h1{font-size:2.5em}[docsjs-tag=accessibility-mode-content] h2{font-size:2em}[docsjs-tag=accessibility-mode-content] h3{font-size:1.6em}[docsjs-tag=accessibility-mode-content] h4{font-size:1.4em}[docsjs-tag=accessibility-mode-content] h5{font-size:1.2em}[docsjs-tag=accessibility-mode-content] h6{font-size:1.2em; font-weight: regular;}';
 			document.head.appendChild(accessStyle);
 		});
-	});
+	};
+	DocsJS.refresh(finish);
 };
 DocsJS.scrolled = function(){
 	'use strict';
@@ -622,16 +616,7 @@ DocsJS.refresh = function(callback){
 	});
 
 	// Pass c-d tags to c9 ace
-	if (DocsJS.scriptLoaded){
-		DocsJS.cd.refresh();
-	} else{
-		if (DocsJS.include.ace){
-			DocsJS.loadScript('https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.8/ace.js',function(){
-				DocsJS.cd.scriptLoaded = true;
-				DocsJS.cd.refresh();
-			});
-		}
-	}
+	DocsJS.cd.refresh();
 
 	// Watch column drags
 	DocsJS.apply(function(doc){
@@ -1275,10 +1260,6 @@ DocsJS.fontsize = {
 };
 DocsJS.origin = document.getElementsByTagName('script')[document.getElementsByTagName('script').length - 1].src;
 DocsJS.theme = 'Hailaxian';
-DocsJS.include = {
-	ace: true,
-	mathJax: false
-};
 DocsJS.superparent = 'DocsJS-This-Baby';
 DocsJS.width = {
 	max: 1280,
@@ -1304,7 +1285,6 @@ DocsJS.cd = {
 	theme: 'monokai',
 	tabSize: 4,
 	editable: false,
-	scriptLoaded: false,
 	options: function(editor, editable){
 		'use strict';
 		if (editor === 'Ace editor object'){}
@@ -1316,60 +1296,61 @@ DocsJS.cd = {
 	},
 	refresh: function(){
 		'use strict';
-		DocsJS.apply(function(doc){
-			var editors = [];
-			DocsJS.forEach(doc.querySelectorAll('[docsjs-tag="c-d"]'),function(el, index){
-				if (el.docsjs.internal !== undefined){
-					el.innerHTML = DocsJS.cache.aceEditors[el.docsjs.internal].getValue().replace(/[\u00A0-\u9999<>\&]/gim, function(i) {
-						return '&#'+i.charCodeAt(0)+';';
-					});
-					el.docsjs.internal = index;
-					DocsJS.cache.aceEditors[el.docsjs.internal].destroy();
-					el.docsjs.internal = index;
-				} else{
-					el.setAttribute('docsjs-internal',index);
-				}
-			});
-			DocsJS.forEach(doc.querySelectorAll('[docsjs-tag="c-d"]'),function(el){
-				el.style.fontSize = '0.8em';
-				el.style.height = el.textContent.split('\n').length*1.25 + 'em';
-				var editor = ace.edit(el);
-				editor.setTheme("ace/theme/"+DocsJS.cd.theme);
-				editor.getSession().setMode("ace/mode/"+el.docsjs.lang);
-				editor.getSession().setTabSize(DocsJS.cd.tabSize);
-				if (!(el.docsjs.editable === undefined? DocsJS.cd.editable : JSON.parse(el.docsjs.editable))){
-					editor.setReadOnly(true);
-					editor.renderer.setShowGutter(false);
-					editor.renderer.setPadding(parseInt(DocsJS.getStyle(document.querySelector('[docsjs-tag="'+DocsJS.superparent+'"]'),'font-size')));
-					editor.renderer.$cursorLayer.element.style.display = "none";
-					editor.setShowPrintMargin(false);
-					el.querySelector('textarea').style.display = 'none';
-					el.querySelector('textarea').setAttribute('aria-hidden','true');
-					el.querySelector('textarea').setAttribute('aria-label','Disabled textarea');
-					DocsJS.cd.options(editor, false);
-				} else{
-					editor.setReadOnly(false);
-					el.querySelector('textarea').setAttribute('tabindex','-1');
-					el.querySelector('textarea').setAttribute('aria-label','Edit code');
-					DocsJS.cd.options(editor, true);
-				}
-				editors.push(editor);
-			});
-			DocsJS.cache.aceEditors = editors;
+		if (ace !== undefined){
+			DocsJS.apply(function(doc){
+				var editors = [];
+				DocsJS.forEach(doc.querySelectorAll('[docsjs-tag="c-d"]'),function(el, index){
+					if (el.docsjs.internal !== undefined){
+						el.innerHTML = DocsJS.cache.aceEditors[el.docsjs.internal].getValue().replace(/[\u00A0-\u9999<>\&]/gim, function(i) {
+							return '&#'+i.charCodeAt(0)+';';
+						});
+						el.docsjs.internal = index;
+						DocsJS.cache.aceEditors[el.docsjs.internal].destroy();
+						el.docsjs.internal = index;
+					} else{
+						el.setAttribute('docsjs-internal',index);
+					}
+				});
+				DocsJS.forEach(doc.querySelectorAll('[docsjs-tag="c-d"]'),function(el){
+					el.style.fontSize = '0.8em';
+					el.style.height = el.textContent.split('\n').length*1.25 + 'em';
+					var editor = ace.edit(el);
+					editor.setTheme("ace/theme/"+DocsJS.cd.theme);
+					editor.getSession().setMode("ace/mode/"+el.docsjs.lang);
+					editor.getSession().setTabSize(DocsJS.cd.tabSize);
+					if (!(el.docsjs.editable === undefined? DocsJS.cd.editable : JSON.parse(el.docsjs.editable))){
+						editor.setReadOnly(true);
+						editor.renderer.setShowGutter(false);
+						editor.renderer.setPadding(parseInt(DocsJS.getStyle(document.querySelector('[docsjs-tag="'+DocsJS.superparent+'"]'),'font-size')));
+						editor.renderer.$cursorLayer.element.style.display = "none";
+						editor.setShowPrintMargin(false);
+						el.querySelector('textarea').style.display = 'none';
+						el.querySelector('textarea').setAttribute('aria-hidden','true');
+						el.querySelector('textarea').setAttribute('aria-label','Disabled textarea');
+						DocsJS.cd.options(editor, false);
+					} else{
+						editor.setReadOnly(false);
+						el.querySelector('textarea').setAttribute('tabindex','-1');
+						el.querySelector('textarea').setAttribute('aria-label','Edit code');
+						DocsJS.cd.options(editor, true);
+					}
+					editors.push(editor);
+				});
+				DocsJS.cache.aceEditors = editors;
 
-			// Fix some ace 1.2.8 editor issues
-			var docsjsAceStyleFix = document.createElement('style');
-			docsjsAceStyleFix.innerHTML = '.ace_text-input {position: absolute !important;}';
-			document.head.appendChild(docsjsAceStyleFix);
-		});
-		DocsJS.events.cdRefreshed();
+				// Fix some ace 1.2.8 editor issues
+				var docsjsAceStyleFix = document.createElement('style');
+				docsjsAceStyleFix.innerHTML = '.ace_text-input {position: absolute !important;}';
+				document.head.appendChild(docsjsAceStyleFix);
+			});
+			DocsJS.events.cdRefreshed();
+		}
 	}
 };
 DocsJS.menu = {
 	top: 'Jump to top',
 	bottom: 'Jump to bottom'
 };
-DocsJS.readystatechangemax = 1;
 DocsJS.events = {
 	ready: function(){},
 	columnResize: function(side){'use strict';if (side === "left"){} else if (side === "right"){}},
@@ -1491,25 +1472,25 @@ DocsJS.cache = {
 	watches:{},
 	extraWidth: 0,
 	aceEditors: [],
-	accessibility: ''
-};
-DocsJS.cache.events = {
-	oncolumn: 0,
-	load: 0,
-	columnchoice: 0
-};
-DocsJS.cache.fastmode = {
-	active: false,
-	durtation: 0
+	accessibility: '',
+	events: {
+		oncolumn: 0,
+		load: 0,
+		columnchoice: 0
+	},
+	fastmode: {
+		active: false,
+		durtation: 0
+	}
 };
 DocsJS.window = {
 	width: function(){
 		'use strict';
-		return window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+		return window.clientWidth || document.documentElement.clientWidth || document.body.clientWidth;
 	},
 	height: function(){
 		'use strict';
-		return window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+		return window.clientWidth || document.documentElement.clientHeight || document.body.clientHeight;
 	}
 };
 DocsJS.checkColumns = function(doc){
@@ -1680,6 +1661,19 @@ DocsJS.correctColumnHeight = function(doc){
 		DocsJS.forEach(doc.querySelectorAll('[docsjs-tag="efiller"][docsjs-side="'+side+'"],[docsjs-tag="column-'+side+'"] [docsjs-tag="column-filler"]'),function(el){
 			el.style.height = '0px';
 		});
+		var checkVisible = function(el){
+			el = el.parentElement;
+			if (el.docsjs.tag !== undefined){
+				if (el.docsjs.state === 'min'){
+					columnBox.previousSibling.style.display = 'none';
+					columnBox.style.display = 'none';
+				} else if (el.docsjs.tag !== DocsJS.superparent){
+					checkVisible(el);
+				}
+			} else{
+				checkVisible(el);
+			}
+		};
 		for (var i = 0; i < doc.querySelectorAll('[docsjs-tag="column-'+side+'"]>[docsjs-tag="column-content"]').length; i++){
 			var columnBox = doc.querySelectorAll('[docsjs-tag="column-'+side+'"]>[docsjs-tag="column-content"]')[i];
 			var centerBox = doc.querySelectorAll('[docsjs-tag="'+(DocsJS.column.state[(side === 'left'? 0:1)])+'-inactive"]')[i].parentElement;
@@ -1696,19 +1690,6 @@ DocsJS.correctColumnHeight = function(doc){
 					columnBox.style.maxHeight = maxed + 'px';
 				}
 			}
-			var checkVisible = function(el){
-				el = el.parentElement;
-				if (el.docsjs.tag !== undefined){
-					if (el.docsjs.state === 'min'){
-						columnBox.previousSibling.style.display = 'none';
-						columnBox.style.display = 'none';
-					} else if (el.docsjs.tag !== DocsJS.superparent){
-						checkVisible(el);
-					}
-				} else{
-					checkVisible(el);
-				}
-			};
 			checkVisible(centerBox);
 		}
 		doc.querySelector('[docsjs-tag="column-'+side+'"]').lastChild.previousSibling.previousSibling.style.height = doc.getBoundingClientRect().bottom - doc.querySelector('[docsjs-tag="column-'+side+'"]').lastChild.previousSibling.previousSibling.getBoundingClientRect().bottom + 'px';

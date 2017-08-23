@@ -23,11 +23,13 @@
 	}
 </script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.8/ace.js"></script>
 <script src="src/docs.js"></script>
+<script src="example/script.js"></script>
 <link href="example/style.css" rel="stylesheet">
 </head>
 
-<body>
+<body onLoad="init()">
 <!--Make columns more obvious (onhover and when opened), Proper embedded code (c9 ACE), cross-browser screenshots, restore original defaults on half minimizze, differentiate section minimize and header minimize, keep header at top, jump to minimized topic will maximize-->
 <!--keep varible sourcing for refresh, create your own doc-->
 <div></div>
@@ -1290,10 +1292,6 @@ for (var i = 0; i &lt; docs.length; i++){
 						</t-x>
 					</t-p>
 				</t-p>
-				<t-p docsjs-state="min">
-					<t-l>DocsJS.readystatechangemax</t-l>
-					<t-x>The number of times document.readystatechange should occur after DocsJS.init() before the doc's dom is ready again.</t-x>
-				</t-p>
 			</s-c>
 		</s-c>
 	</s-c>
@@ -1301,8 +1299,6 @@ for (var i = 0; i &lt; docs.length; i++){
 <!--Should load these dymaically-->
 <script>
 	DocsJS.theme = 'Hailaxian';
-	DocsJS.include.ace = true;
-	DocsJS.include.mathJax = false;
 	DocsJS.superparent = 'DocsJS-This-Baby';
 	DocsJS.width.max = 1280;
 	DocsJS.width.min = 340;
