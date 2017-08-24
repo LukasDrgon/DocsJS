@@ -246,7 +246,7 @@ DocsJS.resized = function(){
 	scrollTop = document.body.scrollTop;
 };
 window.html5 = {
-  'elements': 's-c h-d t-p t-l t-x e-g e-x c-d'
+  'elements': 's-c h-d t-p t-l t-x e-g e-x c-d main nav'
 };
 DocsJS.refresh = function(callback){
 	'use strict';
