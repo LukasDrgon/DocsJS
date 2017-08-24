@@ -1262,9 +1262,6 @@ DocsJS.getStyle = function (el, prop){
 		for (var i = 1; i < prop.length; i++){
 			prop[i] = prop[i].charAt(0).toUpperCase() + prop[i].slice(1);
 		}
-		console.log(el);
-		console.log(prop.join(''));
-		console.log(el.currentStyle[prop.join('')]);
 		return el.currentStyle[prop.join('')];
 	}
 };
