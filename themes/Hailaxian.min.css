@@ -15,9 +15,6 @@ h1,h2,h3,h4,h5,h6{
 	font-size: inherit;
 	font-weight: inherit;
 }
-*{
-	behavior: url(themes/PIE.htc) url(themes/boxsizing.htc);
-}
 [docsjs-tag="s-c"],[docsjs-tag="column-left"],[docsjs-tag="column-right"]{
 	/* Optimize paint layers (This has cut gpu memory usage by about half and greatly smooths fps on newer high-res displays). If you're experincing theming problems, remove the transform property. However, the will-change property is important. DO NOT move these properties to other tags unless you know what you're doing. DocsJS is optimized for these paint layers. */
 	will-change: transform;
@@ -64,12 +61,12 @@ body,html{
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	overflow: hidden;
+	background-color: #282828;
 	background-color: rgba(40,40,40,0.6);
-	-pie-background:  rgba(40,40,40,0.6);
 }
 [docsjs-tag="s-c"] [docsjs-tag="s-c"]{
+	background-color: #282828;
 	background-color: rgba(40,40,40,0.5);
-	-pie-background:  rgba(40,40,40,0.5);
 }
 [docsjs-tag="h-d"],[docsjs-tag="t-p"]{
 	position: relative;
@@ -92,6 +89,7 @@ body,html{
 }
 [docsjs-tag="t-l"]{
 	position: relative;
+	background-color: #E0E0E0;
 	background-color: rgba(255,255,255,0.8);
 	padding: 0.83333333em;
 	padding-right: 3em;
@@ -261,6 +259,7 @@ pre{
 }
 [docsjs-tag="column-filler"]{
 	position: relative;
+	background-color: #282828;
 	background-color: rgba(40,40,40,0.85);
 	box-shadow: 0 0 6px 2px rgba(0,0,0,0.25);
 	z-index: 1;
@@ -268,6 +267,7 @@ pre{
 }
 [docsjs-tag="column-content"]{
 	position: relative;
+	background-color: #FFF;
 	background-color: rgba(245,245,245,0.75);
 	overflow: hidden;
 	box-shadow: 0 0 6px 2px rgba(0,0,0,0.25);
