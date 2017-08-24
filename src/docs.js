@@ -274,7 +274,7 @@ DocsJS.refresh = function(callback){
 
 	// Convert to div soup
 	DocsJS.apply(function(doc){
-		doc.outerHTML = doc.outerHTML
+		doc.innerHTML = doc.innerHTML
 			.replace(/<s-c/g,'<div docsjs-tag="s-c"')
 			.replace(/<h-d/g,'<div docsjs-tag="h-d"')
 			.replace(/<t-p/g,'<div docsjs-tag="t-p"')
