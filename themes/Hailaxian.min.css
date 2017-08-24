@@ -16,7 +16,7 @@ h1,h2,h3,h4,h5,h6{
 	font-weight: inherit;
 }
 *{
-	behavior: url(https://cdn.jsdelivr.net/css3pie/2.0b1/PIE.htc) url(https://raw.github.com/Schepp/box-sizing-polyfill/master/boxsizing.htc);
+	behavior: url(PIE.htc) url(boxsizing.htc);
 }
 [docsjs-tag="s-c"],[docsjs-tag="column-left"],[docsjs-tag="column-right"]{
 	/* Optimize paint layers (This has cut gpu memory usage by about half and greatly smooths fps on newer high-res displays). If you're experincing theming problems, remove the transform property. However, the will-change property is important. DO NOT move these properties to other tags unless you know what you're doing. DocsJS is optimized for these paint layers. */
@@ -58,14 +58,14 @@ body,html{
 [docsjs-tag="s-c"]{
 	position: relative;
 	padding: 1em;
-	background-color: rgba(40,40,40,0.6);
-	-pie-background:  rgba(40,40,40,0.6);
 	box-shadow: 1px 1px 6px 3px rgba(0,0,0,0.15);
 	margin-top: 1em;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	overflow: hidden;
+	background-color: rgba(40,40,40,0.6);
+	-pie-background:  rgba(40,40,40,0.6);
 }
 [docsjs-tag="s-c"] [docsjs-tag="s-c"]{
 	background-color: rgba(40,40,40,0.5);
