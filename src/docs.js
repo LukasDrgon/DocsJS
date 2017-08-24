@@ -1258,7 +1258,11 @@ DocsJS.getStyle = function (el, prop){
 	if (typeof getComputedStyle !== 'undefined'){
 		return getComputedStyle(el, null).getPropertyValue(prop);
 	} else{
-		return el.currentStyle[prop];
+		prop = prop.split('-');
+		for (var i = 1; i < prop.length; i++){
+			prop[i] = prop[i].charAt(0).toUpperCase() + prop[i].slice(1);
+		}
+		return el.currentStyle[prop.join('')];
 	}
 };
 DocsJS.fontsize = {
