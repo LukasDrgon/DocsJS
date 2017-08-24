@@ -107,8 +107,8 @@ function init(){
 		document.getElementById('windowScalarPlus').style.color = "#909090";
 		document.getElementById('windowScalarMinus').style.color = "#000";
 		document.body.style.width = '';
-		document.getElementsByClassName('baseground')[0].style.width = '0px';
-		document.getElementsByClassName('baseground')[1].style.width = '0px';
+		document.getElementById('baseGround1').style.width = '0px';
+		document.getElementById('baseGround2').style.width = '0px';
 	});
 	
 	DocsJS.events.columnResize = function(){
