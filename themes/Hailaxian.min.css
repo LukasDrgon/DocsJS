@@ -16,7 +16,7 @@ h1,h2,h3,h4,h5,h6{
 	font-weight: inherit;
 }
 *{
-	behavior: url(PIE.htc) url(boxsizing.htc);
+	behavior: url(themes/PIE.htc) url(themes/boxsizing.htc);
 }
 [docsjs-tag="s-c"],[docsjs-tag="column-left"],[docsjs-tag="column-right"]{
 	/* Optimize paint layers (This has cut gpu memory usage by about half and greatly smooths fps on newer high-res displays). If you're experincing theming problems, remove the transform property. However, the will-change property is important. DO NOT move these properties to other tags unless you know what you're doing. DocsJS is optimized for these paint layers. */
