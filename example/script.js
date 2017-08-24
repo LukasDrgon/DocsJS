@@ -9,25 +9,27 @@ function init(){
 	});
 	
 	// Set up examples where the user edits code to an iframe
-	parse = function(el){
-		var html = '<!doctype html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Example</title><script src="https://cdn.jsdelivr.net/gh/Hailiax/DocsJS@latest/src/docs.min.js"></script></head><body>'+DocsJS.cd.getEditor(el).getValue()+'<script defer>DocsJS.init();</script></body></html>';
-		document.getElementsByClassName(el.className.split(' ')[0]+' dest')[0].src = 'data:text/html,'+html;
-	};
-	var bindParse = function(){
-		DocsJS.forEach(document.querySelectorAll('.parse'),function(el){
-			var timeout;
-			DocsJS.addEvent(el, 'keydown', function(){
-				document.getElementsByClassName(el.className.split(' ')[0]+' dest')[0].src = '';
-				clearTimeout(timeout);
+	if (DocsJS.supports.ace){
+		parse = function(el){
+			var html = '<!doctype html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Example</title><script src="https://cdn.jsdelivr.net/gh/Hailiax/DocsJS@latest/src/docs.min.js"></script></head><body>'+DocsJS.cd.getEditor(el).getValue()+'<script defer>DocsJS.init();</script></body></html>';
+			document.getElementsByClassName(el.className.split(' ')[0]+' dest')[0].src = 'data:text/html,'+html;
+		};
+		var bindParse = function(){
+			DocsJS.forEach(document.querySelectorAll('.parse'),function(el){
+				var timeout;
+				DocsJS.addEvent(el, 'keydown', function(){
+					document.getElementsByClassName(el.className.split(' ')[0]+' dest')[0].src = '';
+					clearTimeout(timeout);
+				});
+				DocsJS.addEvent(el, 'keyup', function(){
+					timeout = window.setTimeout(function(){parse(el);},100);
+				});
+				parse(el);
 			});
-			DocsJS.addEvent(el, 'keyup', function(){
-				timeout = window.setTimeout(function(){parse(el);},100);
-			});
-			parse(el);
-		});
-	};
-	DocsJS.events.cdRefreshed = bindParse;
-	bindParse();
+		};
+		DocsJS.events.cdRefreshed = bindParse;
+		bindParse();
+	}
 	
 	// Set up shrinking window example
 	var scaleWindow = function(percent){
