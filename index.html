@@ -20,8 +20,10 @@
 <script>
 	var loc = window.location.href.split('/');
 	if (loc[loc.length-2] !== 'docsjs'){
-		loc[loc.length-1] = 'docsjs/' + loc[loc.length-1].slice(6);
-		window.location = loc.join('/');
+		if (loc[loc.length-1].substring(0,6) === 'docsjs'){
+			loc[loc.length-1] = 'docsjs/' + loc[loc.length-1].slice(6);
+			window.location = loc.join('/');
+		}
 	}
 </script>
 
