@@ -1312,7 +1312,7 @@ DocsJS.cd = {
 	},
 	refresh: function(){
 		'use strict';
-		if (ace !== undefined){
+		if (ace !== undefined && DocsJS.supports.ace){
 			DocsJS.apply(function(doc){
 				var editors = [];
 				DocsJS.forEach(doc.querySelectorAll('[docsjs-tag="c-d"]'),function(el, index){
@@ -1718,7 +1718,8 @@ DocsJS.correctColumnHeight = function(doc){
 	}
 };
 DocsJS.supports = {
-	passive: false
+	passive: false,
+	ace: (navigator.userAgent.toLowerCase().indexOf('msie') !== -1) ? (parseInt(navigator.userAgent.toLowerCase().split('msie')[1]) > 8) : true
 };
 try{
 	var opts = Object.defineProperty({},'passive',{
