@@ -71,13 +71,17 @@ DocsJS.init = function(callback){
 					}
 				});
 				DocsJS.forEach(doc.querySelectorAll('[docsjs-state="min"]'),function(el){
+					if (el.docsjs.tag === 'e-x' || el.docsjs.tag === 'e-g'){
+						el.docsjs.state = 'max';
+						el.previousSibling.onclick();
+					}
 					if (el.docsjs.tag === 't-p' || el.docsjs.tag === 'h-d'){
 						el.docsjs.state = 'max';
 						el.querySelector('[docsjs-tag="t-l"]').onclick({target:{docsjs:{tag:'t-l'}}});
 					}
 					if (el.docsjs.tag === 's-c'){
 						el.docsjs.state = 'max';
-						el.querySelector('[docsjs-tag="h-d"]').querySelector('[docsjs-tag="t-l"]').querySelector('[docsjs-tag="button-minimize"]').onclick();
+						el.querySelector('[docsjs-tag="button-minimize"]').onclick();
 					}
 				});
 			});
@@ -486,20 +490,26 @@ DocsJS.refresh = function(callback){
 						pass[0].parentElement.parentElement.parentElement.parentElement.style.height = (pass[2]-pass[3])*now + pass[3] + 'px';
 					},
 					callback: function(pass){
-						if (pass[1] === 0){pass[0].parentElement.parentElement.parentElement.parentElement.style.height = 'auto';}
+						if (pass[1] === 0){
+							pass[0].parentElement.parentElement.parentElement.parentElement.style.height = '';
+						} else{
+							pass[0].parentElement.parentElement.parentElement.parentElement.style.height = pass[3] + 'px';
+						}
 						pass[0].onclick = click;
 						DocsJS.scrolled();
 						DocsJS.correctColumnHeight(doc);
 					}
 				});
-				if (d === 1){
-					if (el.parentElement.parentElement.parentElement.docsjs.state === 'max'){
-						el.parentElement.parentElement.onclick({target:{docsjs:{tag:'t-l'}}});
-					}
-					el.parentElement.parentElement.parentElement.parentElement.docsjs.state = 'min';
-				} else{
+				if (d === 0){
 					el.parentElement.parentElement.parentElement.parentElement.docsjs.state = 'max';
-					el.parentElement.parentElement.onclick({target:{docsjs:{tag:'t-l'}}});
+					if (el.parentElement.parentElement.parentElement.docsjs.state === 'min'){
+						el.parentElement.parentElement.onclick({target:{docsjs:{tag:'_change'}}});
+					}
+				} else{
+					el.parentElement.parentElement.parentElement.parentElement.docsjs.state = 'min';
+					if (el.parentElement.parentElement.parentElement.docsjs.state === 'max'){
+						el.parentElement.parentElement.onclick({target:{docsjs:{tag:'_change'}}});
+					}
 				}
 				DocsJS.forEach(doc.querySelectorAll('[docsjs-menu-location="'+el.parentElement.parentElement.parentElement.parentElement.docsjs.location+'"]'),function(el){
 					el.parentElement.docsjs.state = d === 0? 'max' : 'min';
@@ -555,8 +565,10 @@ DocsJS.refresh = function(callback){
 		});
 		DocsJS.forEach(doc.querySelectorAll('[docsjs-tag="t-l"]'),function(el){
 			var click = function(e){
-				if ((e.target || (e.srcElement || e.originalTarget)).docsjs.tag === 't-l' || (e.target || (e.srcElement || e.originalTarget)).tagName.charAt(0) === 'H'){
-					if (el.parentElement.parentElement.docsjs.state === 'max' || el.parentElement.docsjs.tag === 't-p'){
+				if ((e.target || (e.srcElement || e.originalTarget)).docsjs.tag === 't-l' || (e.target || (e.srcElement || e.originalTarget)).docsjs.tag === '_change' || (e.target || (e.srcElement || e.originalTarget)).tagName.charAt(0) === 'H'){
+					if (el.parentElement.docsjs.tag === 'h-d' && el.parentElement.parentElement.docsjs.state === 'min' && el.parentElement.docsjs.state === 'min'){
+						el.querySelector('[docsjs-tag="button-minimize"]').onclick();
+					} else{
 						el.onclick = function(){};
 						var d = (el.parentElement.docsjs.state === 'max')? 1 : 0;
 						var heightBackup = el.parentElement.style.height;
@@ -584,10 +596,8 @@ DocsJS.refresh = function(callback){
 								}
 							});
 						}
-					} else{
-						el.querySelector('[docsjs-tag="button-minimize"]').onclick();
+						DocsJS.events.topicToggle(el.parentElement.parentElement);
 					}
-					DocsJS.events.topicToggle(el.parentElement.parentElement);
 				}
 			};
 			el.onclick = click;
@@ -596,9 +606,23 @@ DocsJS.refresh = function(callback){
 			var click = function(){
 				el.onclick = function(){};
 				var d = (el.nextSibling.docsjs.state === 'max')? 1 : 0;
+				var x = el.nextSibling.style.height;
+				var y = el.nextSibling.style.paddingTop;
+				var z = el.nextSibling.style.paddingBottom;
+				el.nextSibling.style.height = '';
+				el.nextSibling.style.paddingTop = '';
+				el.nextSibling.style.paddingBottom = '';
+				var a = parseInt(DocsJS.getStyle(el.nextSibling,'height'));
+				var b = parseInt(DocsJS.getStyle(el.nextSibling,'padding-top'));
+				var c = parseInt(DocsJS.getStyle(el.nextSibling,'padding-bottom'));
+				var e = parseInt(DocsJS.getStyle(el.nextSibling,'border-top-width'));
+				var f = parseInt(DocsJS.getStyle(el.nextSibling,'border-bottom-width'));
+				el.nextSibling.style.height = x;
+				el.nextSibling.style.paddingTop = y;
+				el.nextSibling.style.paddingBottom = z;
 				DocsJS.animate({
 					from: d,	to: 1-d,	duration: DocsJS.animation.duration,	easing: DocsJS.easings.easeOutQuart,
-					pass: [el.nextSibling,d,parseInt(DocsJS.getStyle(el.nextSibling,'height')),parseInt(DocsJS.getStyle(el.nextSibling,'padding-top')),parseInt(DocsJS.getStyle(el.nextSibling,'padding-bottom')),parseInt(DocsJS.getStyle(el.nextSibling,'border-top-width')),parseInt(DocsJS.getStyle(el.nextSibling,'border-bottom-width'))],
+					pass: [el.nextSibling,d,a,b,c,e,f],
 					step: function(now, pass){
 						pass[0].style.height = pass[2]*now+'px';
 						pass[0].style.paddingTop = pass[3]*now+'px';
@@ -612,8 +636,12 @@ DocsJS.refresh = function(callback){
 						}
 					},
 					callback: function(pass){
-						pass[0].docsjs.state = (pass[2] === 0)? 'max' : 'min';
-						pass[0].style.padding = pass[0].style.paddingTop = pass[0].style.paddingBottom = pass[0].style.borderTopWidth = pass[0].style.borderBottomWidth = '';
+						pass[0].docsjs.state = (pass[1] === 0)? 'max' : 'min';
+						if (pass[1] === 0){
+							pass[0].style.height = pass[0].style.paddingTop = pass[0].style.paddingBottom = pass[0].style.borderTopWidth = pass[0].style.borderBottomWidth = '';
+						} else{
+							pass[0].style.height = pass[0].style.paddingTop = pass[0].style.paddingBottom = pass[0].style.borderTopWidth = pass[0].style.borderBottomWidth = '0px';
+						}
 						pass[0].previousSibling.onclick = click;
 						DocsJS.scrolled();
 						DocsJS.correctColumnHeight(doc);
@@ -1535,6 +1563,9 @@ DocsJS.checkColumns = function(doc){
 		DocsJS.correctColumnHeight(doc);
 		DocsJS.correctColumnHeight(doc);
 		DocsJS.cache.events.columnchoice = 0;
+		DocsJS.forEach(doc.querySelectorAll('[docsjs-tag="column-left"] [docsjs-tag="e-g"],[docsjs-tag="column-left"] [docsjs-tag="e-x"]'),function(el){
+			el.style.height = el.style.paddingTop = el.style.paddingBottom = el.style.borderTopWidth = el.style.borderBottomWidth = '';
+		});
 		DocsJS.cd.refresh();
 	} else if (DocsJS.columnOffsets.left <= 0 && DocsJS.column.state[0] !== 'none'){
 		if (DocsJS.column.state[0] !== 'menu'){
@@ -1558,6 +1589,11 @@ DocsJS.checkColumns = function(doc){
 		doc.querySelector('[docsjs-tag="column-left"]').innerHTML = DocsJS.column.choice(-1);
 		DocsJS.column.state[0] = 'none';
 		DocsJS.cache.events.columnchoice = 0;
+		DocsJS.forEach(doc.querySelectorAll('[docsjs-tag="column-left"] [docsjs-tag="e-g"],[docsjs-tag="column-left"] [docsjs-tag="e-x"]'),function(el){
+			if (el.docsjs.state === 'min'){
+				el.style.height = el.style.paddingTop = el.style.paddingBottom = el.style.borderTopWidth = el.style.borderBottomWidth = '0px';
+			}
+		});
 		DocsJS.cd.refresh();
 	}
 	if (DocsJS.columnOffsets.right > 0 && DocsJS.column.state[1] === 'none'){
@@ -1571,6 +1607,9 @@ DocsJS.checkColumns = function(doc){
 			doc.querySelector('[docsjs-tag="column-left"]').innerHTML = DocsJS.column.choice(-1);
 		}
 		DocsJS.cache.events.columnchoice = 0;
+		DocsJS.forEach(doc.querySelectorAll('[docsjs-tag="column-right"] [docsjs-tag="e-g"],[docsjs-tag="column-right"] [docsjs-tag="e-x"]'),function(el){
+			el.style.height = el.style.paddingTop = el.style.paddingBottom = el.style.borderTopWidth = el.style.borderBottomWidth = '';
+		});
 		DocsJS.cd.refresh();
 	} else if (DocsJS.columnOffsets.right <= 0 && DocsJS.column.state[1] !== 'none'){
 		var nodesR = [];
@@ -1595,6 +1634,11 @@ DocsJS.checkColumns = function(doc){
 			doc.querySelector('[docsjs-tag="column-left"]').innerHTML = DocsJS.column.choice(-1);
 		}
 		DocsJS.cache.events.columnchoice = 0;
+		DocsJS.forEach(doc.querySelectorAll('[docsjs-tag="column-right"] [docsjs-tag="e-g"],[docsjs-tag="column-right"] [docsjs-tag="e-x"]'),function(el){
+			if (el.docsjs.state === 'min'){
+				el.style.height = el.style.paddingTop = el.style.paddingBottom = el.style.borderTopWidth = el.style.borderBottomWidth = '0px';
+			}
+		});
 		DocsJS.cd.refresh();
 	}
 	if (DocsJS.cache.events.columnchoice !== 0){

@@ -117,13 +117,11 @@ body,html{
 	cursor: pointer;
 	box-shadow: 1px 1px 6px 3px rgba(0,0,0,0.25);
 }
+a {
+	color: #505050;
+}
 
 /* e-x/e-g support */
-[docsjs-tag="e-x"][docsjs-state="min"],[docsjs-tag="e-g"][docsjs-state="min"]{
-	padding-top: 0;
-	padding-bottom: 0;
-	height: 0;
-}
 [docsjs-tag="ebefore"]{
 	position: relative;
 	background-color: #FFF;
