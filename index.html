@@ -18,8 +18,10 @@
 <meta name="theme-color" content="#2b2b2b">
 
 <script>
-	if (window.location.href.slice(-1) !== '/'){
-		window.location = window.location.href+'/';
+	var loc = window.location.href.split('/');
+	if (loc[loc.length-2] !== 'docsjs'){
+		loc[loc.length-1] = 'docsjs/' + loc[loc.length-1].slice(6);
+		window.location = loc.join('/');
 	}
 </script>
 
@@ -30,9 +32,6 @@
 </head>
 
 <body onLoad="init()">
-<!--Make columns more obvious (onhover and when opened), Proper embedded code (c9 ACE), cross-browser screenshots, restore original defaults on half minimizze, differentiate section minimize and header minimize, keep header at top, jump to minimized topic will maximize-->
-<!--keep varible sourcing for refresh, create your own doc-->
-<div></div>
 <div docsjs-tag="DocsJS-This-Baby">
 	<v-r rightArrow>
 		<div style="padding-top: 0.1em; display: inline-block;">
@@ -1192,18 +1191,6 @@ for (var i = 0; i &lt; docs.length; i++){
 							This determines the duration for DocsJS animations. Beware of setting the duration too long (over 500) as this can make reading your doc annoying.
 						</t-x>
 					</t-p>
-					<t-p docsjs-state="min">
-						<t-l>.styles</t-l>
-						<t-x>
-							<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Type</p>
-							Array containing strings that describe CSS properties.
-							<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Default</p>
-							['height']
-						</t-x>
-						<t-x>
-							Determines what properties are animated on opening/closing eg/ex. This doesn't really do much now but I may increase the functionality of this property in the future.
-						</t-x>
-					</t-p>
 				</t-p>
 				<t-p docsjs-state="min">
 					<t-l>DocsJS.easings</t-l>
@@ -1300,6 +1287,7 @@ for (var i = 0; i &lt; docs.length; i++){
 <script>
 	DocsJS.theme = 'Hailaxian';
 	DocsJS.superparent = 'DocsJS-This-Baby';
+	DocsJS.fontsize.set(22);
 	DocsJS.width.max = 1280;
 	DocsJS.width.min = 340;
 	DocsJS.eg.name = 'Example';

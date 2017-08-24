@@ -23,6 +23,10 @@ h1,h2,h3,h4,h5,h6{
 	will-change: transform;
 	transform: translateZ(0);
 }
+[docsjs-tag="s-c"] [docsjs-tag="s-c"]{
+	will-change: auto;
+	transform: none;
+}
 
 /* Basic setup */
 body,html{
@@ -33,12 +37,12 @@ body,html{
 }
 [docsjs-tag="DocsJS-This-Baby"]{
 	color: #000;
-	font-size: 22px;
 	line-height: 1.4em;
 	position: absolute;
 	width: 100%;
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
 	-webkit-text-size-adjust: 100%;
+	filter: invert(0%);
 }
 [docsjs-tag="bg"]{
 	background-size: cover;

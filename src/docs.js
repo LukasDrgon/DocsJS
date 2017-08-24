@@ -1,5 +1,6 @@
 // JavaScript Document
-// Planned for future releases: fix bug with topic embedded in eg, documentation search, better & more efficient sidebar animations, menu as a popup on mobile (make other things popup on mobile), Massive improvements for column animations
+// Planned for future releases: fix bug with topic embedded in eg, documentation search, better & more efficient sidebar animations, menu as a popup on mobile (make other things popup on mobile)
+// Restore default states on reset, Jump to minimized topic will maximize, Massive improvements for column animations (prevent reflows)
 var DocsJS = {};
 DocsJS.apply = function (func){
 	'use strict';
@@ -56,7 +57,6 @@ DocsJS.init = function(callback){
 
 		// Prefire events onready.
 		DocsJS.addEvent(document,'readystatechange',function(){
-			DocsJS.fontsize._value = parseInt(DocsJS.getStyle(document.querySelector('[docsjs-tag="'+DocsJS.superparent+'"]'),'font-size'));
 			DocsJS.scrolled();
 			DocsJS.resized();
 			hashChange();
@@ -82,13 +82,16 @@ DocsJS.init = function(callback){
 				});
 			});
 			DocsJS.animation.duration = duration;
-
-			if (callback === undefined){callback = function(){};}
-			callback();
-			DocsJS.events.ready();
+			
+			// Accessibility styles
 			var accessStyle = document.createElement('style');
 			accessStyle.innerHTML = '[docsjs-tag=accessibility-mode-content] h1,[docsjs-tag=accessibility-mode-content] h2,[docsjs-tag=accessibility-mode-content] h3,[docsjs-tag=accessibility-mode-content] h4,[docsjs-tag=accessibility-mode-content] h5,[docsjs-tag=accessibility-mode-content] h6{line-height:2em;font-weight:bold;text-decoration:underline;margin:0}[docsjs-tag=accessibility-mode-wrapper]{position:fixed;width:100%;height:100%;overflow:auto;-webkit-overflow-scrolling:touch;z-index:999999999999;padding:1em;box-sizing:border-box;background:#eaeaea}[docsjs-tag=accessibility-mode-content]{position:relative;width:100%;left:0;right:0;margin-left:auto;margin-right:auto;padding:1em;background-color:'+DocsJS.getStyle(document.querySelector('[docsjs-tag="t-x"]'),'background-color')+';color:'+DocsJS.getStyle(document.querySelector('[docsjs-tag="t-x"]'),'color')+';box-shadow:0 5px 20px 3px rgba(0,0,0,.3);box-sizing:border-box;overflow:hidden;font-size:1.2em}[docsjs-tag=accessibility-mode-content] p[docsjs-tag=textNode]{display:inline;margin-top:0;margin-bottom:0}[docsjs-tag=accessibility-mode-content] h1{font-size:2.5em}[docsjs-tag=accessibility-mode-content] h2{font-size:2em}[docsjs-tag=accessibility-mode-content] h3{font-size:1.6em}[docsjs-tag=accessibility-mode-content] h4{font-size:1.4em}[docsjs-tag=accessibility-mode-content] h5{font-size:1.2em}[docsjs-tag=accessibility-mode-content] h6{font-size:1.2em; font-weight: regular;}';
 			document.head.appendChild(accessStyle);
+			
+			// Done
+			if (callback === undefined){callback = function(){};}
+			callback();
+			DocsJS.events.ready();
 		});
 	};
 	DocsJS.refresh(finish);
@@ -456,9 +459,20 @@ DocsJS.refresh = function(callback){
 			var click = function(){
 				el.onclick = function(){};
 				var d = (el.parentElement.parentElement.parentElement.parentElement.docsjs.state === 'max')? 1 : 0;
+				var tl = el.parentElement.parentElement;
+				var hd = el.parentElement.parentElement.parentElement;
+				var sc = el.parentElement.parentElement.parentElement.parentElement;
+				var tlHeight = parseInt(DocsJS.getStyle(tl,'height')) + parseInt(DocsJS.getStyle(tl,'padding-top')) + parseInt(DocsJS.getStyle(tl,'padding-bottom')) + parseInt(DocsJS.getStyle(tl,'border-top-width')) + parseInt(DocsJS.getStyle(tl,'border-bottom-width')) + parseInt(DocsJS.getStyle(sc,'padding-top')) + parseInt(DocsJS.getStyle(sc,'padding-bottom'));
+				var scStyle = sc.style.height;
+				sc.style.height = '';
+				var hdStyle = hd.style.height;
+				hd.style.height = '';
+				var scHeight = parseInt(DocsJS.getStyle(sc,'height'));
+				sc.style.height = scStyle;
+				hd.style.height = hdStyle;
 				DocsJS.animate({
 					from: d,	to: 1-d,	duration: DocsJS.animation.duration,	easing: DocsJS.easings.easeOutQuart,
-					pass: [el,d,DocsJS.getScMaxHeight(el.parentElement.parentElement.parentElement.parentElement),DocsJS.getScMinHeight(el.parentElement.parentElement.parentElement.parentElement)],
+					pass: [el,d,scHeight,tlHeight],
 					step: function(now, pass){
 						DocsJS.buttons.minimize.animation(pass[0].querySelector('[docsjs-tag="button-parent"]'),now);
 						pass[0].parentElement.parentElement.parentElement.parentElement.style.height = (pass[2]-pass[3])*now + pass[3] + 'px';
@@ -504,13 +518,16 @@ DocsJS.refresh = function(callback){
 				DocsJS.bindPrefs();
 				DocsJS.animate({
 					from: d,	to: 1-d,	duration: DocsJS.animation.duration,	easing: DocsJS.easings.easeOutQuart,
-					pass: [el,d,parseInt(DocsJS.getMax(el.parentElement.parentElement.parentElement.querySelector('[docsjs-tag="menu"]'),'height')),parseInt(DocsJS.getMax(el.parentElement.parentElement.parentElement.querySelector('[docsjs-tag="menu"]'),'padding'))],
+					pass: [el,d,parseInt(DocsJS.getStyle(el.parentElement.parentElement.parentElement.querySelector('[docsjs-tag="menu"]'),'height')),parseInt(DocsJS.getStyle(el.parentElement.parentElement.parentElement.querySelector('[docsjs-tag="menu"]'),'padding-top')),parseInt(DocsJS.getStyle(el.parentElement.parentElement.parentElement.querySelector('[docsjs-tag="menu"]'),'padding-bottom')),parseInt(DocsJS.getStyle(el.parentElement.parentElement.parentElement.querySelector('[docsjs-tag="menu"]'),'border-top-width')),parseInt(DocsJS.getStyle(el.parentElement.parentElement.parentElement.querySelector('[docsjs-tag="menu"]'),'border-bottom-width'))],
 					step: function(now, pass){
 						now = 1-now;
 						DocsJS.buttons.menu.animation(pass[0].querySelector('[docsjs-tag="button-parent"]'),now);
-						pass[0].parentElement.parentElement.parentElement.querySelector('[docsjs-tag="menu"]').style.height = pass[2]*now+'px';
-						pass[0].parentElement.parentElement.parentElement.querySelector('[docsjs-tag="menu"]').style.paddingTop = pass[3]*now+'px';
-						pass[0].parentElement.parentElement.parentElement.querySelector('[docsjs-tag="menu"]').style.paddingBottom = pass[3]*now+'px';
+						var mn = pass[0].parentElement.parentElement.parentElement.querySelector('[docsjs-tag="menu"]');
+						mn.style.height = pass[2]*now+'px';
+						mn.style.paddingTop = pass[3]*now+'px';
+						mn.style.paddingBottom = pass[4]*now+'px';
+						mn.style.borderTopWidth = pass[5]*now+'px';
+						mn.style.borderBottomWidth = pass[6]*now+'px';
 					},
 					callback: function(pass){
 						if (pass[1] === 0){											
@@ -518,7 +535,7 @@ DocsJS.refresh = function(callback){
 						} else{
 							var menu = pass[0].parentElement.parentElement.parentElement.querySelector('[docsjs-tag="menu"]');
 							menu.style.height = 'auto';
-							menu.style.padding = menu.style.paddingTop = menu.style.paddingBottom = '';
+							menu.style.padding = menu.style.paddingTop = menu.style.paddingBottom = menu.style.borderTopWidth = menu.style.borderBottomWidth = '';
 						}
 						pass[0].onclick = click;
 						DocsJS.correctColumnHeight(doc);
@@ -534,9 +551,14 @@ DocsJS.refresh = function(callback){
 					if (el.parentElement.parentElement.docsjs.state === 'max' || el.parentElement.docsjs.tag === 't-p'){
 						el.onclick = function(){};
 						var d = (el.parentElement.docsjs.state === 'max')? 1 : 0;
+						var heightBackup = el.parentElement.style.height;
+						el.parentElement.style.height = '';
+						var tpHeight = parseInt(DocsJS.getStyle(el.parentElement,'height'));
+						el.parentElement.style.height = heightBackup;
+						var tlHeight = parseInt(DocsJS.getStyle(el,'height'))+parseInt(DocsJS.getStyle(el,'padding-top'))+parseInt(DocsJS.getStyle(el,'padding-bottom'))+parseInt(DocsJS.getStyle(el,'border-top-width'))+parseInt(DocsJS.getStyle(el,'border-bottom-width'));
 						DocsJS.animate({
 							from: d,	to: 1-d,	duration: DocsJS.animation.duration,	easing: DocsJS.easings.easeOutQuart,
-							pass: [el,d,DocsJS.getMax(el.parentElement,'clientHeight')-DocsJS.getMax(el,'clientHeight'),DocsJS.getMax(el,'clientHeight')],
+							pass: [el,d,tpHeight-tlHeight,tlHeight],
 							step: function(now, pass){
 								pass[0].parentElement.style.height = (pass[2])*now + pass[3] + 'px';
 							},
@@ -565,28 +587,16 @@ DocsJS.refresh = function(callback){
 		DocsJS.forEach(doc.querySelectorAll('[docsjs-tag="ebefore"]'),function(el){
 			var click = function(){
 				el.onclick = function(){};
-				var styles = DocsJS.animation.styles.map(function(x){
-					x = x.split('-');
-					var out = [x[0]];
-					for (var i = 1; i < x.length; i++){
-						out.push(x[i].charAt(0).toUpperCase()+x[i].slice(1));
-					}
-					return out.join('');
-				});
 				var d = (el.nextSibling.docsjs.state === 'max')? 1 : 0;
 				DocsJS.animate({
 					from: d,	to: 1-d,	duration: DocsJS.animation.duration,	easing: DocsJS.easings.easeOutQuart,
-					pass: [el.nextSibling,styles,d,
-							DocsJS.animation.styles.map(function(x){
-								return DocsJS.getMax(el.nextSibling,x);
-							}),
-							DocsJS.animation.styles.map(function(x){
-								return DocsJS.getMin(el.nextSibling,x);
-							}),],
+					pass: [el.nextSibling,d,parseInt(DocsJS.getStyle(el.nextSibling,'height')),parseInt(DocsJS.getStyle(el.nextSibling,'padding-top')),parseInt(DocsJS.getStyle(el.nextSibling,'padding-bottom')),parseInt(DocsJS.getStyle(el.nextSibling,'border-top-width')),parseInt(DocsJS.getStyle(el.nextSibling,'border-bottom-width'))],
 					step: function(now, pass){
-						for (var i = 0; i < DocsJS.animation.styles.length; i++){
-							pass[0].style[pass[1][i]] = parseInt(pass[3][i])*now + parseInt(pass[4][i])*(1-now)+'px';	
-						}
+						pass[0].style.height = pass[2]*now+'px';
+						pass[0].style.paddingTop = pass[3]*now+'px';
+						pass[0].style.paddingBottom = pass[4]*now+'px';
+						pass[0].style.borderTopWidth = pass[5]*now+'px';
+						pass[0].style.borderBottomWidth = pass[6]*now+'px';
 						if (pass[0].docsjs.tag === 'e-x'){
 							DocsJS.buttons.ex.animation(pass[0].previousSibling.querySelector('[docsjs-tag="button-ebefore"]'),now);
 						} else if (pass[0].docsjs.tag === 'e-g'){
@@ -595,9 +605,7 @@ DocsJS.refresh = function(callback){
 					},
 					callback: function(pass){
 						pass[0].docsjs.state = (pass[2] === 0)? 'max' : 'min';
-						for (var i = 0; i < DocsJS.animation.styles.length; i++){
-							pass[0].style[pass[1][i]] = '';	
-						}
+						pass[0].style.padding = pass[0].style.paddingTop = pass[0].style.paddingBottom = pass[0].style.borderTopWidth = pass[0].style.borderBottomWidth = '';
 						pass[0].previousSibling.onclick = click;
 						DocsJS.scrolled();
 						DocsJS.correctColumnHeight(doc);
@@ -963,7 +971,7 @@ DocsJS.bindPrefs = function(){
 				});
 				DocsJS.animate({
 					from: DocsJS.fontsize._value,	duration: DocsJS.animation.duration,	easing: DocsJS.easings.easeOutQuart,
-					to: parseFloat(DocsJS.getMin(doc,'font-size')),
+					to: parseFloat(DocsJS.style(doc,'font-size')),
 					step: function(now){
 						DocsJS.fontsize._value = now;
 						DocsJS.resized();
@@ -1144,9 +1152,16 @@ DocsJS.jumpTo = function(location){
 			var dest = document.querySelectorAll('[docsjs-tag="'+DocsJS.superparent+'"]')[loc[0]].querySelector('main');
 			loc.shift();
 			for (var i = 0; i < loc.length; i++){
-				dest = dest.querySelectorAll(':scope>[docsjs-tag="s-c"],:scope>[docsjs-tag="t-p"]')[loc[i]];
+				var children = dest.querySelectorAll('[docsjs-tag="s-c"],[docsjs-tag="t-p"]');
+				var immeditateChildren = [];
+				for (var j = 0; j < dest.length; j++){
+					if (children[j].parentElement === dest){
+						immeditateChildren.push(children[j]);
+					}
+				}
+				dest = immeditateChildren[loc[i]];
 			}
-			dest = dest.querySelector(':scope > [docsjs-tag="h-d"]') || dest;
+			dest = dest.querySelector('[docsjs-tag="h-d"]') || dest;
 			var scrollTo = dest.getBoundingClientRect().top - document.body.getBoundingClientRect().top - DocsJS.fontsize._value;
 			if (document.querySelector('[docsjs-tag="'+DocsJS.superparent+'"]').clientHeight < scrollTo){
 				scrollTo = Math.min(scrollTo, document.querySelector('[docsjs-tag="'+DocsJS.superparent+'"]').clientHeight - DocsJS.window.height());
@@ -1250,13 +1265,15 @@ DocsJS.fontsize = {
 	set: function(val){
 		'use strict';
 		DocsJS.fontsize._value = val;
-		DocsJS.resized();
-		DocsJS.scrolled();
-		DocsJS.apply(function(doc){
-			DocsJS.correctColumnHeight(doc);
-		});
+		try {
+			DocsJS.resized();
+			DocsJS.scrolled();
+			DocsJS.apply(function(doc){
+				DocsJS.correctColumnHeight(doc);
+			});
+		} catch(e){}
 	},
-	_value: 'On pageload, this is replaced by the detected font-size for your doc. From then on, fontsizes are controlled from this option, so if you wish to change font-size after pageload, make sure to update this property as well as the CSS.',
+	_value: 22,
 };
 DocsJS.origin = document.getElementsByTagName('script')[document.getElementsByTagName('script').length - 1].src;
 DocsJS.theme = 'Hailaxian';
@@ -1266,7 +1283,6 @@ DocsJS.width = {
 	min: 340
 };
 DocsJS.animation = {
-	styles: ['height','padding-top','padding-bottom'],
 	duration: 300
 };
 DocsJS.columnOffsets = {
@@ -1700,88 +1716,6 @@ DocsJS.correctColumnHeight = function(doc){
 	if (DocsJS.column.state[1] !== 'none'){
 		correct('right');
 	}
-};
-DocsJS.getMax = function (el, prop){
-	'use strict';
-	var clone, out;
-	if (prop !== 'offsetHeight' && prop !== 'offsetWidth' && prop !== 'clientHeight' && prop !== 'clientWidth'){
-		clone = el.cloneNode(true);
-		clone.style.visibility = 'hidden';
-		clone.docsjs.state = 'max';
-		clone.removeAttribute('style');
-		el.parentElement.appendChild(clone);
-		out = DocsJS.getStyle(clone,prop);
-		el.parentElement.removeChild(clone);
-		return out;
-	} else{
-		el.style.visibility = 'hidden';
-		el.docsjs.state = 'max';
-		var style = el.getAttribute('style');
-		el.removeAttribute('style');
-		var doc = el.offsetParent;
-		while (doc.docsjs.tag !== DocsJS.superparent){
-			doc = doc.offsetParent;
-		}
-		DocsJS.correctColumnHeight(doc);
-		out = el[prop];
-		el.docsjs.state = 'min';
-		el.setAttribute('style',style);
-		el.style.visibility = '';
-		return out;
-	}
-};
-DocsJS.getMin = function (el, prop){
-	'use strict';
-	var clone = el.cloneNode(true);
-	clone.style.visibility = 'hidden';
-	clone.docsjs.state = 'min';
-	clone.removeAttribute('style');
-	el.parentElement.appendChild(clone);
-	var out = DocsJS.getStyle(clone,prop);
-	el.parentElement.removeChild(clone);
-	return out;
-};
-DocsJS.getScMinHeight = function(el){
-	'use strict';
-	var clone = el.cloneNode(true);
-	clone.style.visibility = 'hidden';
-	DocsJS.forEach(clone.querySelectorAll(':scope > *'),function(c){
-		if (c.docsjs === undefined || c.docsjs.tag !== 'h-d'){
-			c.style.display = 'none';
-		} else{
-			DocsJS.forEach(c.querySelectorAll(':scope > *'),function(d){
-				if (d.docsjs === undefined || d.docsjs.tag !== 't-l'){
-					d.style.display = 'none';
-				}
-			});
-		}
-	});
-	clone.removeAttribute('style');
-	el.parentElement.appendChild(clone);
-	var out = clone.offsetHeight;
-	el.parentElement.removeChild(clone);
-	return out;
-};
-DocsJS.getScMaxHeight = function(el){
-	'use strict';
-	var clone = el.cloneNode(true);
-	clone.style.visibility = 'hidden';
-	clone.querySelector('[docsjs-tag="h-d"]').style.height = 'auto';
-	clone.removeAttribute('style');
-	el.parentElement.appendChild(clone);
-	var out = clone.offsetHeight;
-	el.parentElement.removeChild(clone);
-	return out;
-};
-DocsJS.loadScript = function(url, callback){
-	'use strict';
-	var head = document.getElementsByTagName('head')[0];
-	var script = document.createElement('script');
-	script.type = 'text/javascript';
-	script.src = url;
-	script.onreadystatechange = callback;
-	script.onload = callback;
-	head.appendChild(script);
 };
 DocsJS.supports = {
 	passive: false
