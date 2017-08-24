@@ -240,6 +240,9 @@ DocsJS.resized = function(){
 	var scrollTop = document.body.scrollTop;
 	scrollTop = document.body.scrollTop;
 };
+window.html5 = {
+  'elements': 's-c h-d t-p t-l t-x e-g e-x c-d'
+};
 DocsJS.refresh = function(callback){
 	'use strict';
 	// Set theme
