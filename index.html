@@ -60,9 +60,9 @@
 		<h-d>
 			<t-l>What is DocsJS?</t-l>
 			<t-x>
-				DocsJS is an open source documentation library lets you focus on just writing. Think of it as offloading all the dirty work to me. Want a quick run down of things you don't have to worry about anymore?
-				<ol style="margin-bottom: 0;">
-					<li>Compatibility: supports IE8+ (Windows XP wow!).</li>
+				DocsJS is an open source documentation library lets you focus on just writing. Think of it as offloading all the grunt work to us. Want a quick run down of things you don't have to worry about anymore?
+				<ol>
+					<li>Compatibility: tested on IE8+ (Windows XP wow!), FF11+, Chrome15+, and more.</li>
 					<li>Accessibility: complies with and exceeds new and old accessibilty standards.</li>
 					<li>Navigation: automatically generates the best navigation system I've seen.</li>
 					<li>Responsiveness: works perfectly (and I really mean perfectly) on devices of any size.</li>
@@ -70,16 +70,12 @@
 					<li>Time: DocsJS is designed to make writing docs very efficient and easy.</li>
 					<li>Uniqueness: Easily throw in a few custom styles and the look's all yours.</li>
 				</ol>
+				(pssst. the real goal of this library is to make documentation more consistent and accessible to people with disabilities; all these amazing features are just to market to developers!)
 			</t-x>
-			<e-x docsjs-name="My ulterior motives (hehe)" class="changelog">
-				Hehehe
-			</e-x>
 			<e-x docsjs-name="Changelog" class="changelog">
-				<p>Please use a CDN to deliver the newest release. Near future versions will focus on accessibility and handling large docs.</p>
-				
-				<p style="margin-top: 0.6em;">Release 1.0.0 on 17 July 2017</p>
+				<p>Release 1.0.1 // 27 Aug 2017</p>
 				<ol>
-					<li>DocsJS released!</li>
+					<li>DocsJS publicly released!</li>
 				</ol>
 			</e-x>
 			
@@ -95,54 +91,66 @@
 		<h-d>
 			<t-l>Getting started</t-l>
 			<t-x>
-				This won't take you more than 5 minutes to learn. Promise. First of all, you'll have to add docs.js to your HTML page. I highly, highly recommend using the CDN described below for many reasons including keeping DocsJS up to date.<br><br>
-				First, add this to the head of your doc,<br>
-				<c-d docsjs-lang="html">&lt;script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.8/ace.js"&gt;&lt;/script&gt;
+				This won't take you more than a few minutes to learn. Promise. First of all, you'll have to add docs.js to your HTML page. I highly, highly recommend using the CDN described below for many reasons including keeping DocsJS up to date.<br><br>
+				First, add this to the head of your doc (IE doesn't like to load scripts in the body),<br>
+				<c-d docsjs-lang="html" style="margin-top: 0.25em; margin-bottom: 0.5em;">&lt;script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.8/ace.js"&gt;&lt;/script&gt;
 &lt;script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Hailiax/DocsJS@1/src/docs.min.js"&gt;&lt;/script&gt;</c-d>
 			
 				and this to the body.<br>
-				<c-d docsjs-lang="html">&lt;div docsjs-tag="DocsJS-This-Baby"&gt;
+				<c-d docsjs-lang="html" style="margin-top: 0.25em;">&lt;div docsjs-tag="DocsJS-This-Baby"&gt;
 	&lt;!-- This is where you write your doc --&gt;
 &lt;/div&gt;
 &lt;script&gt;DocsJS.init();&lt;/script&gt;</c-d><br>
 				Now we can get started!
 			</t-x>
+			<e-x docsjs-name="Single page documentation?">
+				By being a javascript library, DocsJS inherently encourages either single page documents or few larger docs. However, a lot of the documentation you'll come across consist of many small pages connected by hyperlinks. There are a lot of cons with this approach and all the pros I know of have been accounted for in DocsJS. Let's discuss the cons first:
+				<ol>
+					<li>Loading times: Text isn't that heavy so why should we wait for multiple small pages to load when we can just load everything we might want to read at once?</li>
+					<li>Accessibility: If you find loading times annoying, imagine how people with disabilities or people on a slow internet feel about having to click a million links.</li>
+					<li>Disorganized: Often times, the amount of links for a doc can get so insane it gets hard to keep track or even find them.</li>
+					<li>Hard to use: Would you rather write docs in flexible, clean, structured HTML or learn how to use a server side generator.</li>
+				</ol>
+				Some people would argue that many-small-page docs can make navigation easier for <span style="font-weight: 700;">the average person</span>. You can click on the intended link and you'll only get the information for that link. Clean right? I agree, which is why DocsJS focuses on keeping navigation clean. Each topic has its own hyperlink and a structured menu is automatically generated for every doc. With DocsJS' navigation system, readers should feel just as organized, if not more as finding context and related topics will be much easier.<br><br>
+				Disagree with my opinion? I'd love to hear what you think at hailiaxone@gmail.com.
+			</e-x>
 		</h-d>
 		<t-p>
-			<t-l>Compact custom tags</t-l>
+			<t-l>Basic structure</t-l>
 			<t-x>
-				DocsJS recognizes the following lowercase, two-letter html tags.
+				DocsJS uses the following tags.
 				<br><br>
-				<c-d docsjs-lang="html">&lt;s-c&gt;Section: Container for topics&lt;/s-c&gt;
-&lt;h-d&gt;Header: Top of each section&lt;/h-d&gt;
-&lt;t-p&gt;Topic: Container for content&lt;/t-p&gt;
-&lt;t-l&gt;Title: Title of topic/header&lt;/t-l&gt;
-&lt;t-x&gt;Text: Summary of topic&lt;/t-x&gt;
-&lt;e-g&gt;Example: I wonder what this is for&lt;/e-g&gt;
-&lt;e-x&gt;Extra Details/Extraneous: Hmmmmmmm&lt;/e-x&gt;
-&lt;c-d&gt;Code: DocsJS embeds Cloud9's Ace code editor by default&lt;/c-d&gt;
-&lt;v-r&gt;Varible: Varibles?? What?? We'll get into this later&lt;/v-r&gt;</c-d>
+				<c-d docsjs-lang="html">&lt;s-c&gt;Section: a container for grouping topics
+	&lt;h-d&gt;Header: every section needs a header at the top&lt;/h-d&gt;
+	&lt;t-p&gt;Topic: a container for a topic
+		&lt;t-l&gt;Title: title of your topic&lt;/t-l&gt;
+		&lt;t-x&gt;Text: basic details for the topic&lt;/t-x&gt;
+		&lt;e-g&gt;Example: open/close-able for examples/code&lt;/e-g&gt;
+		&lt;e-x&gt;Extra Details/Extraneous: open/close-able for more details&lt;/e-x&gt;
+		&lt;c-d&gt;Code: put code in here to be syntax-highlighted&lt;/c-d&gt;
+	&lt;/t-p&gt;
+&lt;/s-c&gt;
+&lt;v-r&gt;Varible: we'll get into this later&lt;/v-r&gt;</c-d>
 				<br>
-				Click Try it! below to edit a doc realtime.
+				Click "Try it!" below to see a basic example that you can edit realtime!
 			</t-x>
-
 			<e-g docsjs-name="Try it!">
 				<c-d docsjs-lang="html" docsjs-editable="true" class="parse1 src parse">&lt;div docsjs-tag="DocsJS-This-Baby"&gt;
 	&lt;s-c&gt;
 		&lt;h-d&gt;
-			&lt;t-l&gt;Sample header&lt;/t-l&gt;
+			&lt;t-l&gt;Example header&lt;/t-l&gt;
 			&lt;t-x&gt;Something describing your awe-inspiring section.&lt;/t-x&gt;
 		&lt;/h-d&gt;
 		&lt;t-p&gt;
-			&lt;t-l&gt;Sample topic&lt;/t-l&gt;
+			&lt;t-l&gt;Example topic&lt;/t-l&gt;
 			&lt;t-x&gt;Wow! What a moving topic this is.&lt;/t-x&gt;
 			&lt;e-g&gt;Here's an example of how this topic will change your life.&lt;/e-g&gt;
 			&lt;e-x&gt;You won't believe what extra details this contains next.&lt;/e-x&gt;
 		&lt;/t-p&gt;
 		&lt;t-p&gt;
-			&lt;t-l&gt;Ohmygosh another topic appeared&lt;/t-l&gt;
-			&lt;t-x&gt;Level 4 summary.&lt;/t-x&gt;
-			&lt;e-x&gt;Level 2 example.&lt;/e-x&gt;
+			&lt;t-l&gt;Ohmygosh another topic&lt;/t-l&gt;
+			&lt;t-x&gt;Too many topics!!&lt;/t-x&gt;
+			&lt;e-g&gt;Too many examples!!&lt;/e-g&gt;
 		&lt;/t-p&gt;
 	&lt;/s-c&gt;
 &lt;/div&gt;</c-d>
@@ -150,35 +158,111 @@
 			</e-g>
 		</t-p>
 		<t-p>
-			<t-l>Flexibility of divs</t-l>
-			<t-x>Every custom tag is essentially a div, which means you can nest them inside each other, add attributes like <pre>style=""</pre>, etc. Nesting custom tags helps create a very organized doc: you can add sections in topics, sections in sections, sections in examples, topics in sections in extra details in topics in sections in sections... yeah. Nothing fancy, just intuitive, simple divs.</t-x>
-
+			<t-l>Nested structures</t-l>
+			<t-x>Every custom tag is basicly a div so you can nest them within each other, add attributes like <pre>style=""</pre>, etc. Nesting these tags can help create a well organized doc: you can add sections in topics, sections in sections, sections in examples, etc. Experiment with different combos below!</t-x>
 			<e-g docsjs-name="Try it!">
 				<c-d docsjs-lang="html" docsjs-editable="true" class="parse2 src parse">&lt;div docsjs-tag="DocsJS-This-Baby"&gt;
 	&lt;s-c&gt;
 		&lt;h-d&gt;
 			&lt;t-l&gt;Regular header&lt;/t-l&gt;
-			&lt;t-x&gt;Nothing cool here&lt;/t-x&gt;
+			&lt;t-x&gt;Nothing cool here.&lt;/t-x&gt;
 		&lt;/h-d&gt;
 		&lt;t-p&gt;
-			&lt;t-l&gt;Section in topic&lt;/t-l&gt;
-			&lt;t-x&gt;This contains a section, containing a header, in a topic.&lt;/t-x&gt;
+			&lt;t-l&gt;Regular topic&lt;/t-l&gt;
+			&lt;t-x&gt;However, the contents of this topic are special!&lt;/t-x&gt;
 			&lt;s-c&gt;
 				&lt;h-d&gt;
-					&lt;t-l&gt;Regular header&lt;/t-l&gt;
-					&lt;t-x&gt;Nothing cool here&lt;/t-x&gt;
+					&lt;t-l&gt;Embedded section&lt;/t-l&gt;
+					&lt;t-x&gt;That's right, this is a section in a topic. You can add as many sections in a topic as you want! Try adding more topics and sections inside this topic.&lt;/t-x&gt;
 				&lt;/h-d&gt;
 			&lt;/s-c&gt;
 		&lt;/t-p&gt;
 		&lt;s-c&gt;
-			&lt;t-p&gt;
-				&lt;t-l&gt;Topic in section in section.&lt;/t-l&gt;
+			&lt;h-d&gt;
+				&lt;t-l&gt;More embedded sections&lt;/t-l&gt;
 				&lt;t-x&gt;This is what a section inside a section looks like.&lt;/t-x&gt;
-			&lt;/t-p&gt;
+			&lt;/h-d&gt;
 		&lt;/s-c&gt;
 	&lt;/s-c&gt;
 &lt;/div&gt;</c-d>
 			<iframe class="parse2 dest" title="Try it example result"></iframe>
+			</e-g>
+			<e-x docsjs-name="A few restrictions">There are a few restrictions. First, every section must contain a header, otherwise accessibility and navigation will break. Finally, everything must be inside at least one section. Topics in topics are fine as long as the parent topic is inside a section. You can also think of this as no topic's immediate parent can be the DocsJS-This-Baby div. (oh yeah, you can't add topics or sections inside of e-g or e-x tags but this is a feature I might add in the future)</e-x>
+		</t-p>
+		<t-p>
+			<t-l>A few attributes</t-l>
+			<t-x>There are two attributes to know: <pre>docsjs-state</pre> and <pre>docsjs-name</pre>. <pre>docsjs-state</pre> can be set to either <pre>min</pre> or <pre>max</pre> and determines wether a topic, section, or e-g/e-x is minimized or maximized initially (defaults to <pre>min</pre> on e-g/e-x and <pre>max</pre> on s-c/t-p.<br><br>
+			<pre>docsjs-name</pre> sets name of e-g/e-x shown on the bar that open/closes the e-g/e-x. It defaults to "Example" for e-g and "More" for e-x. Try it below!</t-x>
+			<e-g docsjs-name="Try it!">
+				<c-d docsjs-lang="html" docsjs-editable="true" class="parse4 src parse">&lt;div docsjs-tag="DocsJS-This-Baby"&gt;
+	&lt;s-c&gt;
+		&lt;h-d&gt;
+			&lt;t-l&gt;Regular header&lt;/t-l&gt;
+			&lt;t-x&gt;Oh, by the way, the circular button minimizes/maximizes the section and clicking on a title minimizes/maximizes the topic or header.&lt;/t-x&gt;
+		&lt;/h-d&gt;
+		&lt;t-p docsjs-state="min"&gt;
+			&lt;t-l&gt;Minimized topic&lt;/t-l&gt;
+			&lt;t-x&gt;The reader will have to click the title to expand this topic.&lt;/t-x&gt;
+		&lt;/t-p&gt;
+		&lt;t-p&gt;
+			&lt;t-l&gt;Regular topic here&lt;/t-l&gt;
+			&lt;t-x&gt;But some of the e-g and e-x tags are named!&lt;/t-x&gt;
+			&lt;e-g docsjs-name="wow!" docsjs-state="max"&gt;Named and maximized example.&lt;/e-g&gt;
+			&lt;e-g docsjs-name="Hello world"&gt;Named example.&lt;/e-g&gt;
+			&lt;e-x docsjs-state="max"&gt;Maximized extra details.&lt;/e-x&gt;
+		&lt;/t-p&gt;
+	&lt;/s-c&gt;
+	&lt;s-c docsjs-state="min"&gt;
+		&lt;h-d&gt;
+			&lt;t-l&gt;Minimized section&lt;/t-l&gt;
+			&lt;t-x&gt;Ever wondered what those bars on the side were?&lt;/t-x&gt;
+		&lt;/h-d&gt;
+		&lt;t-p docsjs-state="min"&gt;
+			&lt;t-l&gt;Well, find out here!&lt;/t-l&gt;
+			&lt;t-x&gt;You can drag the bars towards the center. Depending on the symbol you drag, it'll move the e-g or e-x tags to the side. The menu symbol will just create menu on the side. To close the sidebars, just drag them back to the side.&lt;/t-x&gt;
+			&lt;e-x docsjs-state="max"&gt;Try dragging this to the sidebar! Drag the matching symbol. (The one with the dots)&lt;/e-x&gt;
+		&lt;/t-p&gt;
+	&lt;/s-c&gt;
+&lt;/div&gt;</c-d>
+			<iframe class="parse4 dest" title="Try it example result"></iframe>
+			</e-g>
+		</t-p>
+		<t-p>
+			<t-l>Bonus tags!</t-l>
+			<t-x>Alrighty, there are two tags that haven't been covered yet: <pre>&lt;c-d&gt;</pre> for syntax-highlighted code and <pre>&lt;v-r&gt;</pre> for HTML varibles. <pre>&lt;c-d&gt;</pre> is pretty simple. First, just pretend it's a <pre>&lt;pre&gt;</pre> tag (white spaces are preserved) and add code in whatever language you want. Next, add the attribute <pre>docsjs-lang</pre> and set it to the language you used. If I wrote javascript in a c-d tag, I would make it <pre>&lt;c-d docsjs-lang="javascript"&gt;//Javascript here&lt;/c-d&gt;.</pre><br><br>
+			</t-x>
+			<e-g docsjs-name="Try it!">
+				<c-d docsjs-lang="html" docsjs-editable="true" class="parse4 src parse">&lt;div docsjs-tag="DocsJS-This-Baby"&gt;
+	&lt;s-c&gt;
+		&lt;h-d&gt;
+			&lt;t-l&gt;Regular header&lt;/t-l&gt;
+			&lt;t-x&gt;Oh, by the way, the circular button minimizes/maximizes the section and clicking on a title minimizes/maximizes the topic or header.&lt;/t-x&gt;
+		&lt;/h-d&gt;
+		&lt;t-p docsjs-state="min"&gt;
+			&lt;t-l&gt;Minimized topic&lt;/t-l&gt;
+			&lt;t-x&gt;The reader will have to click the title to expand this topic.&lt;/t-x&gt;
+		&lt;/t-p&gt;
+		&lt;t-p&gt;
+			&lt;t-l&gt;Regular topic here&lt;/t-l&gt;
+			&lt;t-x&gt;But some of the e-g and e-x tags are named!&lt;/t-x&gt;
+			&lt;e-g docsjs-name="wow!" docsjs-state="max"&gt;Named and maximized example.&lt;/e-g&gt;
+			&lt;e-g docsjs-name="Hello world"&gt;Named example.&lt;/e-g&gt;
+			&lt;e-x docsjs-state="max"&gt;Maximized extra details.&lt;/e-x&gt;
+		&lt;/t-p&gt;
+	&lt;/s-c&gt;
+	&lt;s-c docsjs-state="min"&gt;
+		&lt;h-d&gt;
+			&lt;t-l&gt;Minimized section&lt;/t-l&gt;
+			&lt;t-x&gt;Ever wondered what those bars on the side were?&lt;/t-x&gt;
+		&lt;/h-d&gt;
+		&lt;t-p docsjs-state="min"&gt;
+			&lt;t-l&gt;Well, find out here!&lt;/t-l&gt;
+			&lt;t-x&gt;You can drag the bars towards the center. Depending on the symbol you drag, it'll move the e-g or e-x tags to the side. The menu symbol will just create menu on the side. To close the sidebars, just drag them back to the side.&lt;/t-x&gt;
+			&lt;e-x docsjs-state="max"&gt;Try dragging this to the sidebar! Drag the matching symbol. (The one with the dots)&lt;/e-x&gt;
+		&lt;/t-p&gt;
+	&lt;/s-c&gt;
+&lt;/div&gt;</c-d>
+			<iframe class="parse4 dest" title="Try it example result"></iframe>
 			</e-g>
 		</t-p>
 	</s-c>
@@ -254,7 +338,9 @@ var varName = "&lt;p&gt;Varible Content Here&lt;/p&gt;"</c-d>
 			<t-l>Complete access</t-l>
 			<t-x>Dealing with different browsers in general is a huge pain, espeically for documentation where support for old browsers is vital. That's why DocsJS places huge empahasis on compatability and has been tested with <a href="https://www.browserstack.com" target="_blank"><img src="example/BrowserStack.png" style="display:inline; height: 0.7em;"></a> on browsers all the way back to IE7 (2006) and partial compatability with IE6 (2001).</t-x>
 
-			<e-g docsjs-name="Screenshots">*Self note* Put screenshots here last</e-g>
+			<e-g docsjs-name="Screenshots" id="screenshots">
+				<div><img src="example/screenshots/desktop/1-snowLeopard.jpeg"><p>Snow Leopard</p></div><div><img src="example/screenshots/desktop/2-firefox11.jpeg"><p>Firefox 11</p></div><div><img src="example/screenshots/desktop/3-chrome15.jpeg"><p>Chrome 15</p></div><div><img src="example/screenshots/desktop/4-ie8.jpeg"><p>IE 8</p></div><div><img src="example/screenshots/desktop/5-ie9.jpeg"><p>IE 9</p></div><div><img src="example/screenshots/desktop/6-ie10.jpeg"><p>IE 10</p></div><div><img src="example/screenshots/desktop/7-ie11.jpeg"><p>IE 11</p></div><div><img src="example/screenshots/desktop/8-edge.jpeg"><p>MS Edge</p></div><div><img src="example/screenshots/desktop/9-yandex14-12.jpeg"><p>Yandex 14.12</p></div><div><img src="example/screenshots/desktop/10-firefox54.jpeg"><p>Firefox 54</p></div><div><img src="example/screenshots/desktop/11-chrome60.jpeg"><p>Chrome 60</p></div><div><img src="example/screenshots/desktop/12-highSierra.jpeg"><p>High Sierra</p></div><div><img src="example/screenshots/phone/1-nokiaLumia520.jpeg"><p>Lumia 520</p></div><div><img src="example/screenshots/phone/2-galaxyS2.jpeg"><p>Galaxy S2</p></div><div><img src="example/screenshots/phone/3-iPhone4.jpeg"><p>iPhone 4</p></div><div><img src="example/screenshots/phone/4-iPhone7.jpeg"><p>iPhone 7</p></div>
+			</e-g>
 
 			<t-x style="padding-left:0; padding-right:0;">
 				<p style="padding-left:1em; padding-right:1em;">Dealing with different screen sizes is also a huge pain. But, I'm sure you've figured out that DocsJS has covered every mobile base by now. Everything that can be accessed on this doc on a big screen is equally accessible on a mobile screen. If you really need sidebars on a mobile device, just rotate the device to landscape. DocsJS is entirely styled in em units which allows for perfect scaling for different screen sizes, esepcially really small ones. Try resizing this doc below by holding the – sign.</p><br>
@@ -277,46 +363,41 @@ var varName = "&lt;p&gt;Varible Content Here&lt;/p&gt;"</c-d>
 	</s-c>
 	<s-c>
 		<h-d>
-			<t-l>Download</t-l>
-			<t-x>DocsJS does a lot for you, but you can tell it exactly how to work through HTML, CSS, and Javascript. This section just breifly coveres what you can customize and not how to customize. For full details, please see the .</t-x>
+			<t-l>Customize</t-l>
+			<t-x>Alrighty so the basic DocsJS loadout isn't good enough for you? You've come to the right place. Here, you can pick between different builds, change some options, and even choose &amp; create your theme! Customizations you make here will reflect on this page itself so you can preview your choices realtime.</t-x>
 		</h-d>
 		<t-p>
-			<t-l>Basic</t-l>
-			<t-x>DocsJS does a lot for you, but you can tell it exactly how to work through HTML, CSS, and Javascript. This section just breifly coveres what you can customize and not how to customize. For full details, please see the .</t-x>
+			<t-l>Included packages</t-l>
+			<t-x>
+				Core package
+			</t-x>
+			<t-x>
+				Syntax highlighter
+			</t-x>
+			<t-x>
+				Other useful things
+			</t-x>
 		</t-p>
 		<t-p>
-			<t-l>Developer</t-l>
-			<t-x>DocsJS does a lot for you, but you can tell it exactly how to work through HTML, CSS, and Javascript. This section just breifly coveres what you can customize and not how to customize. For full details, please see the .</t-x>
+			<t-l>Javascript options</t-l>
+			<t-x>
+				
+			</t-x>
 		</t-p>
 		<t-p>
-			<t-l>Customize</t-l>
-			<t-x>Finally, from font size to sidebar sizes, essentially everything else is customizable through the DocsJS object.<br>
-			*multiple sliders here</t-x>
-			<s-c>
-				<h-d>
-					<t-l>Included packages</t-l>
-					<t-x>Finally, from font size to sidebar sizes, essentially everything else is customizable through the DocsJS object.<br>
-					*multiple sliders here</t-x>
-				</h-d>
-			</s-c>
-			<s-c>
-				<h-d>
-					<t-l>CSS themes</t-l>
-					<t-x>You can control how the doc looks through CSS. You can reference custom tags by [docsjs-tag="TAGNAME"], for example, a CSS style for a &lt;t-l&gt; tag would be:
-						<c-d docsjs-lang="css">[docsjs-tag="t-l"]{
-	color: #FFF;
-}</c-d>
-					You can also style the sidebars and menus with column-* and menu-* .<br>
-					*CSS theme and editor here.</t-x>
-				</h-d>
-			</s-c>
-			<s-c>
-				<h-d>
-					<t-l>Javascript options</t-l>
-					<t-x>Finally, from font size to sidebar sizes, essentially everything else is customizable through the DocsJS object.<br>
-					*multiple sliders here</t-x>
-				</h-d>
-			</s-c>
+			<t-l>CSS themes</t-l>
+			<t-x>
+				Choose theme
+			</t-x>
+			<t-x>
+				Edit stylesheet
+			</t-x>
+		</t-p>
+		<t-p>
+			<t-l>Result</t-l>
+			<t-x>
+				Copy paste this into the head, and this into the body
+			</t-x>
 		</t-p>
 	</s-c>
 	<s-c>

@@ -1,6 +1,5 @@
 // JavaScript Document
-// Planned for future releases: fix bug with topic embedded in eg, documentation search, better & more efficient sidebar animations, menu as a popup on mobile (make other things popup on mobile)
-// Restore default states on reset, Jump to minimized topic will maximize, Massive improvements for column animations (prevent reflows)
+// Planned for future releases: allow topics and sections to be embedded in e-g/e-x, documentation search, menu as a popup on mobile (make other things popup on mobile), Restore default states on reset, Jump to minimized topic will maximize, Massive improvements for column animations (prevent reflows)
 var DocsJS = {};
 DocsJS.apply = function (func){
 	'use strict';
@@ -59,7 +58,6 @@ DocsJS.init = function(callback){
 		DocsJS.addEvent(document,'readystatechange',function(){
 			DocsJS.scrolled();
 			DocsJS.resized();
-			hashChange();
 
 			// Check for min and max
 			var duration = DocsJS.animation.duration;
@@ -98,6 +96,7 @@ DocsJS.init = function(callback){
 			}
 			
 			// Done
+			window.setTimeout(hashChange,0);
 			if (callback === undefined){callback = function(){};}
 			callback();
 			DocsJS.events.ready();
@@ -443,14 +442,17 @@ DocsJS.refresh = function(callback){
 			var structure = '';
 			var contents = parent.querySelectorAll('[docsjs-tag="s-c"],[docsjs-tag="t-p"]');
 			if (contents.length !== 0){
+				var sub = 0;
 				for (var i = 0; i < contents.length; i++){
 					if (contents[i].nodeType === 1 && contents[i].parentElement === parent){
-						var newLocation = location + '.' + i;
+						var newLocation = location + '.' + (i-sub);
 						contents[i].setAttribute('docsjs-location',newLocation);
 						var title = (contents[i].querySelector('[docsjs-tag="t-l"]') || contents[i].querySelector('[docsjs-tag="h-d"] > [docsjs-tag="t-l"]') || undefined);
 						if (title !== undefined){
 							structure += '<div docsjs-tag="menu-item" docsjs-state="max" onclick="'+"if ((event.target || (event.srcElement || event.originalTarget)) === this){if (this.docsjs.state === 'min'){this.docsjs.state = 'max';} else{this.docsjs.state = 'min';}}"+'"><div docsjs-tag="menu-title" role="button" tabindex="0" aria-labelledby="Navigate to '+title.innerText+'" docsjs-state="" docsjs-menu-location="'+newLocation+'" onkeyup="DocsJS.spaceClick(this,event)" onclick="DocsJS._menuClicked(this,'+"'"+newLocation+"'"+');" docsjs-menu-destination="'+contents[i].docsjs.tag+'">'+title.innerText+'</div>'+readStructure(contents[i],newLocation)+'</div>';
 						}
+					} else{
+						sub++;
 					}
 				}
 				return structure;
@@ -459,9 +461,9 @@ DocsJS.refresh = function(callback){
 			}
 		};
 		menu.innerHTML = '<div docsjs-tag="menu-preferences"><div docsjs-tag="menu-preferences-item" docsjs-pref="aA" role="button" tabindex="0" aria-label="Increase Font-size">'+DocsJS.buttons.fontplus()+'</div><div docsjs-tag="menu-preferences-item" docsjs-pref="Aa" role="button" tabindex="0" aria-label="Decrease Font-size">'+DocsJS.buttons.fontminus()+'</div><div docsjs-tag="menu-preferences-item" docsjs-pref="O" role="button" tabindex="0" aria-label="Minimize everything">'+DocsJS.buttons.menuminimized()+'</div><div docsjs-tag="menu-preferences-item" docsjs-pref="CM" role="button" tabindex="0" aria-label="Expand summaries and minimize everything else">'+DocsJS.buttons.partialminimize()+'</div><div docsjs-tag="menu-preferences-item" docsjs-pref="C" role="button" tabindex="0" aria-label="Expand everything">'+DocsJS.buttons.menuminimize()+'</div><div docsjs-tag="menu-preferences-item" docsjs-pref="Iv" role="button" tabindex="0" aria-label="Invert colors">'+DocsJS.buttons.invert()+'</div><div docsjs-tag="menu-preferences-item" docsjs-pref="GPU" role="button" tabindex="0" aria-label="Remove animations">'+DocsJS.buttons.gpu()+'</div><div docsjs-tag="menu-preferences-item" docsjs-pref="Rs">'+DocsJS.buttons.reset()+'</div></div>'+
-			'<div docsjs-tag="menu-item"><div docsjs-tag="menu-title" docsjs-state="" docsjs-menu-location="'+DocsJS.menu.top+'" onclick="DocsJS.jumpTo('+"'"+DocsJS.menu.top+"'"+')" docsjs-menu-destination="'+DocsJS.menu.top+'">'+DocsJS.menu.top+'</div></div>'+
+			'<div docsjs-tag="menu-item"><div docsjs-tag="menu-title" docsjs-state="" docsjs-menu-location="'+DocsJS.menu.top+'" onclick="DocsJS._menuClicked(this,'+"'"+DocsJS.menu.top+"'"+');" docsjs-menu-destination="'+DocsJS.menu.top+'">'+DocsJS.menu.top+'</div></div>'+
 			readStructure(doc.querySelector('main') || doc, index)+
-			'<div docsjs-tag="menu-item"><div docsjs-tag="menu-title" docsjs-state="" docsjs-menu-location="'+DocsJS.menu.bottom+'" onclick="DocsJS.jumpTo('+"'"+DocsJS.menu.bottom+"'"+')" docsjs-menu-destination="'+DocsJS.menu.bottom+'">'+DocsJS.menu.bottom+'</div></div>';
+			'<div docsjs-tag="menu-item"><div docsjs-tag="menu-title" docsjs-state="" docsjs-menu-location="'+DocsJS.menu.bottom+'" onclick="DocsJS._menuClicked(this,'+"'"+DocsJS.menu.bottom+"'"+');" docsjs-menu-destination="'+DocsJS.menu.bottom+'">'+DocsJS.menu.bottom+'</div></div>';
 	});
 
 	// Bind buttons
@@ -1190,7 +1192,7 @@ DocsJS.jumpTo = function(location){
 			for (var i = 0; i < loc.length; i++){
 				var children = dest.querySelectorAll('[docsjs-tag="s-c"],[docsjs-tag="t-p"]');
 				var immeditateChildren = [];
-				for (var j = 0; j < dest.length; j++){
+				for (var j = 0; j < children.length; j++){
 					if (children[j].parentElement === dest){
 						immeditateChildren.push(children[j]);
 					}
@@ -1199,7 +1201,7 @@ DocsJS.jumpTo = function(location){
 			}
 			dest = dest.querySelector('[docsjs-tag="h-d"]') || dest;
 			var scrollTo = dest.getBoundingClientRect().top - document.body.getBoundingClientRect().top - DocsJS.fontsize._value;
-			if (document.querySelector('[docsjs-tag="'+DocsJS.superparent+'"]').clientHeight < scrollTo){
+			if (document.querySelector('[docsjs-tag="'+DocsJS.superparent+'"]').clientHeight - DocsJS.window.height() < scrollTo){
 				scrollTo = Math.min(scrollTo, document.querySelector('[docsjs-tag="'+DocsJS.superparent+'"]').clientHeight - DocsJS.window.height());
 			}
 			var scrollTime = Math.sqrt(Math.abs(document.body.scrollTop - scrollTo))/14*DocsJS.animation.duration;
@@ -1560,12 +1562,12 @@ DocsJS.checkColumns = function(doc){
 			DocsJS.bindPrefs();
 		}
 		DocsJS.column.state[0] = DocsJS.cache.events.columnchoice;
-		DocsJS.correctColumnHeight(doc);
-		DocsJS.correctColumnHeight(doc);
 		DocsJS.cache.events.columnchoice = 0;
 		DocsJS.forEach(doc.querySelectorAll('[docsjs-tag="column-left"] [docsjs-tag="e-g"],[docsjs-tag="column-left"] [docsjs-tag="e-x"]'),function(el){
 			el.style.height = el.style.paddingTop = el.style.paddingBottom = el.style.borderTopWidth = el.style.borderBottomWidth = '';
 		});
+		
+		DocsJS.correctColumnHeight(doc);
 		DocsJS.cd.refresh();
 	} else if (DocsJS.columnOffsets.left <= 0 && DocsJS.column.state[0] !== 'none'){
 		if (DocsJS.column.state[0] !== 'menu'){
@@ -1589,7 +1591,7 @@ DocsJS.checkColumns = function(doc){
 		doc.querySelector('[docsjs-tag="column-left"]').innerHTML = DocsJS.column.choice(-1);
 		DocsJS.column.state[0] = 'none';
 		DocsJS.cache.events.columnchoice = 0;
-		DocsJS.forEach(doc.querySelectorAll('[docsjs-tag="column-left"] [docsjs-tag="e-g"],[docsjs-tag="column-left"] [docsjs-tag="e-x"]'),function(el){
+		DocsJS.forEach(doc.querySelectorAll('[docsjs-tag="s-c"] [docsjs-tag="e-g"],[docsjs-tag="s-c"] [docsjs-tag="e-x"]'),function(el){
 			if (el.docsjs.state === 'min'){
 				el.style.height = el.style.paddingTop = el.style.paddingBottom = el.style.borderTopWidth = el.style.borderBottomWidth = '0px';
 			}
@@ -1601,8 +1603,6 @@ DocsJS.checkColumns = function(doc){
 		doc.querySelector('[docsjs-tag="column-right"]').innerHTML = DocsJS.column.generate(DocsJS.cache.events.columnchoice,doc);
 		doc.querySelector('[docsjs-tag="column-right"]').lastChild.style.marginRight = '-'+(100+DocsJS.cache.extraWidth)+'px';
 		DocsJS.column.state[1] = DocsJS.cache.events.columnchoice;
-		DocsJS.correctColumnHeight(doc);
-		DocsJS.correctColumnHeight(doc);
 		if (DocsJS.column.state[0] === 'none'){
 			doc.querySelector('[docsjs-tag="column-left"]').innerHTML = DocsJS.column.choice(-1);
 		}
@@ -1610,6 +1610,7 @@ DocsJS.checkColumns = function(doc){
 		DocsJS.forEach(doc.querySelectorAll('[docsjs-tag="column-right"] [docsjs-tag="e-g"],[docsjs-tag="column-right"] [docsjs-tag="e-x"]'),function(el){
 			el.style.height = el.style.paddingTop = el.style.paddingBottom = el.style.borderTopWidth = el.style.borderBottomWidth = '';
 		});
+		DocsJS.correctColumnHeight(doc);
 		DocsJS.cd.refresh();
 	} else if (DocsJS.columnOffsets.right <= 0 && DocsJS.column.state[1] !== 'none'){
 		var nodesR = [];
@@ -1634,7 +1635,7 @@ DocsJS.checkColumns = function(doc){
 			doc.querySelector('[docsjs-tag="column-left"]').innerHTML = DocsJS.column.choice(-1);
 		}
 		DocsJS.cache.events.columnchoice = 0;
-		DocsJS.forEach(doc.querySelectorAll('[docsjs-tag="column-right"] [docsjs-tag="e-g"],[docsjs-tag="column-right"] [docsjs-tag="e-x"]'),function(el){
+		DocsJS.forEach(doc.querySelectorAll('[docsjs-tag="s-c"] [docsjs-tag="e-g"],[docsjs-tag="s-c"] [docsjs-tag="e-x"]'),function(el){
 			if (el.docsjs.state === 'min'){
 				el.style.height = el.style.paddingTop = el.style.paddingBottom = el.style.borderTopWidth = el.style.borderBottomWidth = '0px';
 			}
