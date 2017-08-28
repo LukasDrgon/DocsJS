@@ -27,8 +27,8 @@
 	}
 </script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.8/ace.js"></script>
 <script src="src/docs.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.8/ace.js"></script>
 
 <script src="example/script.js"></script>
 <link href="example/style.css" rel="stylesheet">
@@ -63,7 +63,7 @@
 				DocsJS is an open source documentation library lets you focus on just writing. Think of it as offloading all the grunt work to us. Want a quick run down of things you don't have to worry about anymore?
 				<ol>
 					<li>Compatibility: tested on IE8+ (Windows XP wow!), FF11+, Chrome15+, and more.</li>
-					<li>Accessibility: complies with and exceeds new and old accessibilty standards.</li>
+					<li>Accessibility: complies with and aims to exceed old and new accessibilty standards.</li>
 					<li>Navigation: automatically generates the best navigation system I've seen.</li>
 					<li>Responsiveness: works perfectly (and I really mean perfectly) on devices of any size.</li>
 					<li>Layout: constantly tested with peers to develop the best, most flexible layout.</li>
@@ -154,7 +154,7 @@
 		&lt;/t-p&gt;
 	&lt;/s-c&gt;
 &lt;/div&gt;</c-d>
-			<iframe class="parse1 dest" title="Try it example result"></iframe>
+				<iframe class="parse1 dest" title="Try it example result"></iframe>
 			</e-g>
 		</t-p>
 		<t-p>
@@ -185,9 +185,9 @@
 		&lt;/s-c&gt;
 	&lt;/s-c&gt;
 &lt;/div&gt;</c-d>
-			<iframe class="parse2 dest" title="Try it example result"></iframe>
+				<iframe class="parse2 dest" title="Try it example result"></iframe>
 			</e-g>
-			<e-x docsjs-name="A few restrictions">There are a few restrictions. First, every section must contain a header, otherwise accessibility and navigation will break. Finally, everything must be inside at least one section. Topics in topics are fine as long as the parent topic is inside a section. You can also think of this as no topic's immediate parent can be the DocsJS-This-Baby div. (oh yeah, you can't add topics or sections inside of e-g or e-x tags but this is a feature I might add in the future)</e-x>
+			<e-x docsjs-name="A few restrictions">There are a few restrictions: every section must contain a header, no topic's immediate parent can be the DocsJS-This-Baby div, and you can't add topics or sections inside of e-g or e-x tags (I may add this ability in a future release)</e-x>
 		</t-p>
 		<t-p>
 			<t-l>A few attributes</t-l>
@@ -224,46 +224,59 @@
 		&lt;/t-p&gt;
 	&lt;/s-c&gt;
 &lt;/div&gt;</c-d>
-			<iframe class="parse4 dest" title="Try it example result"></iframe>
+				<iframe class="parse4 dest" title="Try it example result"></iframe>
 			</e-g>
 		</t-p>
 		<t-p>
 			<t-l>Bonus tags!</t-l>
-			<t-x>Alrighty, there are two tags that haven't been covered yet: <pre>&lt;c-d&gt;</pre> for syntax-highlighted code and <pre>&lt;v-r&gt;</pre> for HTML varibles. <pre>&lt;c-d&gt;</pre> is pretty simple. First, just pretend it's a <pre>&lt;pre&gt;</pre> tag (white spaces are preserved) and add code in whatever language you want. Next, add the attribute <pre>docsjs-lang</pre> and set it to the language you used. If I wrote javascript in a c-d tag, I would make it <pre>&lt;c-d docsjs-lang="javascript"&gt;//Javascript here&lt;/c-d&gt;.</pre><br><br>
+			<t-x>
+				There are two tags that haven't been covered yet: <pre>&lt;c-d&gt;</pre> for syntax-highlighted code and <pre>&lt;v-r&gt;</pre> for HTML varibles. <pre>&lt;c-d&gt;</pre> is pretty simple. First, just pretend it's a <pre>&lt;pre&gt;</pre> tag (white spaces are preserved) and add code in whatever language you want. Next, add the attribute <pre>docsjs-lang</pre> and set it to the language you used. If I wrote javascript in a c-d tag, I would make it:
+				<c-d docsjs-lang="html" style="margin-top:0.25em;">&lt;c-d docsjs-lang="javascript"&gt;alert('Hello World!');&lt;/c-d&gt;</c-d>
 			</t-x>
+			
+			<e-x docsjs-name="Supported languages" style="font-family:'Source Code Pro',monospace; font-size: 0.8em;">abap, abc, actionscript, ada, apache_conf, applescript, asciidoc, assembly_x86, autohotkey, batchfile, behaviour, bro, c9search, c_cpp, cirru, clojure, cobol, coffee, coldfusion, csharp, css, curly, d, dart, diff, django, dockerfile, dot, drools, eiffel, ejs, elixir, elm, erlang, forth, fortran, ftl, gcode, gherkin, gitignore, glsl, gobstones, golang, graphqlschema, groovy, haml, handlebars, haskell, haskell_cabal, haxe, hjson, html, html_elixir, html_ruby, ini, io, jack, jade, java, javascript, json, jsoniq, jsp, jsx, julia, kotlin, latex, less, liquid, lisp, livescript, logiql, lsl, lua, luapage, lucene, makefile, markdown, mask, matlab, maze, mel, mushcode, mysql, nix, nsis, objectivec, ocaml, pascal, perl, pgsql, php, pig, plain_text, powershell, praat, prolog, properties, protobuf, python, r, razor, rdoc, rhtml, rst, ruby, rust, sass, scad, scala, scheme, scss, sh, sjs, smarty, snippets, soy_template, space, sparql, sql, sqlserver, stylus, svg, swift, tcl, tex, text, textile, toml, tsx, turtle, twig, typescript, vala, vbscript, velocity, verilog, vhdl, wollok, xml, xquery, yaml</e-x>
+			
+			<t-x>
+				HTML varibles can be useful for keeping code clean and save you some copy pasting. DocsJS' <pre>&lt;v-r&gt;</pre> tags allow for HTML varibles. <pre>&lt;v-r&gt;</pre> tags with anything inside will define a varible and an empty <pre>&lt;v-r&gt;</pre> will call a varible.
+				<c-d docsjs-lang="html" style="margin-top:0.25em;">&lt;!-- You can define a varible named "helloWorld" like this: --&gt;
+&lt;v-r helloWorld&gt;
+	&lt;p&gt;Anything you want!&lt;/p&gt;
+&lt;/v-r&gt;
+&lt;!-- Then, any of these: --&gt;
+&lt;v-r helloWorld&gt;&lt;/v-r&gt;
+&lt;!-- will be replaced with: --&gt;
+&lt;p&gt;Anything you want!&lt;/p&gt;</c-d>
+			</t-x>
+			
 			<e-g docsjs-name="Try it!">
-				<c-d docsjs-lang="html" docsjs-editable="true" class="parse4 src parse">&lt;div docsjs-tag="DocsJS-This-Baby"&gt;
+				<c-d docsjs-lang="html" docsjs-editable="true" class="parse5 src parse">&lt;div docsjs-tag="DocsJS-This-Baby"&gt;
+	&lt;v-r logo&gt;
+		&lt;div docsjs-tag="button-parent" style="display:inline-block;"&gt;&lt;div docsjs-tag="button-child" style="width: 50%; height: 100%; margin-left:0; background: none; overflow: hidden; border: none; border-radius: 0; margin-top: -0.35em;"&gt;&lt;div docsjs-tag="button-child" style="width: 100%; height: 100%; top: 0.29228614em; left: 0.28750195em; margin: 0; -webkit-transform:rotate(30deg);-moz-transform:rotate(30deg);-ms-transform:rotate(30deg);-o-transform:rotate(30deg);transform:rotate(30deg);ms-filter:'progid:DXImageTransform.Microsoft.Matrix(M11=0.8660252915835662, M12=-0.5000001943375613, M21=0.5000001943375613, M22=0.8660252915835662, SizingMethod='auto expand')';filter:progid:DXImageTransform.Microsoft.Matrix(M11=0.8660252915835662, M12=-0.5000001943375613, M21=0.5000001943375613, M22=0.8660252915835662, SizingMethod='auto expand');-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;*behavior: url(https://raw.github.com/Schepp/box-sizing-polyfill/master/boxsizing.htc);border-radius: 0;"&gt;&lt;/div&gt;&lt;/div&gt;&lt;div docsjs-tag="button-child" style="width: 50%; height: 100%; left:50%; top:0.775em; margin-left:0; background: none; overflow: hidden; border: none; border-radius: 0; -webkit-transform:rotate(180deg);-moz-transform:rotate(180deg);-ms-transform:rotate(180deg);-o-transform:rotate(180deg);transform:rotate(180deg);ms-filter:'progid:DXImageTransform.Microsoft.Matrix(M11=-0.9999999999990936, M12=0.0000013464102072028608, M21=-0.0000013464102072028608, M22=-0.9999999999990936, SizingMethod='auto expand')';filter:progid:DXImageTransform.Microsoft.Matrix(M11=-0.9999999999990936, M12=0.0000013464102072028608, M21=-0.0000013464102072028608, M22=-0.9999999999990936, SizingMethod='auto expand');"&gt;&lt;div docsjs-tag="button-child" style="width: 100%; height: 100%; top: 0.29228614em; left: 0.28750195em; margin: 0; -webkit-transform:rotate(30deg);-moz-transform:rotate(30deg);-ms-transform:rotate(30deg);-o-transform:rotate(30deg);transform:rotate(30deg);ms-filter:'progid:DXImageTransform.Microsoft.Matrix(M11=0.8660252915835662, M12=-0.5000001943375613, M21=0.5000001943375613, M22=0.8660252915835662, SizingMethod='auto expand')';filter:progid:DXImageTransform.Microsoft.Matrix(M11=0.8660252915835662, M12=-0.5000001943375613, M21=0.5000001943375613, M22=0.8660252915835662, SizingMethod='auto expand');-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;*behavior: url(https://raw.github.com/Schepp/box-sizing-polyfill/master/boxsizing.htc);border-radius: 0;"&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+	&lt;/v-r&gt;
 	&lt;s-c&gt;
 		&lt;h-d&gt;
-			&lt;t-l&gt;Regular header&lt;/t-l&gt;
-			&lt;t-x&gt;Oh, by the way, the circular button minimizes/maximizes the section and clicking on a title minimizes/maximizes the topic or header.&lt;/t-x&gt;
+			&lt;t-l&gt;LightningMouse 1337&lt;/t-l&gt;
+			&lt;t-x&gt;LightningMouse is an international corporation dedicated to creating mice out of lightning. Our products are named according to their model number preceeded by our logo: &lt;v-r logo&gt;&lt;/v-r&gt;&lt;br&gt;
+			Today, we're releasing product &lt;v-r logo&gt;&lt;/v-r&gt;1337, otherwise known as our elite model. It's made from 42 separate strands of lightning to create our most robust, delicious, and blue &lt;v-r logo&gt;&lt;/v-r&gt;Mouse yet. Order &lt;v-r logo&gt;&lt;/v-r&gt;1337 today!&lt;/t-x&gt;
 		&lt;/h-d&gt;
-		&lt;t-p docsjs-state="min"&gt;
-			&lt;t-l&gt;Minimized topic&lt;/t-l&gt;
-			&lt;t-x&gt;The reader will have to click the title to expand this topic.&lt;/t-x&gt;
-		&lt;/t-p&gt;
 		&lt;t-p&gt;
-			&lt;t-l&gt;Regular topic here&lt;/t-l&gt;
-			&lt;t-x&gt;But some of the e-g and e-x tags are named!&lt;/t-x&gt;
-			&lt;e-g docsjs-name="wow!" docsjs-state="max"&gt;Named and maximized example.&lt;/e-g&gt;
-			&lt;e-g docsjs-name="Hello world"&gt;Named example.&lt;/e-g&gt;
-			&lt;e-x docsjs-state="max"&gt;Maximized extra details.&lt;/e-x&gt;
-		&lt;/t-p&gt;
-	&lt;/s-c&gt;
-	&lt;s-c docsjs-state="min"&gt;
-		&lt;h-d&gt;
-			&lt;t-l&gt;Minimized section&lt;/t-l&gt;
-			&lt;t-x&gt;Ever wondered what those bars on the side were?&lt;/t-x&gt;
-		&lt;/h-d&gt;
-		&lt;t-p docsjs-state="min"&gt;
-			&lt;t-l&gt;Well, find out here!&lt;/t-l&gt;
-			&lt;t-x&gt;You can drag the bars towards the center. Depending on the symbol you drag, it'll move the e-g or e-x tags to the side. The menu symbol will just create menu on the side. To close the sidebars, just drag them back to the side.&lt;/t-x&gt;
-			&lt;e-x docsjs-state="max"&gt;Try dragging this to the sidebar! Drag the matching symbol. (The one with the dots)&lt;/e-x&gt;
+			&lt;t-l&gt;Beautiful syntax highlighting&lt;/t-l&gt;
+			&lt;t-x&gt;
+				Here's an example of syntax highlighted css
+				&lt;c-d docsjs-lang="css"&gt;body, html{
+	margin: 0;
+	padding: 0;
+	font-size: 22px;
+}&lt;/c-d&gt;
+			&lt;/t-x&gt;
 		&lt;/t-p&gt;
 	&lt;/s-c&gt;
 &lt;/div&gt;</c-d>
-			<iframe class="parse4 dest" title="Try it example result"></iframe>
+				<iframe class="parse5 dest" title="Try it example result"></iframe>
 			</e-g>
+			<e-x docsjs-name="Note on c-d bug">
+				&lt;c-d&gt; tags use C9 Ace's editor. There's currently a bug in their most recent release that causes the page to scroll to the top when you click on a highligted area or click on the editor then click off then click back on. I have tried to minimize this bug unsucessfully. However, the developers of the open source editor have already found a solution to the bug and may release the solution within a month. As soon as this update is released, I will update DocsJS to reflect the update.
+			</e-x>
 		</t-p>
 	</s-c>
 	<s-c>
@@ -293,36 +306,6 @@
 			<e-g>I figured a good example of this would be moving this example to the right sidebar. Try it!</e-g>
 
 			<e-x docsjs-name="Move both eg and ex?">After moving eg or ex to the right sidebar, you'll have the option to move the other to the left sidebar. If the menu is open in the left sidebar, close it by dragging it back. Try moving this to the left sidebar.</e-x>
-		</t-p>
-		<t-p>
-			<t-l>HTML Variables</t-l>
-			<t-x>
-			When writing documentation in HTML, varibles would be extremely useful for effecient writing and beautiful, clutter-free HTML. If your document needs a certain graphic to be in many places, it would be a lot easier to declare that graphic as a short varible than copy pasting a length img or div tag every time. That's why DocsJS adds varible tags.
-			<c-d docsjs-lang="html">Declare varible named "varName":
-&lt;v-r varName&gt;
-&lt;p&gt;Varible Content Here&lt;/p&gt;
-&lt;/v-r&gt;</c-d>
-			<c-d docsjs-lang="javascript">//That is basiclly:
-var varName = "&lt;p&gt;Varible Content Here&lt;/p&gt;"</c-d>
-			<c-d docsjs-lang="html">Invoke varible named "varName":
-&lt;v-r varName&gt;&lt;/v-r&gt;</c-d>
-			Yes, declaring and invoking uses the same tag. If there's something inside the tag, it's a varible declaration. If the tag is empty, it gets replaced by what the varible equals.
-			</t-x>
-			<e-g docsjs-name="Try it!">
-				<c-d docsjs-lang="html" docsjs-editable="true" class="parse3 src parse">&lt;div docsjs-tag="DocsJS-This-Baby"&gt;
-	&lt;v-r logo&gt;
-		&lt;div docsjs-tag="button-parent" style="display:inline-block;"&gt;&lt;div docsjs-tag="button-child" style="width: 50%; height: 100%; margin-left:0; background: none; overflow: hidden; border: none; border-radius: 0; margin-top: -0.35em;"&gt;&lt;div docsjs-tag="button-child" style="width: 100%; height: 100%; top: 0.29228614em; left: 0.28750195em; margin: 0; -webkit-transform:rotate(30deg);-moz-transform:rotate(30deg);-ms-transform:rotate(30deg);-o-transform:rotate(30deg);transform:rotate(30deg);ms-filter:'progid:DXImageTransform.Microsoft.Matrix(M11=0.8660252915835662, M12=-0.5000001943375613, M21=0.5000001943375613, M22=0.8660252915835662, SizingMethod='auto expand')';filter:progid:DXImageTransform.Microsoft.Matrix(M11=0.8660252915835662, M12=-0.5000001943375613, M21=0.5000001943375613, M22=0.8660252915835662, SizingMethod='auto expand');-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;*behavior: url(https://raw.github.com/Schepp/box-sizing-polyfill/master/boxsizing.htc);border-radius: 0;"&gt;&lt;/div&gt;&lt;/div&gt;&lt;div docsjs-tag="button-child" style="width: 50%; height: 100%; left:50%; top:0.775em; margin-left:0; background: none; overflow: hidden; border: none; border-radius: 0; -webkit-transform:rotate(180deg);-moz-transform:rotate(180deg);-ms-transform:rotate(180deg);-o-transform:rotate(180deg);transform:rotate(180deg);ms-filter:'progid:DXImageTransform.Microsoft.Matrix(M11=-0.9999999999990936, M12=0.0000013464102072028608, M21=-0.0000013464102072028608, M22=-0.9999999999990936, SizingMethod='auto expand')';filter:progid:DXImageTransform.Microsoft.Matrix(M11=-0.9999999999990936, M12=0.0000013464102072028608, M21=-0.0000013464102072028608, M22=-0.9999999999990936, SizingMethod='auto expand');"&gt;&lt;div docsjs-tag="button-child" style="width: 100%; height: 100%; top: 0.29228614em; left: 0.28750195em; margin: 0; -webkit-transform:rotate(30deg);-moz-transform:rotate(30deg);-ms-transform:rotate(30deg);-o-transform:rotate(30deg);transform:rotate(30deg);ms-filter:'progid:DXImageTransform.Microsoft.Matrix(M11=0.8660252915835662, M12=-0.5000001943375613, M21=0.5000001943375613, M22=0.8660252915835662, SizingMethod='auto expand')';filter:progid:DXImageTransform.Microsoft.Matrix(M11=0.8660252915835662, M12=-0.5000001943375613, M21=0.5000001943375613, M22=0.8660252915835662, SizingMethod='auto expand');-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;*behavior: url(https://raw.github.com/Schepp/box-sizing-polyfill/master/boxsizing.htc);border-radius: 0;"&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
-	&lt;/v-r&gt;
-	&lt;s-c&gt;
-		&lt;t-p&gt;
-			&lt;t-l&gt;LightningMouse 1337&lt;/t-l&gt;
-			&lt;t-x&gt;LightningMouse is an international corporation dedicated to creating mice out of lightning. Our products are named according to their model number preceeded by our logo: &lt;v-r logo&gt;&lt;/v-r&gt;&lt;br&gt;
-			Today, we're releasing product &lt;v-r logo&gt;&lt;/v-r&gt;1337, otherwise known as our elite model. It's made from 42 separate strands of lightning to create our most robust, delicious, and blue &lt;v-r logo&gt;&lt;/v-r&gt;Mouse yet. Order &lt;v-r logo&gt;&lt;/v-r&gt;1337 today!&lt;/t-x&gt;
-		&lt;/t-p&gt;
-	&lt;/s-c&gt;
-&lt;/div&gt;</c-d>
-			<iframe class="parse3 dest" title="Try it example result"></iframe>
-			</e-g>
 		</t-p>
 		<t-p>
 			<t-l>Animations</t-l>
