@@ -93,7 +93,7 @@
 			<t-x>
 				This won't take you more than a few minutes to learn. Promise. First of all, you'll have to add docs.js to your HTML page. I highly, highly recommend using the CDN described below for many reasons including keeping DocsJS up to date.<br><br>
 				First, add this to the head of your doc (IE doesn't like to load scripts in the body),<br>
-				<c-d docsjs-lang="html" style="margin-top: 0.25em; margin-bottom: 0.5em;">&lt;script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.8/ace.js"&gt;&lt;/script&gt;
+				<c-d docsjs-lang="html" style="margin-top: 0.25em; margin-bottom: 0.5em;">&lt;script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Hailiax/DocsJS@1/src/ace/ace.js"&gt;&lt;/script&gt;
 &lt;script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Hailiax/DocsJS@1/src/docs.min.js"&gt;&lt;/script&gt;</c-d>
 			
 				and this to the body.<br>
@@ -820,34 +820,6 @@ for (var i = 0; i &lt; docs.length; i++){
 					<t-l>Settables</t-l>
 					<t-x>These are javascript properties that can be set</t-x>
 				</h-d>
-				<t-p docsjs-state="min">
-					<t-l>DocsJS.include</t-l>
-					<t-x>Contains settings on how the menu is displayed.</t-x>
-					<t-p docsjs-state="min">
-						<t-l>.ace</t-l>
-						<t-x>
-							<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Type</p>
-							Boolean
-							<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Default</p>
-							true
-						</t-x>
-						<t-x>
-							Loads the ace.js from cdnjs. This is required if you want to you c-d tags.
-						</t-x>
-					</t-p>
-					<t-p docsjs-state="min">
-						<t-l>.mathJax</t-l>
-						<t-x>
-							<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Type</p>
-							Boolean
-							<p style="font-size:1.2em; font-weight: 700; line-height: 1.75em;">Default</p>
-							false
-						</t-x>
-						<t-x>
-							Loads mathjax.js from cdnjs. This is an inefficient way to load MathJax and can be used to get started.
-						</t-x>
-					</t-p>
-				</t-p>
 				<t-p docsjs-state="min">
 					<t-l>DocsJS.events</t-l>
 					<t-x>
