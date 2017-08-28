@@ -159,7 +159,7 @@
 		</t-p>
 		<t-p>
 			<t-l>Nested structures</t-l>
-			<t-x>Every custom tag is basicly a div so you can nest them within each other, add attributes like <pre>style=""</pre>, etc. Nesting these tags can help create a well organized doc: you can add sections in topics, sections in sections, sections in examples, etc. Experiment with different combos below!</t-x>
+			<t-x>Every custom tag is basically a div so you can nest them within each other, add attributes like <pre>style=""</pre>, etc. Nesting these tags can help create a well-organized doc. For example, you can add sections in sections, topics in topics, sections in topics and more! Experiment with different combos below!</t-x>
 			<e-g docsjs-name="Try it!">
 				<c-d docsjs-lang="html" docsjs-editable="true" class="parse2 src parse">&lt;div docsjs-tag="DocsJS-This-Baby"&gt;
 	&lt;s-c&gt;
@@ -176,6 +176,11 @@
 					&lt;t-x&gt;That's right, this is a section in a topic. You can add as many sections in a topic as you want! Try adding more topics and sections inside this topic.&lt;/t-x&gt;
 				&lt;/h-d&gt;
 			&lt;/s-c&gt;
+			&lt;t-x&gt;Check this out too.&lt;/t-x&gt;
+			&lt;t-p&gt;
+				&lt;t-l&gt;Embedded topic&lt;/t-l&gt;
+				&lt;t-x&gt;A topic inside a topic!&lt;/t-x&gt;
+			&lt;/t-p&gt;
 		&lt;/t-p&gt;
 		&lt;s-c&gt;
 			&lt;h-d&gt;
@@ -187,12 +192,15 @@
 &lt;/div&gt;</c-d>
 				<iframe class="parse2 dest" title="Try it example result"></iframe>
 			</e-g>
-			<e-x docsjs-name="A few restrictions">There are a few restrictions: every section must contain a header, no topic's immediate parent can be the DocsJS-This-Baby div, and you can't add topics or sections inside of e-g or e-x tags (I may add this ability in a future release)</e-x>
+			<e-x docsjs-name="A few restrictions">There are a few restrictions: every section must contain a header, no topic's immediate parent can be the DocsJS-This-Baby div, and you can't add topics or sections inside of e-g or e-x tags. (I'm aiming to remove all restrictions in future versions)</e-x>
 		</t-p>
 		<t-p>
 			<t-l>A few attributes</t-l>
-			<t-x>There are two attributes to know: <pre>docsjs-state</pre> and <pre>docsjs-name</pre>. <pre>docsjs-state</pre> can be set to either <pre>min</pre> or <pre>max</pre> and determines wether a topic, section, or e-g/e-x is minimized or maximized initially (defaults to <pre>min</pre> on e-g/e-x and <pre>max</pre> on s-c/t-p.<br><br>
-			<pre>docsjs-name</pre> sets name of e-g/e-x shown on the bar that open/closes the e-g/e-x. It defaults to "Example" for e-g and "More" for e-x. Try it below!</t-x>
+			<t-x>
+				Now you know everything you need to know to use DocsJS. However, the next two topics can help you make your docs extra spicy. There are two important attributes to know: <pre>docsjs-state</pre> and <pre>docsjs-name</pre>. <br><br>
+				<pre>docsjs-state</pre> can be set to either <pre>min</pre> or <pre>max</pre> and determines wether a topic, section, or e-g/e-x is minimized or maximized initially. It defaults to <pre>min</pre> on e-g/e-x and <pre>max</pre> on s-c/t-p.<br><br>
+				<pre>docsjs-name</pre> sets name of e-g/e-x shown on the bar that open/closes the e-g/e-x. It defaults to "Example" for e-g and "More" for e-x. Try it below!
+			</t-x>
 			<e-g docsjs-name="Try it!">
 				<c-d docsjs-lang="html" docsjs-editable="true" class="parse4 src parse">&lt;div docsjs-tag="DocsJS-This-Baby"&gt;
 	&lt;s-c&gt;
@@ -207,7 +215,7 @@
 		&lt;t-p&gt;
 			&lt;t-l&gt;Regular topic here&lt;/t-l&gt;
 			&lt;t-x&gt;But some of the e-g and e-x tags are named!&lt;/t-x&gt;
-			&lt;e-g docsjs-name="wow!" docsjs-state="max"&gt;Named and maximized example.&lt;/e-g&gt;
+			&lt;e-g docsjs-name="Wow!" docsjs-state="max"&gt;Named and maximized example.&lt;/e-g&gt;
 			&lt;e-g docsjs-name="Hello world"&gt;Named example.&lt;/e-g&gt;
 			&lt;e-x docsjs-state="max"&gt;Maximized extra details.&lt;/e-x&gt;
 		&lt;/t-p&gt;
@@ -220,7 +228,7 @@
 		&lt;t-p docsjs-state="min"&gt;
 			&lt;t-l&gt;Well, find out here!&lt;/t-l&gt;
 			&lt;t-x&gt;You can drag the bars towards the center. Depending on the symbol you drag, it'll move the e-g or e-x tags to the side. The menu symbol will just create menu on the side. To close the sidebars, just drag them back to the side.&lt;/t-x&gt;
-			&lt;e-x docsjs-state="max"&gt;Try dragging this to the sidebar! Drag the matching symbol. (The one with the dots)&lt;/e-x&gt;
+			&lt;e-x docsjs-state="max"&gt;Try moving this to the sidebar by dragging the matching symbol. (The one with the dots)&lt;/e-x&gt;
 		&lt;/t-p&gt;
 	&lt;/s-c&gt;
 &lt;/div&gt;</c-d>
@@ -274,9 +282,6 @@
 &lt;/div&gt;</c-d>
 				<iframe class="parse5 dest" title="Try it example result"></iframe>
 			</e-g>
-			<e-x docsjs-name="Note on c-d bug">
-				&lt;c-d&gt; tags use C9 Ace's editor. There's currently a bug in their most recent release that causes the page to scroll to the top when you click on a highligted area or click on the editor then click off then click back on. I have tried to minimize this bug unsucessfully. However, the developers of the open source editor have already found a solution to the bug and may release the solution within a month. As soon as this update is released, I will update DocsJS to reflect the update.
-			</e-x>
 		</t-p>
 	</s-c>
 	<s-c>
