@@ -11,7 +11,7 @@ function init(){
 	// Set up examples where the user edits code to an iframe
 	if (DocsJS.supports.ace){
 		parse = function(el){
-			var html = '<!doctype html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Example</title><script src="'+DocsJS.origin.split('/').splice(0,DocsJS.origin.split('/').length-1).join('/')+'/ace/ace.js'+'"></script><script src="'+DocsJS.origin+'"></script></head><body>'+DocsJS.cd.getEditor(el).getValue()+'<script>DocsJS.init();</script></body></html>';
+			var html = '<!doctype html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Example</title><script src="'+DocsJS.origin.split('/').splice(0,DocsJS.origin.split('/').length-1).join('/')+'/ace/ace.js'+'"></script><script src="'+DocsJS.origin+'"></script></head><body>'+DocsJS.cd.getEditor(el).getValue().replace(/\n/g,'%0A').replace(/\t/g,'&#9')+'<script>DocsJS.init();</script></body></html>';
 			document.getElementsByClassName(el.className.split(' ')[0]+' dest')[0].src = 'data:text/html,'+html;
 		};
 		var bindParse = function(){
