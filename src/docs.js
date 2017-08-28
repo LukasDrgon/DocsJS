@@ -1354,7 +1354,7 @@ DocsJS.cd = {
 	},
 	refresh: function(){
 		'use strict';
-		if (ace !== undefined && DocsJS.supports.ace){
+		if (typeof ace !== 'undefined' && DocsJS.supports.ace){
 			DocsJS.apply(function(doc){
 				var editors = [];
 				DocsJS.forEach(doc.querySelectorAll('[docsjs-tag="c-d"]'),function(el, index){
