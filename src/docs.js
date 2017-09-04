@@ -223,7 +223,7 @@ DocsJS.refresh = function(callback){
 		recurse(doc);
 		recurse = function(s){
 			DocsJS.forEach(s.querySelectorAll('[docsjs-tag="t-p"],[docsjs-tag="h-d"]'),function(el){
-				el.innerHTML += '<div docsjs-tag="efiller" docsjs-side="left"></div><div docsjs-tag="efiller" docsjs-side="right"></div>';
+				el.innerHTML += '<div docsjs-tag="efiller" docsjs-side="left" aria-hidden="true"></div><div docsjs-tag="efiller" docsjs-side="right" aria-hidden="true"></div>';
 				if (el.docsjs.state === undefined){
 					el.setAttribute('docsjs-state','max');
 				}
