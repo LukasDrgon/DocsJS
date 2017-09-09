@@ -120,7 +120,6 @@ DocsJS.refresh = function(callback){
 	try{document.getElementsByTagName('head')[0].removeChild(document.getElementById('DocsJS-theme-stylesheet-internal'));}catch(e){}
 	var themeSheetSrc = DocsJS.origin.split('/');
 	themeSheetSrc.pop();
-	themeSheetSrc.pop();
 	themeSheetSrc = themeSheetSrc.join('/') + '/themes/'+DocsJS.theme+'.min.css';
 	var themeSheet = document.createElement('link');
 	themeSheet.rel = 'stylesheet';
