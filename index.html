@@ -58,10 +58,10 @@
 	</s-c>
 	<s-c>
 		<h-d>
-			<t-l>What is DocsJS?</t-l>
+			<t-l>Why DocsJS</t-l>
 			<t-x>
 				DocsJS is an open source documentation library lets you focus on just writing. Think of it as offloading all the grunt work to us. Want a quick run down of things you don't have to worry about anymore?
-				<ol style="margin-bottom: 0;">
+				<ol>
 					<li>Compatibility: tested on IE8+ (Windows XP wow!), FF11+, Chrome15+, and more.</li>
 					<li>Accessibility: complies with and aims to exceed old and new accessibilty standards.</li>
 					<li>Navigation: automatically generates the best navigation system I've seen.</li>
@@ -69,6 +69,7 @@
 					<li>Time: DocsJS is designed to make writing docs very efficient and easy.</li>
 					<li>Uniqueness: Every aspect of DocsJS is fully and easily customizable.</li>
 				</ol>
+				Also, if DocsJS gets popular, I'm sure we'll all appreciate the more consistent, beautiful, and accessible documentation. (So please share DocsJS)
 			</t-x>
 			<e-x docsjs-name="Changelog" class="changelog">
 				<p>Release 1.0.1 "Initial" // 27 Aug 2017</p>
@@ -87,9 +88,9 @@
 	</s-c>
 	<s-c>
 		<h-d>
-			<t-l>Getting started</t-l>
+			<t-l>Got 5 minutes?</t-l>
 			<t-x>
-				This won't take you more than a few minutes to learn. Promise. First of all, you'll have to add docs.js to your HTML page. I highly, highly recommend using the CDN described below for many reasons including keeping DocsJS up to date.<br><br>
+				Let's get started. First of all, you'll have to add docs.js to your HTML page. I highly, highly recommend using the CDN described below for many reasons including keeping DocsJS up to date.<br><br>
 				First, add this to the head of your doc (IE doesn't like to load scripts in the body),<br>
 				<c-d docsjs-lang="html" style="margin-top: 0.25em; margin-bottom: 0.5em;">&lt;script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Hailiax/DocsJS@1/src/ace/ace.js"&gt;&lt;/script&gt;
 &lt;script type="text/javascript" src="https://cdn.jsdelivr.net/gh/Hailiax/DocsJS@1/src/docs.min.js"&gt;&lt;/script&gt;</c-d>
@@ -102,14 +103,13 @@
 				Now we can get started!
 			</t-x>
 			<e-x docsjs-name="Single page documentation?">
-				By being a javascript library, DocsJS inherently encourages either single page documents or few larger docs. However, a lot of the documentation you'll come across consist of many small pages connected by hyperlinks. There are a lot of cons with this approach and all the pros I know of have been accounted for in DocsJS. Let's discuss the cons first:
+				By being a javascript library, DocsJS inherently encourages either single page documents or few larger docs. However, a lot of the documentation you'll come across consist of many small pages connected by hyperlinks. Below, I've listed the problems I've had with this type of documentation.
 				<ol>
-					<li>Loading times: Text isn't that heavy so why should we wait for multiple small pages to load when we can just load everything we might want to read at once?</li>
-					<li>Accessibility: If you find loading times annoying, imagine how people with disabilities or people on a slow internet feel about having to click a million links.</li>
-					<li>Disorganized: Often times, the amount of links for a doc can get so insane it gets hard to keep track or even find them.</li>
-					<li>Hard to use: Would you rather write docs in flexible, clean, structured HTML or learn how to use a server side generator.</li>
+					<li>Loading times: Text isn't that heavy so it makes more sense to make one request to load a lot of text instead of many requests primarily loading scripts, styles, etc.</li>
+					<li>Accessibility: If you find loading times annoying, imagine how people with disabilities or people on a slow internet feel about having to click a million links. It's also easier to save one page without a lot of documentation to read offline.</li>
+					<li>Disorganized: Often, the amount of links on a doc can get so insane it gets hard to keep track or even find them.</li>
+					<li>Hard to write: Would you rather write docs in flexible, clean, structured HTML or learn how to use a server side generator.</li>
 				</ol>
-				Some people would argue that many-small-page docs can make navigation easier for <span style="font-weight: 700;">the average person</span>. You can click on the intended link and you'll only get the information for that link. Clean right? I agree, which is why DocsJS focuses on keeping navigation clean. Each topic has its own hyperlink and a structured menu is automatically generated for every doc. With DocsJS' navigation system, readers should feel just as organized, if not more as finding context and related topics will be much easier.<br><br>
 				Disagree with my opinion? I'd love to hear what you think at hailiaxone@gmail.com.
 			</e-x>
 		</h-d>
@@ -134,6 +134,7 @@
 			</t-x>
 			<e-g docsjs-name="Try it!">
 				<c-d docsjs-lang="html" docsjs-editable="true" class="parse1 src parse">&lt;div docsjs-tag="DocsJS-This-Baby"&gt;
+	&lt;!-- This is where you write your doc --&gt;
 	&lt;s-c&gt;
 		&lt;h-d&gt;
 			&lt;t-l&gt;Example header&lt;/t-l&gt;
@@ -160,6 +161,7 @@
 			<t-x>Every custom tag is basically a div so you can nest them within each other, add attributes like <pre>style=""</pre>, etc. Nesting these tags can help create a well-organized doc. For example, you can add sections in sections, topics in topics, sections in topics and more! Experiment with different combos below!</t-x>
 			<e-g docsjs-name="Try it!">
 				<c-d docsjs-lang="html" docsjs-editable="true" class="parse2 src parse">&lt;div docsjs-tag="DocsJS-This-Baby"&gt;
+	&lt;!-- This is where you write your doc --&gt;
 	&lt;s-c&gt;
 		&lt;h-d&gt;
 			&lt;t-l&gt;Regular header&lt;/t-l&gt;
@@ -201,6 +203,7 @@
 			</t-x>
 			<e-g docsjs-name="Try it!">
 				<c-d docsjs-lang="html" docsjs-editable="true" class="parse4 src parse">&lt;div docsjs-tag="DocsJS-This-Baby"&gt;
+	&lt;!-- This is where you write your doc (This comment isn't required. I'll stop including it now that you know DocsJS' structure) --&gt;
 	&lt;s-c&gt;
 		&lt;h-d&gt;
 			&lt;t-l&gt;Regular header&lt;/t-l&gt;
@@ -275,7 +278,8 @@
 	padding: 0;
 	font-size: 22px;
 }&lt;/c-d&gt;&lt;br&gt;
-				Oh yeah, you can add the attribute docsjs-editable="true" to make the code block editable.
+				Oh yeah, you can add the attribute &lt;pre&gt;docsjs-editable="true"&lt;/pre&gt; to make the code block editable.&lt;br&gt;
+				For example, &lt;pre&gt;&amp;lt;c-d docsjs-lang="css" docsjs-editable="true"&amp;gt;&lt;/pre&gt;. Try making the above editable!
 			&lt;/t-x&gt;
 		&lt;/t-p&gt;
 	&lt;/s-c&gt;
@@ -287,7 +291,7 @@
 	<s-c>
 		<h-d>
 			<t-l>Features</t-l>
-			<t-x>Heres the details on DocsJS' best features.</t-x>
+			<t-x>Congratulations, you've learned how to use DocsJS! If you want to go deeper, this section contains some details on the design behind the best features.</t-x>
 		</h-d>
 		<t-p>
 			<t-l>Navigation</t-l>
@@ -390,7 +394,7 @@
 	</s-c>
 	<s-c>
 		<h-d>
-			<t-l>Reference</t-l>
+			<t-l>API Reference</t-l>
 			<t-x>You'll find DocsJS' Javascript &amp; HTML API, CSS themeing guidelines, and a quick refresher on how DocsJS' HTML structure works here.</t-x>
 		</h-d>
 		<s-c docsjs-state="min">

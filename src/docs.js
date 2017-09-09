@@ -25,7 +25,7 @@ DocsJS.init = function(callback){
 	// Add essential compenents
 	try{DocsJS.resized();}catch(e){}
 	DocsJS.apply(function(doc){
-		doc.innerHTML = '<main role="main"><div docsjs-tag="s-c"><button role="button" docsjs-tag="accessibility-button" tabindex="0" onclick="DocsJS.toggleRecommendedAccessibility(this)" onkeydown="DocsJS.accessButtonSpaceClick(this,event)">Accessibility Mode</button></div><div docsjs-tag="s-c" style="display:none;"><button role="button" docsjs-tag="accessibility-button" tabindex="0" onclick="DocsJS.toggleExtendedAccessibility()" onkeydown="DocsJS.accessButtonSpaceClick(this,event)">Extended Accessibility Mode</button></div>'+doc.innerHTML+'</main>';
+		doc.innerHTML = '<main role="main"><div docsjs-tag="s-c"><button role="button" docsjs-tag="accessibility-button" tabindex="0" onclick="DocsJS.toggleRecommendedAccessibility(this)" onkeydown="DocsJS.accessButtonSpaceClick(this,event)">Accessibility Mode</button><div docsjs-tag="header"></div></div><div docsjs-tag="s-c" style="display:none;"><button role="button" docsjs-tag="accessibility-button" tabindex="0" onclick="DocsJS.toggleExtendedAccessibility()" onkeydown="DocsJS.accessButtonSpaceClick(this,event)">Extended Accessibility Mode</button></div>'+doc.innerHTML+'</main>';
 	});
 	DocsJS.apply(function(doc){
 		doc.outerHTML = doc.outerHTML
@@ -327,6 +327,10 @@ DocsJS.refresh = function(callback){
 			'<div docsjs-tag="menu-item"><div docsjs-tag="menu-title" docsjs-state="" docsjs-menu-location="'+DocsJS.menu.top+'" onclick="DocsJS._menuClicked(this,'+"'"+DocsJS.menu.top+"'"+');" docsjs-menu-destination="'+DocsJS.menu.top+'">'+DocsJS.menu.top+'</div></div>'+
 			readStructure(doc.querySelector('main') || doc, index)+
 			'<div docsjs-tag="menu-item"><div docsjs-tag="menu-title" docsjs-state="" docsjs-menu-location="'+DocsJS.menu.bottom+'" onclick="DocsJS._menuClicked(this,'+"'"+DocsJS.menu.bottom+"'"+');" docsjs-menu-destination="'+DocsJS.menu.bottom+'">'+DocsJS.menu.bottom+'</div></div>';
+		
+		DocsJS.forEach(doc.querySelectorAll('main>[docsjs-tag="s-c"]'),function(el){
+			try{doc.querySelector('[docsjs-tag="header"]').innerHTML += '<span onclick="DocsJS.jumpTo(\''+el.docsjs.location+'\')">' + el.querySelector('[docsjs-tag="t-l"]').textContent + '</span>';}catch(e){}
+		});
 	});
 
 	// Bind buttons
